@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Titulo from '../components/Titulo.astro';
+import Parrafo from '../components/Parrafo.astro';
+import Badge from '../components/Badge.astro';
+import BotonPrimario from '../components/BotonPrimario.astro';
+---
+
+<Layout 
+	title="Testimonios - Henovar"
+	description="Lee los testimonios de nuestros clientes satisfechos. Descubre por qué confían en Henovar para sus proyectos digitales."
+	keywords="testimonios clientes, opiniones, casos de éxito, reseñas, satisfacción cliente"
+>
+	<!-- Hero Section -->
+	<section class="section section-padding">
+		<div class="max-w-7xl mx-auto text-center">
+			<Badge class="mb-6">Testimonios</Badge>
+			<Titulo level={1} highlight="clientes" class="mb-6">
+				Lo que dicen nuestros clientes
+			</Titulo>
+			<Parrafo class="max-w-3xl mx-auto mb-8">
+				La **satisfacción de nuestros clientes** es nuestra mayor recompensa. Descubre sus experiencias trabajando con nosotros.
+			</Parrafo>
+		</div>
+	</section>
+
+	<!-- Testimonios Grid -->
+	<div class="container-bg-dark">
+		<section class="section section-padding">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+					<!-- Testimonio Destacado 1 -->
+					<div class="bg-gray-800 border-radius-large p-8">
+						<div class="flex items-center mb-6">
+							<div class="w-16 h-16 bg-gray-600 rounded-full mr-4"></div>
+							<div>
+								<Titulo level={4} class="mb-1">María García</Titulo>
+								<Parrafo color="muted">CEO, TechStart Solutions</Parrafo>
+								<div class="flex items-center mt-2">
+									{[...Array(5)].map(() => (
+										<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+											<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+										</svg>
+									))}
+								</div>
+							</div>
+						</div>
+						<Parrafo class="mb-4">
+							"Trabajar con Henovar fue una experiencia **excepcional**. No solo entregaron exactamente lo que necesitábamos, sino que superaron nuestras expectativas en términos de calidad y tiempo de entrega."
+						</Parrafo>
+						<Parrafo color="muted">
+							"Su **atención al detalle** y capacidad para entender nuestras necesidades específicas hizo que todo el proceso fuera fluido y profesional."
+						</Parrafo>
+					</div>
+
+					<!-- Testimonio Destacado 2 -->
+					<div class="bg-gray-800 border-radius-large p-8">
+						<div class="flex items-center mb-6">
+							<div class="w-16 h-16 bg-gray-600 rounded-full mr-4"></div>
+							<div>
+								<Titulo level={4} class="mb-1">Carlos López</Titulo>
+								<Parrafo color="muted">Director Técnico, InnovaWeb</Parrafo>
+								<div class="flex items-center mt-2">
+									{[...Array(5)].map(() => (
+										<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+											<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+										</svg>
+									))}
+								</div>
+							</div>
+						</div>
+						<Parrafo class="mb-4">
+							"La **calidad del código** y la arquitectura que implementaron superaron nuestras expectativas. El proyecto se entregó a tiempo y funcionó perfectamente desde el primer día."
+						</Parrafo>
+						<Parrafo color="muted">
+							"Su **experiencia técnica** y capacidad para resolver problemas complejos los convierte en un socio tecnológico invaluable."
+						</Parrafo>
+					</div>
+				</div>
+
+				<!-- Grid de Testimonios -->
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+							<div>
+								<Titulo level={5} class="mb-1">Ana Martín</Titulo>
+								<Parrafo color="muted">Fundadora, DigitalPlus</Parrafo>
+							</div>
+						</div>
+						<div class="flex items-center mb-3">
+							{[...Array(5)].map(() => (
+								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+								</svg>
+							))}
+						</div>
+						<Parrafo>"**Comunicación excelente** durante todo el proyecto. Muy recomendables para cualquier desarrollo web."</Parrafo>
+					</div>
+
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+							<div>
+								<Titulo level={5} class="mb-1">Roberto Silva</Titulo>
+								<Parrafo color="muted">CTO, StartupFlow</Parrafo>
+							</div>
+						</div>
+						<div class="flex items-center mb-3">
+							{[...Array(5)].map(() => (
+								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+								</svg>
+							))}
+						</div>
+						<Parrafo>"Increíble **velocidad de desarrollo** sin comprometer la calidad. Definitivamente volveremos a trabajar con ellos."</Parrafo>
+					</div>
+
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+							<div>
+								<Titulo level={5} class="mb-1">Laura Fernández</Titulo>
+								<Parrafo color="muted">Directora, EcoTech</Parrafo>
+							</div>
+						</div>
+						<div class="flex items-center mb-3">
+							{[...Array(5)].map(() => (
+								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+								</svg>
+							))}
+						</div>
+						<Parrafo>"El **soporte post-lanzamiento** ha sido excepcional. Siempre disponibles para resolver cualquier duda."</Parrafo>
+					</div>
+
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+							<div>
+								<Titulo level={5} class="mb-1">Miguel Torres</Titulo>
+								<Parrafo color="muted">CEO, DataFlow</Parrafo>
+							</div>
+						</div>
+						<div class="flex items-center mb-3">
+							{[...Array(5)].map(() => (
+								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+								</svg>
+							))}
+						</div>
+						<Parrafo>"**Soluciones innovadoras** que realmente impactaron en nuestro crecimiento. Altamente profesionales."</Parrafo>
+					</div>
+
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+							<div>
+								<Titulo level={5} class="mb-1">Carmen Ruiz</Titulo>
+								<Parrafo color="muted">Fundadora, CreativeHub</Parrafo>
+							</div>
+						</div>
+						<div class="flex items-center mb-3">
+							{[...Array(5)].map(() => (
+								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+								</svg>
+							))}
+						</div>
+						<Parrafo>"El **diseño y la funcionalidad** superaron todas nuestras expectativas. Un equipo realmente talentoso."</Parrafo>
+					</div>
+
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+							<div>
+								<Titulo level={5} class="mb-1">David Morales</Titulo>
+								<Parrafo color="muted">Director, TechSolutions</Parrafo>
+							</div>
+						</div>
+						<div class="flex items-center mb-3">
+							{[...Array(5)].map(() => (
+								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+								</svg>
+							))}
+						</div>
+						<Parrafo>"**Entrega puntual** y resultados que superaron nuestras expectativas. Los recomiendo sin dudarlo."</Parrafo>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<!-- CTA Section -->
+	<section class="section section-padding container-bg-darker">
+		<div class="max-w-4xl mx-auto text-center">
+			<Titulo level={2} highlight="experiencia" class="mb-6">
+				¿Quieres vivir la misma experiencia?
+			</Titulo>
+			<Parrafo class="mb-8">
+				Únete a nuestros **clientes satisfechos** y descubre cómo podemos transformar tu proyecto digital.
+			</Parrafo>
+			<BotonPrimario href="/contacto">Comenzar Proyecto</BotonPrimario>
+		</div>
+	</section>
+</Layout>

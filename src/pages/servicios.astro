@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Titulo from '../components/Titulo.astro';
+import Parrafo from '../components/Parrafo.astro';
+import Badge from '../components/Badge.astro';
+import BotonPrimario from '../components/BotonPrimario.astro';
+---
+
+<Layout 
+	title="Servicios - Henovar"
+	description="Descubre nuestros servicios de desarrollo web, consultoría tecnológica, optimización y mantenimiento. Soluciones digitales personalizadas."
+	keywords="servicios desarrollo web, consultoría tecnológica, optimización web, mantenimiento web, soluciones digitales"
+>
+	<!-- Hero Section -->
+	<section class="section section-padding">
+		<div class="max-w-7xl mx-auto text-center">
+			<Badge class="mb-6">Servicios</Badge>
+			<Titulo level={1} alignMobile="left" alignDesktop="center" highlight="servicios" class="mb-6">
+			Nuestros servicios digitales
+		</Titulo>
+		<Parrafo alignMobile="left" alignDesktop="center" class="max-w-3xl mx-auto mb-8">
+			Ofrecemos soluciones tecnológicas completas para **impulsar tu negocio** al siguiente nivel digital.
+		</Parrafo>
+		</div>
+	</section>
+
+	<!-- Servicios Principales -->
+	<div class="container-bg-dark">
+		<section class="section section-padding">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+					<!-- Desarrollo Web -->
+					<div class="bg-gray-800 border-radius-large p-8">
+						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+							</svg>
+						</div>
+						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Desarrollo Web</Titulo>
+				<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
+					Creamos **sitios web modernos** y aplicaciones web personalizadas utilizando las últimas tecnologías y mejores prácticas del sector.
+				</Parrafo>
+						<ul class="space-y-3 mb-6">
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Sitios web responsive
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Aplicaciones web complejas
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								E-commerce personalizado
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Optimización SEO
+							</li>
+						</ul>
+						<BotonPrimario href="/contacto">Solicitar Presupuesto</BotonPrimario>
+					</div>
+
+					<!-- Consultoría -->
+					<div class="bg-gray-800 border-radius-large p-8">
+						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+							</svg>
+						</div>
+						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Consultoría Tecnológica</Titulo>
+				<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
+							Asesoramiento especializado para **optimizar procesos** y tomar las mejores decisiones tecnológicas para tu empresa.
+						</Parrafo>
+						<ul class="space-y-3 mb-6">
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Auditoría tecnológica
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Estrategia digital
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Selección de tecnologías
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Planificación de proyectos
+							</li>
+						</ul>
+						<BotonPrimario href="/contacto">Solicitar Consulta</BotonPrimario>
+					</div>
+				</div>
+
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+					<!-- Optimización -->
+					<div class="bg-gray-800 border-radius-large p-8">
+						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+							</svg>
+						</div>
+						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Optimización y Rendimiento</Titulo>
+				<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
+					Mejoramos el **rendimiento de tus sistemas** existentes para ofrecer la mejor experiencia de usuario.
+				</Parrafo>
+						<ul class="space-y-3 mb-6">
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Optimización de velocidad
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Mejora de SEO técnico
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Optimización de bases de datos
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Seguridad y monitoreo
+							</li>
+						</ul>
+						<BotonPrimario href="/contacto">Optimizar Ahora</BotonPrimario>
+					</div>
+
+					<!-- Mantenimiento -->
+					<div class="bg-gray-800 border-radius-large p-8">
+						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+							</svg>
+						</div>
+						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Mantenimiento y Soporte</Titulo>
+		<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
+			Mantenemos tus sistemas **funcionando perfectamente** con soporte técnico continuo y actualizaciones regulares.
+		</Parrafo>
+						<ul class="space-y-3 mb-6">
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Actualizaciones de seguridad
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Copias de seguridad automáticas
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Soporte técnico 24/7
+							</li>
+							<li class="flex items-center text-gray-300">
+								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Monitoreo de rendimiento
+							</li>
+						</ul>
+						<BotonPrimario href="/contacto">Contratar Mantenimiento</BotonPrimario>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<!-- CTA Section -->
+	<section class="section section-padding container-bg-darker">
+		<div class="max-w-4xl mx-auto text-center">
+			<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="proyecto" class="mb-6">
+			¿Necesitas ayuda con tu proyecto?
+		</Titulo>
+		<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
+			Contáctanos para una **consulta gratuita** y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
+		</Parrafo>
+			<BotonPrimario href="/contacto">Contactar Ahora</BotonPrimario>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,70 @@
+---
+export interface Props {
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  class?: string;
+  highlight?: string; // Texto a resaltar en azul
+  alignMobile?: 'center' | 'left';
+  alignDesktop?: 'center' | 'left';
+}
+
+const { level = 1, class: className = '', highlight, alignMobile = 'left', alignDesktop = 'center' } = Astro.props;
+const Element = `h${level}` as keyof HTMLElementTagNameMap;
+
+// Función para procesar el texto y resaltar la parte especificada
+function processText(text: string, highlight?: string) {
+  if (!highlight || !text.includes(highlight)) {
+    return text;
+  }
+  
+  const parts = text.split(highlight);
+  return parts.reduce((acc, part, index) => {
+    if (index === 0) return part;
+    return acc + `<span class="text-highlight">${highlight}</span>` + part;
+  }, '');
+}
+
+const slotContent = await Astro.slots.render('default');
+const processedContent = highlight ? processText(slotContent, highlight) : slotContent;
+
+// Clases responsive basadas en el nivel del título
+const getResponsiveClasses = (level: number) => {
+  switch (level) {
+    case 1:
+      return 'text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold';
+    case 2:
+      return 'text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold';
+    case 3:
+      return 'text-lg sm:text-2xl md:text-3xl lg:text-4xl font-semibold';
+    case 4:
+      return 'text-base sm:text-xl md:text-2xl lg:text-3xl font-semibold';
+    case 5:
+      return 'text-sm sm:text-lg md:text-xl lg:text-2xl font-medium';
+    case 6:
+      return 'text-xs sm:text-base md:text-lg lg:text-xl font-medium';
+    default:
+      return 'text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold';
+  }
+};
+
+// Clases de alineación
+const getAlignmentClasses = (alignMobile: string, alignDesktop: string) => {
+  const mobileClass = alignMobile === 'center' ? 'text-center' : 'text-left';
+  const desktopClass = alignDesktop === 'center' ? 'md:text-center' : 'md:text-left';
+  return `${mobileClass} ${desktopClass}`;
+};
+---
+
+<Element
+  class={`
+    text-white leading-tight tracking-tight
+    ${getAlignmentClasses(alignMobile, alignDesktop)}
+    ${getResponsiveClasses(level)}
+    ${className}
+  `}
+  set:html={processedContent}
+>
+</Element>
+
+<style>
+  /* Estilos adicionales si son necesarios */
+</style>

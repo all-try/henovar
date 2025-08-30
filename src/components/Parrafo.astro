@@ -1,0 +1,47 @@
+---
+export interface Props {
+  class?: string;
+  color?: 'primary' | 'secondary' | 'muted';
+  alignMobile?: 'center' | 'left';
+  alignDesktop?: 'center' | 'left';
+}
+
+const { class: className = '', color = 'secondary', alignMobile = 'left', alignDesktop = 'center' } = Astro.props;
+
+const colorClasses = {
+  primary: 'text-white',
+  secondary: 'text-gray-200',
+  muted: 'text-gray-400'
+};
+
+// Clases de alineación
+const getAlignmentClasses = (alignMobile: string, alignDesktop: string) => {
+  const mobileClass = alignMobile === 'center' ? 'text-center' : 'text-left';
+  const desktopClass = alignDesktop === 'center' ? 'md:text-center' : 'md:text-left';
+  return `${mobileClass} ${desktopClass}`;
+};
+
+// Función para procesar el texto y convertir **texto** en negrita
+function processBoldText(text: string) {
+  return text.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-white">$1</strong>');
+}
+
+const slotContent = await Astro.slots.render('default');
+const processedContent = processBoldText(slotContent);
+---
+
+<p
+  class={`
+    leading-relaxed
+    text-sm sm:text-base md:text-lg lg:text-xl
+    ${getAlignmentClasses(alignMobile, alignDesktop)}
+    ${colorClasses[color]}
+    ${className}
+  `}
+  set:html={processedContent}
+>
+</p>
+
+<style>
+  /* Estilos adicionales si son necesarios */
+</style>

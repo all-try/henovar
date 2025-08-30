@@ -1,11 +1,406 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Titulo from '../components/Titulo.astro';
+import Parrafo from '../components/Parrafo.astro';
+import Badge from '../components/Badge.astro';
+import BotonPrimario from '../components/BotonPrimario.astro';
+import BotonSecundario from '../components/BotonSecundario.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+	title="Henovar - Soluciones Digitales Innovadoras"
+	description="Transformamos ideas en soluciones digitales innovadoras. Especialistas en desarrollo web, consultoría tecnológica y proyectos digitales."
+	keywords="desarrollo web, consultoría tecnológica, soluciones digitales, programación, diseño web, proyectos digitales"
+>
+	<!-- Hero Section -->
+	<section class="section section-padding">
+		<div class="max-w-7xl mx-auto md:text-center">
+			<Badge class="mb-6">Bienvenido a Henovar</Badge>
+			<Titulo level={1} highlight="digitales" alignMobile="center" alignDesktop="center" class="mb-6">
+				Transformamos ideas en soluciones digitales innovadoras
+			</Titulo>
+			<Parrafo alignMobile="center" alignDesktop="center" class="max-w-3xl mx-auto mb-8">
+				Especialistas en **desarrollo web** y **consultoría tecnológica**. Creamos experiencias digitales que impulsan el crecimiento de tu negocio.
+			</Parrafo>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<BotonPrimario href="/servicios">Ver Servicios</BotonPrimario>
+				<BotonSecundario href="/proyectos">Ver Proyectos</BotonSecundario>
+			</div>
+		</div>
+	</section>
+
+	<!-- Servicios Section -->
+	<div class="container-bg-dark">
+		<section class="section section-padding">
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center mb-12">
+					<Badge class="mb-4">Servicios</Badge>
+					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Nuestros Servicios</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
+						Ofrecemos soluciones tecnológicas completas para **impulsar tu negocio** al siguiente nivel.
+					</Parrafo>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+					<div class="text-center">
+						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+							</svg>
+						</div>
+						<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-3">Desarrollo Web</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted">Sitios web modernos y aplicaciones web personalizadas.</Parrafo>
+					</div>
+					<div class="text-center">
+						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+							</svg>
+						</div>
+						<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-3">Consultoría</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted">Asesoramiento tecnológico para optimizar procesos.</Parrafo>
+					</div>
+					<div class="text-center">
+						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+							</svg>
+						</div>
+						<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-3">Optimización</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted">Mejoramos el rendimiento de tus sistemas existentes.</Parrafo>
+					</div>
+				</div>
+				<div class="text-center">
+					<BotonPrimario href="/servicios">Ver Todos los Servicios</BotonPrimario>
+				</div>
+			</div>
+		</section>
+
+		<!-- Proyectos Section -->
+		<section class="section section-padding">
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center mb-12">
+					<Badge class="mb-4">Proyectos</Badge>
+					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Nuestros Proyectos</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
+						Descubre algunos de los **proyectos exitosos** que hemos desarrollado para nuestros clientes.
+					</Parrafo>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="h-48 bg-gray-700 border-radius-default mb-4"></div>
+						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-2">E-commerce Moderno</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted">Plataforma de comercio electrónico con diseño responsive.</Parrafo>
+					</div>
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="h-48 bg-gray-700 border-radius-default mb-4"></div>
+						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-2">App Corporativa</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted">Aplicación web para gestión empresarial.</Parrafo>
+					</div>
+					<div class="bg-gray-800 border-radius-default p-6">
+						<div class="h-48 bg-gray-700 border-radius-default mb-4"></div>
+						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-2">Portal Educativo</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted">Plataforma de aprendizaje online interactiva.</Parrafo>
+					</div>
+				</div>
+				<div class="text-center">
+					<BotonPrimario href="/proyectos">Ver Todos los Proyectos</BotonPrimario>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<!-- Testimonios Section -->
+	<section class="section section-padding">
+		<div class="max-w-7xl mx-auto">
+			<div class="text-center mb-12">
+				<Badge class="mb-4">Testimonios</Badge>
+					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Lo que dicen nuestros clientes</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
+						La **satisfacción de nuestros clientes** es nuestra mayor recompensa.
+					</Parrafo>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+				<div class="bg-gray-800 border-radius-default p-6">
+					<div class="flex items-center mb-4">
+						<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+						<div>
+							<Titulo level={5} alignMobile="left" alignDesktop="center" class="mb-1">María García</Titulo>
+							<Parrafo alignMobile="left" alignDesktop="center" color="muted">CEO, TechStart</Parrafo>
+						</div>
+					</div>
+					<Parrafo alignMobile="left" alignDesktop="center">"Excelente trabajo, **muy profesionales** y entregaron exactamente lo que necesitábamos."</Parrafo>
+				</div>
+				<div class="bg-gray-800 border-radius-default p-6">
+					<div class="flex items-center mb-4">
+						<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+						<div>
+							<Titulo level={5} alignMobile="left" alignDesktop="center" class="mb-1">Carlos López</Titulo>
+							<Parrafo alignMobile="left" alignDesktop="center" color="muted">Director, InnovaWeb</Parrafo>
+						</div>
+					</div>
+					<Parrafo alignMobile="left" alignDesktop="center">"La **calidad del código** y la atención al detalle superaron nuestras expectativas."</Parrafo>
+				</div>
+				<div class="bg-gray-800 border-radius-default p-6">
+					<div class="flex items-center mb-4">
+						<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+						<div>
+							<Titulo level={5} alignMobile="left" alignDesktop="center" class="mb-1">Ana Martín</Titulo>
+							<Parrafo alignMobile="left" alignDesktop="center" color="muted">Fundadora, DigitalPlus</Parrafo>
+						</div>
+					</div>
+					<Parrafo alignMobile="left" alignDesktop="center">"**Comunicación excelente** durante todo el proyecto. Muy recomendables."</Parrafo>
+				</div>
+			</div>
+			<div class="text-center">
+				<BotonPrimario href="/testimonios">Ver Más Testimonios</BotonPrimario>
+			</div>
+		</div>
+	</section>
+
+	<!-- Banner CTA -->
+	<section class="section section-padding container-bg-darker">
+		<div class="max-w-4xl mx-auto text-center">
+			<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="proyecto" class="mb-6">
+				¿Listo para comenzar tu proyecto?
+			</Titulo>
+			<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
+				Contáctanos hoy y descubre cómo podemos **transformar tu idea** en una solución digital exitosa.
+			</Parrafo>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<BotonPrimario href="/contacto">Contactar Ahora</BotonPrimario>
+				<BotonSecundario href="/servicios">Ver Servicios</BotonSecundario>
+			</div>
+		</div>
+	</section>
+
+	<!-- Nosotros Section -->
+	<section class="section section-padding">
+		<div class="max-w-7xl mx-auto">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<div>
+					<Badge class="mb-4">Nosotros</Badge>
+					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Conoce a Henovar</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
+						Somos un equipo de **desarrolladores apasionados** por la tecnología y la innovación. Nos especializamos en crear soluciones digitales que impulsan el crecimiento de los negocios.
+					</Parrafo>
+					<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
+						Con años de experiencia en el sector, hemos ayudado a **empresas de todos los tamaños** a digitalizar sus procesos y alcanzar sus objetivos.
+					</Parrafo>
+					<BotonPrimario href="/nosotros">Conocer Más</BotonPrimario>
+				</div>
+				<div class="bg-gray-800 border-radius-large h-96"></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Precios Section -->
+	<section class="section section-padding">
+		<div class="max-w-7xl mx-auto">
+			<div class="text-center mb-12">
+				<Badge class="mb-4">Precios</Badge>
+					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Planes que se Adaptan a Ti</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
+						Elige el plan perfecto para tu proyecto. **Transparencia total** en nuestros precios.
+					</Parrafo>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+				<!-- Plan Básico -->
+				<div class="bg-gray-800 border-radius-large p-8 text-center">
+					<Badge class="mb-4">Básico</Badge>
+					<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-2">€1,200</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-6">Perfecto para empezar</Parrafo>
+					<ul class="text-left space-y-3 mb-8">
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Sitio web responsive
+						</li>
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Hasta 5 páginas
+						</li>
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							SEO básico
+						</li>
+					</ul>
+					<BotonSecundario href="/precios">Más Detalles</BotonSecundario>
+				</div>
+
+				<!-- Plan Profesional -->
+				<div class="bg-gray-800 border-radius-large p-8 text-center border-2 border-blue-600 relative">
+					<div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+						<Badge>Más Popular</Badge>
+					</div>
+					<Badge class="mb-4">Profesional</Badge>
+					<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-2">€2,500</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-6">Para empresas en crecimiento</Parrafo>
+					<ul class="text-left space-y-3 mb-8">
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Todo del plan Básico
+						</li>
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Hasta 15 páginas
+						</li>
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							CMS integrado
+						</li>
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Soporte 3 meses
+						</li>
+					</ul>
+					<BotonPrimario href="/precios">Elegir Plan</BotonPrimario>
+				</div>
+
+				<!-- Plan Enterprise -->
+				<div class="bg-gray-800 border-radius-large p-8 text-center">
+					<Badge class="mb-4">Enterprise</Badge>
+					<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-2">€5,000+</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-6">Soluciones a medida</Parrafo>
+					<ul class="text-left space-y-3 mb-8">
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Todo personalizado
+						</li>
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Páginas ilimitadas
+						</li>
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Soporte prioritario
+						</li>
+						<li class="flex items-center text-sm">
+							<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+							</svg>
+							Consultoría incluida
+						</li>
+					</ul>
+					<BotonSecundario href="/precios">Contactar</BotonSecundario>
+				</div>
+			</div>
+			<div class="text-center">
+				<BotonPrimario href="/precios">Ver Todos los Planes</BotonPrimario>
+			</div>
+		</div>
+	</section>
+
+	<!-- Blog Section -->
+	<section class="section section-padding container-bg-dark">
+		<div class="max-w-7xl mx-auto">
+			<div class="text-center mb-12">
+				<Badge class="mb-4">Blog</Badge>
+					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Últimas Publicaciones</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
+						Mantente al día con las **últimas tendencias** en tecnología y desarrollo web.
+					</Parrafo>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+				<article class="bg-gray-800 border-radius-default overflow-hidden">
+					<div class="h-48 bg-gray-700"></div>
+					<div class="p-6">
+						<Badge class="mb-3">Desarrollo</Badge>
+						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">Tendencias en Desarrollo Web 2024</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-4">Descubre las tecnologías que están marcando el futuro del desarrollo web.</Parrafo>
+					<Parrafo alignMobile="left" alignDesktop="center" color="muted">15 Enero 2024</Parrafo>
+					</div>
+				</article>
+				<article class="bg-gray-800 border-radius-default overflow-hidden">
+					<div class="h-48 bg-gray-700"></div>
+					<div class="p-6">
+						<Badge class="mb-3">SEO</Badge>
+						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">Optimización SEO para 2024</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-4">Estrategias efectivas para mejorar tu posicionamiento en buscadores.</Parrafo>
+					<Parrafo alignMobile="left" alignDesktop="center" color="muted">12 Enero 2024</Parrafo>
+					</div>
+				</article>
+				<article class="bg-gray-800 border-radius-default overflow-hidden">
+					<div class="h-48 bg-gray-700"></div>
+					<div class="p-6">
+						<Badge class="mb-3">UX/UI</Badge>
+						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">Diseño UX que Convierte</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-4">Principios de diseño para crear experiencias que generen resultados.</Parrafo>
+					<Parrafo alignMobile="left" alignDesktop="center" color="muted">10 Enero 2024</Parrafo>
+					</div>
+				</article>
+			</div>
+			<div class="text-center">
+				<BotonPrimario href="/blog">Ver Todas las Publicaciones</BotonPrimario>
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ Section -->
+	<section class="section section-padding">
+		<div class="max-w-4xl mx-auto">
+			<div class="text-center mb-12">
+				<Badge class="mb-4">FAQ</Badge>
+					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Preguntas Frecuentes</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
+						Resolvemos las **dudas más comunes** sobre nuestros servicios y procesos de desarrollo.
+					</Parrafo>
+			</div>
+			
+			<div class="space-y-6">
+				<div class="bg-gray-800 border-radius-large p-6">
+					<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">¿Cuánto tiempo toma desarrollar un sitio web?</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center">El tiempo varía según la complejidad: sitios básicos toman 2-3 semanas, proyectos profesionales 4-6 semanas, y aplicaciones enterprise 8-12 semanas. Te proporcionamos un cronograma detallado al inicio del proyecto.</Parrafo>
+				</div>
+				
+				<div class="bg-gray-800 border-radius-large p-6">
+					<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">¿Qué tecnologías utilizan?</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center">Trabajamos con tecnologías modernas como React, Vue.js, Astro, Node.js, y bases de datos como PostgreSQL y MongoDB. Elegimos la tecnología más adecuada según las necesidades específicas de tu proyecto.</Parrafo>
+				</div>
+				
+				<div class="bg-gray-800 border-radius-large p-6">
+					<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">¿Incluyen hosting y dominio?</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center">El hosting y dominio se contratan por separado. Te ayudamos a elegir la mejor opción según tu presupuesto y necesidades. Ofrecemos hosting premium optimizado por €15/mes.</Parrafo>
+				</div>
+				
+				<div class="bg-gray-800 border-radius-large p-6">
+					<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">¿Ofrecen soporte después del lanzamiento?</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center">Sí, todos nuestros planes incluyen soporte post-lanzamiento: 1 mes en el plan Básico, 3 meses en el Profesional, y soporte prioritario 24/7 en Enterprise. También ofrecemos planes de mantenimiento continuo.</Parrafo>
+				</div>
+				
+				<div class="bg-gray-800 border-radius-large p-6">
+					<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">¿Puedo actualizar mi sitio web yo mismo?</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center">Absolutamente. En los planes Profesional y Enterprise incluimos un CMS intuitivo que te permite actualizar contenido fácilmente. También proporcionamos capacitación para que puedas gestionar tu sitio de forma autónoma.</Parrafo>
+				</div>
+				
+				<div class="bg-gray-800 border-radius-large p-6">
+					<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">¿Qué pasa si no estoy satisfecho con el resultado?</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="center">Ofrecemos garantía de satisfacción. Trabajamos contigo hasta que el resultado cumpla con tus expectativas. Incluimos revisiones ilimitadas durante el proceso de desarrollo para asegurar tu completa satisfacción.</Parrafo>
+				</div>
+			</div>
+			
+			<div class="text-center mt-12">
+				<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">¿Tienes más preguntas?</Parrafo>
+				<BotonPrimario href="/contacto">Contáctanos</BotonPrimario>
+			</div>
+		</div>
+	</section>
 </Layout>

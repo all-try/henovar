@@ -1,0 +1,253 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Titulo from '../components/Titulo.astro';
+import Parrafo from '../components/Parrafo.astro';
+import Badge from '../components/Badge.astro';
+import BotonPrimario from '../components/BotonPrimario.astro';
+import BotonSecundario from '../components/BotonSecundario.astro';
+---
+
+<Layout 
+	title="Blog - Henovar"
+	description="Descubre las últimas tendencias en desarrollo web, tecnología y consejos de expertos en nuestro blog. Mantente actualizado con Henovar."
+	keywords="blog, desarrollo web, tecnología, tutoriales, tendencias, consejos, programación"
+>
+	<!-- Hero Section -->
+	<section class="section section-padding">
+		<div class="max-w-7xl mx-auto text-center">
+			<Badge class="mb-6">Blog</Badge>
+			<Titulo level={1} alignMobile="left" alignDesktop="center" highlight="conocimiento" class="mb-6">
+				Compartimos nuestro conocimiento
+			</Titulo>
+			<Parrafo alignMobile="left" alignDesktop="center" class="max-w-3xl mx-auto mb-8">
+				Descubre las **últimas tendencias**, tutoriales y consejos de expertos en desarrollo web y tecnología.
+			</Parrafo>
+		</div>
+	</section>
+
+	<!-- Artículo Destacado -->
+	<div class="container-bg-dark">
+		<section class="section section-padding">
+			<div class="max-w-7xl mx-auto">
+				<div class="text-center mb-12">
+					<Badge class="mb-4">Artículo Destacado</Badge>
+					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Últimas Publicaciones</Titulo>
+				</div>
+
+				<!-- Artículo Principal -->
+				<div class="bg-gray-800 border-radius-large overflow-hidden mb-16">
+					<div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+						<div class="bg-gray-700 h-64 lg:h-auto"></div>
+						<div class="p-8 lg:p-12">
+							<div class="flex items-center mb-4">
+								<Badge class="mr-3">Desarrollo Web</Badge>
+								<Parrafo alignMobile="left" alignDesktop="center" color="muted">15 Enero 2024</Parrafo>
+							</div>
+							<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-4">
+								Las Mejores Prácticas para Desarrollo Web en 2024
+							</Titulo>
+							<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
+								Descubre las **tendencias más importantes** y las mejores prácticas que todo desarrollador web debe conocer este año. Desde frameworks modernos hasta técnicas de optimización.
+							</Parrafo>
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<div class="w-10 h-10 bg-gray-600 rounded-full mr-3"></div>
+									<div>
+										<Parrafo alignMobile="left" alignDesktop="center" class="font-medium">Alex Rodríguez</Parrafo>
+					<Parrafo alignMobile="left" alignDesktop="center" color="muted">CEO & Fundador</Parrafo>
+									</div>
+								</div>
+								<BotonSecundario href="#">Leer Más</BotonSecundario>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Grid de Artículos -->
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+					<!-- Artículo 1 -->
+					<article class="bg-gray-800 border-radius-large overflow-hidden">
+						<div class="bg-gray-700 h-48"></div>
+						<div class="p-6">
+							<div class="flex items-center mb-3">
+								<Badge class="mr-3">Tutorial</Badge>
+								<Parrafo alignMobile="left" alignDesktop="center" color="muted">12 Enero 2024</Parrafo>
+							</div>
+							<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">
+							Cómo Optimizar el Rendimiento de tu Sitio Web
+						</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" class="mb-4">
+							Aprende técnicas **avanzadas de optimización** para mejorar la velocidad de carga y la experiencia del usuario.
+						</Parrafo>
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<div class="w-8 h-8 bg-gray-600 rounded-full mr-2"></div>
+									<Parrafo alignMobile="left" alignDesktop="center" color="muted">María González</Parrafo>
+								</div>
+								<a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Leer →</a>
+							</div>
+						</div>
+					</article>
+
+					<!-- Artículo 2 -->
+					<article class="bg-gray-800 border-radius-large overflow-hidden">
+						<div class="bg-gray-700 h-48"></div>
+						<div class="p-6">
+							<div class="flex items-center mb-3">
+								<Badge class="mr-3">Tendencias</Badge>
+								<Parrafo alignMobile="left" alignDesktop="center" color="muted">10 Enero 2024</Parrafo>
+							</div>
+							<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">
+							El Futuro del Desarrollo Frontend
+						</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" class="mb-4">
+							Explora las **tecnologías emergentes** que están transformando el desarrollo frontend y cómo prepararse para el futuro.
+						</Parrafo>
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<div class="w-8 h-8 bg-gray-600 rounded-full mr-2"></div>
+									<Parrafo alignMobile="left" alignDesktop="center" color="muted">Carlos Martín</Parrafo>
+								</div>
+								<a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Leer →</a>
+							</div>
+						</div>
+					</article>
+
+					<!-- Artículo 3 -->
+					<article class="bg-gray-800 border-radius-large overflow-hidden">
+						<div class="bg-gray-700 h-48"></div>
+						<div class="p-6">
+							<div class="flex items-center mb-3">
+								<Badge class="mr-3">Consejos</Badge>
+								<Parrafo alignMobile="left" alignDesktop="center" color="muted">8 Enero 2024</Parrafo>
+							</div>
+							<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">
+							Seguridad Web: Protege tu Aplicación
+						</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" class="mb-4">
+							Guía completa sobre **mejores prácticas de seguridad** para proteger tu aplicación web de amenazas comunes.
+						</Parrafo>
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<div class="w-8 h-8 bg-gray-600 rounded-full mr-2"></div>
+									<Parrafo alignMobile="left" alignDesktop="center" color="muted">Alex Rodríguez</Parrafo>
+								</div>
+								<a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Leer →</a>
+							</div>
+						</div>
+					</article>
+
+					<!-- Artículo 4 -->
+					<article class="bg-gray-800 border-radius-large overflow-hidden">
+						<div class="bg-gray-700 h-48"></div>
+						<div class="p-6">
+							<div class="flex items-center mb-3">
+								<Badge class="mr-3">Herramientas</Badge>
+								<Parrafo alignMobile="left" alignDesktop="center" color="muted">5 Enero 2024</Parrafo>
+							</div>
+							<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">
+							Las Mejores Herramientas de Desarrollo 2024
+						</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" class="mb-4">
+							Descubre las **herramientas más útiles** que todo desarrollador debería tener en su arsenal para ser más productivo.
+						</Parrafo>
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<div class="w-8 h-8 bg-gray-600 rounded-full mr-2"></div>
+									<Parrafo alignMobile="left" alignDesktop="center" color="muted">María González</Parrafo>
+								</div>
+								<a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Leer →</a>
+							</div>
+						</div>
+					</article>
+
+					<!-- Artículo 5 -->
+					<article class="bg-gray-800 border-radius-large overflow-hidden">
+						<div class="bg-gray-700 h-48"></div>
+						<div class="p-6">
+							<div class="flex items-center mb-3">
+								<Badge class="mr-3">UX/UI</Badge>
+								<Parrafo alignMobile="left" alignDesktop="center" color="muted">3 Enero 2024</Parrafo>
+							</div>
+							<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">
+							Diseño UX que Convierte: Principios Clave
+						</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" class="mb-4">
+							Aprende los **principios fundamentales** del diseño UX que realmente impactan en las conversiones y la satisfacción del usuario.
+						</Parrafo>
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<div class="w-8 h-8 bg-gray-600 rounded-full mr-2"></div>
+									<Parrafo alignMobile="left" alignDesktop="center" color="muted">Carlos Martín</Parrafo>
+								</div>
+								<a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Leer →</a>
+							</div>
+						</div>
+					</article>
+
+					<!-- Artículo 6 -->
+					<article class="bg-gray-800 border-radius-large overflow-hidden">
+						<div class="bg-gray-700 h-48"></div>
+						<div class="p-6">
+							<div class="flex items-center mb-3">
+								<Badge class="mr-3">Backend</Badge>
+								<Parrafo alignMobile="left" alignDesktop="center" color="muted">1 Enero 2024</Parrafo>
+							</div>
+							<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-3">
+							APIs RESTful: Guía Completa para Principiantes
+						</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="center" class="mb-4">
+							Todo lo que necesitas saber sobre **APIs RESTful**, desde conceptos básicos hasta implementación práctica.
+						</Parrafo>
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<div class="w-8 h-8 bg-gray-600 rounded-full mr-2"></div>
+									<Parrafo alignMobile="left" alignDesktop="center" color="muted">Alex Rodríguez</Parrafo>
+								</div>
+								<a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Leer →</a>
+							</div>
+						</div>
+					</article>
+				</div>
+
+				<!-- Paginación -->
+				<div class="flex justify-center items-center space-x-4">
+					<button class="px-4 py-2 bg-gray-700 text-gray-400 border-radius-default cursor-not-allowed" disabled>
+						← Anterior
+					</button>
+					<div class="flex space-x-2">
+						<button class="w-10 h-10 bg-blue-600 text-white border-radius-default font-medium">1</button>
+						<button class="w-10 h-10 bg-gray-700 text-gray-300 border-radius-default hover:bg-gray-600 transition-colors">2</button>
+						<button class="w-10 h-10 bg-gray-700 text-gray-300 border-radius-default hover:bg-gray-600 transition-colors">3</button>
+					</div>
+					<button class="px-4 py-2 bg-gray-700 text-gray-300 border-radius-default hover:bg-gray-600 transition-colors">
+						Siguiente →
+					</button>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<!-- Newsletter Section -->
+	<section class="section section-padding container-bg-darker">
+		<div class="max-w-4xl mx-auto text-center">
+			<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="newsletter" class="mb-6">
+			Suscríbete a nuestro newsletter
+		</Titulo>
+		<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
+			Recibe las **últimas actualizaciones** y artículos directamente en tu bandeja de entrada.
+		</Parrafo>
+			<div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+				<input 
+					type="email" 
+					placeholder="Tu email" 
+					class="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 border-radius-default text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+				>
+				<BotonPrimario type="button">Suscribirse</BotonPrimario>
+			</div>
+			<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mt-4">
+			No spam. Puedes darte de baja en cualquier momento.
+		</Parrafo>
+		</div>
+	</section>
+</Layout>
