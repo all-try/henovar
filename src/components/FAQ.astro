@@ -1,0 +1,182 @@
+---
+import Badge from './Badge.astro';
+import Titulo from './Titulo.astro';
+import Parrafo from './Parrafo.astro';
+import BotonPrimario from './BotonPrimario.astro';
+
+interface Props {
+  badge?: string;
+  titulo?: string;
+  descripcion?: string;
+  preguntas: {
+    pregunta: string;
+    respuesta: string;
+  }[];
+  mostrarContacto?: boolean;
+  textoContacto?: string;
+  urlContacto?: string;
+  textoBotonContacto?: string;
+}
+
+const { 
+  badge = "FAQ",
+  titulo = "Preguntas Frecuentes",
+  descripcion = "Resolvemos las **dudas más comunes** sobre nuestros servicios y procesos de desarrollo.",
+  preguntas,
+  mostrarContacto = true,
+  textoContacto = "¿Tienes más preguntas?",
+  urlContacto = "/contacto",
+  textoBotonContacto = "Contáctanos"
+} = Astro.props;
+---
+
+<!-- FAQ Section -->
+<section class="section section-padding">
+  <div class="max-w-7xl mx-auto">
+    <!-- Layout de 2 columnas en desktop, 1 en móvil -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <!-- Columna 1: Título y descripción -->
+      <div class="text-center lg:text-left">
+        <Badge class="mb-4">{badge}</Badge>
+        <Titulo level={2} alignMobile="center" alignDesktop="left" class="mb-6">{titulo}</Titulo>
+        <Parrafo alignMobile="center" alignDesktop="left" class="max-w-lg">
+          {descripcion}
+        </Parrafo>
+      </div>
+      
+      <!-- Columna 2: Preguntas acordeón -->
+      <div class="faq-accordion space-y-4">
+        {preguntas.map((item, index) => (
+          <div class="faq-item bg-gray-600/20 border-radius-large overflow-hidden" data-open={index === 0 ? "true" : "false"}>
+            <button class="faq-question w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
+              <span class="text-white font-semibold text-lg">{item.pregunta}</span>
+              <div class={`faq-icon text-blue-400 text-2xl font-bold transition-transform duration-300 ${index === 0 ? 'transform rotate-45' : ''}`}>+</div>
+            </button>
+            <div class="faq-answer px-6 pb-6">
+              <Parrafo alignMobile="left" alignDesktop="left">{item.respuesta}</Parrafo>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    {mostrarContacto && (
+      <div class="text-center mt-12">
+        <Parrafo alignMobile="left" alignDesktop="center" class="mb-6">{textoContacto}</Parrafo>
+        <BotonPrimario href={urlContacto}>{textoBotonContacto}</BotonPrimario>
+      </div>
+    )}
+  </div>
+</section>
+
+<style is:inline>
+  /* FAQ Accordion Animations */
+  .faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease, padding 0.4s ease;
+    transform: translateY(-8px);
+    padding: 0 1.5rem;
+  }
+  
+  .faq-answer.active {
+    max-height: 800px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 1.5rem;
+  }
+  
+  .faq-answer.closing {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    padding: 0 1.5rem;
+  }
+  
+  .faq-icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    font-weight: bold;
+  }
+  
+  .faq-icon.rotated {
+    transform: rotate(45deg);
+  }
+  
+  .faq-question {
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .faq-question:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+</style>
+
+<script>
+  // FAQ Accordion functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    // Configurar estado inicial
+    faqItems.forEach((item, index) => {
+      const answer = item.querySelector('.faq-answer') as HTMLElement;
+      const icon = item.querySelector('.faq-icon') as HTMLElement;
+      
+      if (answer && icon) {
+        if (index === 0) {
+          // Primera pregunta abierta por defecto
+          answer.classList.add('active');
+          icon.classList.add('rotated');
+          item.setAttribute('data-open', 'true');
+        } else {
+          // Resto cerradas
+          answer.classList.remove('active');
+          icon.classList.remove('rotated');
+          item.setAttribute('data-open', 'false');
+        }
+      }
+    });
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('.faq-icon');
+      
+      if (!question || !answer || !icon) return;
+      
+      question.addEventListener('click', function() {
+        const answerEl = answer as HTMLElement;
+        const isCurrentlyOpen = answerEl.classList.contains('active');
+        
+        // Cerrar todas las respuestas simultáneamente
+        faqItems.forEach(faqItem => {
+          const faqAnswer = faqItem.querySelector('.faq-answer') as HTMLElement;
+          const faqIcon = faqItem.querySelector('.faq-icon') as HTMLElement;
+          
+          if (faqAnswer && faqIcon) {
+            // Añadir clase de cierre para animación suave
+            faqAnswer.classList.add('closing');
+            faqAnswer.classList.remove('active');
+            faqIcon.classList.remove('rotated');
+            faqItem.setAttribute('data-open', 'false');
+          }
+        });
+        
+        // Si no estaba abierta, abrir la actual simultáneamente
+        if (!isCurrentlyOpen) {
+          // Pequeño delay para sincronizar las animaciones
+          setTimeout(() => {
+            answerEl.classList.remove('closing');
+            answerEl.classList.add('active');
+            icon.classList.add('rotated');
+            item.setAttribute('data-open', 'true');
+          }, 50);
+        }
+      });
+    });
+  });
+</script>

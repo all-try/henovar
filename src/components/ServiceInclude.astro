@@ -1,0 +1,94 @@
+---
+export interface Props {
+	items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<!-- Lo que incluye -->
+<div class="mt-8">
+	<!-- Versión Desktop -->
+	<div class="hidden md:block">
+		<h4 class="text-slate-400 font-medium text-sm mb-4 uppercase tracking-wide">LO QUE INCLUYE</h4>
+		<ul class="space-y-3">
+			{items.map(item => (
+				<li class="flex items-center gap-3">
+					<svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+					</svg>
+					<span class="text-slate-300 text-sm">{item}</span>
+				</li>
+			))}
+		</ul>
+	</div>
+
+	<!-- Versión Móvil con animación -->
+	<div class="md:hidden">
+		<details class="group details-animated">
+			<summary class="flex items-center justify-between cursor-pointer list-none p-3 bg-slate-800/50 rounded-lg hover:bg-slate-800/70 transition-all duration-300">
+				<span class="text-slate-400 font-medium text-sm uppercase tracking-wide">LO QUE INCLUYE</span>
+				<svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+				</svg>
+			</summary>
+			<div class="details-content overflow-hidden">
+				<ul class="space-y-3 pt-3">
+					{items.map(item => (
+						<li class="flex items-center gap-3">
+							<svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+							</svg>
+							<span class="text-slate-300 text-sm">{item}</span>
+						</li>
+					))}
+				</ul>
+			</div>
+		</details>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const detailsElements = document.querySelectorAll('.details-animated');
+		
+		detailsElements.forEach(details => {
+			const detailsElement = details as HTMLDetailsElement;
+			const content = details.querySelector('.details-content') as HTMLElement;
+			const summary = details.querySelector('summary') as HTMLElement;
+			
+			if (!content || !summary) return;
+			
+			// Establecer altura inicial
+			if (!detailsElement.open) {
+				content.style.maxHeight = '0px';
+				content.style.opacity = '0';
+			}
+			
+			summary.addEventListener('click', function(e) {
+				e.preventDefault();
+				
+				if (detailsElement.open) {
+					// Cerrar
+					content.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
+					content.style.maxHeight = '0px';
+					content.style.opacity = '0';
+					
+					setTimeout(() => {
+						detailsElement.open = false;
+					}, 300);
+				} else {
+					// Abrir
+					detailsElement.open = true;
+					
+					// Calcular altura real
+					const scrollHeight = content.scrollHeight;
+					
+					content.style.transition = 'max-height 0.4s ease, opacity 0.4s ease';
+					content.style.maxHeight = scrollHeight + 'px';
+					content.style.opacity = '1';
+				}
+			});
+		});
+	});
+</script>

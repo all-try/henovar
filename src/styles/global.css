@@ -14,7 +14,11 @@
 /* Reset y estilos base */
 * {
   box-sizing: border-box;
-  font-family: Inter, sans-serif;
+  font-family: Inter;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
 }
 
 
@@ -45,6 +49,39 @@ body {
   }
 }
 
+/* Animaciones para el slider de testimonios */
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  animation: slide-left 30s linear infinite;
+}
+
+.animate-slide-right {
+  animation: slide-right 30s linear infinite;
+}
+
+/* Pausar animación al hover */
+.testimonios-slider:hover .animate-slide-left,
+.testimonios-slider:hover .animate-slide-right {
+  animation-play-state: paused;
+}
+
 @media (min-width: 1280px) {
   .section-padding {
     padding-left: 6rem;
@@ -57,7 +94,7 @@ body {
 }
 
 .border-radius-large {
-  border-radius: 1.5rem;
+  border-radius: 10px;
 }
 
 /* Contenedores con fondos */
@@ -96,4 +133,52 @@ html {
 :focus-visible {
   outline: 2px solid var(--accent-blue);
   outline-offset: 2px;
+}
+
+/* Animaciones personalizadas */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.4s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-in forwards;
+}
+
+/* Animaciones suaves para details */
+details {
+  overflow: hidden;
+}
+
+details[open] > div {
+  animation: slideDown 0.4s ease-out;
+}
+
+details:not([open]) > div {
+  animation: slideUp 0.3s ease-in;
 }

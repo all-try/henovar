@@ -1,0 +1,92 @@
+---
+export interface Props {
+	tag?: string;
+	tagStyle?: string;
+	headerBackground: string;
+	cardBackground: string;
+	icon: string;
+	border?: boolean;
+	price: string;
+	priceLabel?: string;
+	previousPrice?: string;
+	title: string;
+	description: string;
+	href?: string;
+}
+
+const {
+	tag,
+	tagStyle = "bg-gradient-to-r from-red-500 to-red-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg",
+	headerBackground,
+	cardBackground,
+	icon,
+	border = false,
+	price,
+	priceLabel,
+	previousPrice,
+	title,
+	description,
+	href = "/contacto"
+} = Astro.props;
+
+import BotonPrimario from './BotonPrimario.astro';
+---
+
+<div class={`flex-1 relative bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group ${border ? 'ring-2 ring-red-100/50' : ''}`}>
+	{tag && (
+		<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+			<div class={tagStyle}>
+				{tag}
+			</div>
+		</div>
+	)}
+	<div class="relative h-full flex flex-col overflow-hidden rounded-2xl">
+		<!-- Encabezado con fondo -->
+		<div class={`bg-[url('${headerBackground}')] bg-cover bg-no-repeat bg-top p-6 pt-8`}>
+			<div class="flex items-center gap-3 mb-3">
+				<svg class="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+					<path d={icon}/>
+				</svg>
+				<h3 class="text-xl font-bold text-white">{title}</h3>
+			</div>
+			<div class="mb-4">
+				<div class="mb-2">
+					<span class="text-6xl text-white">
+						<span class="font-normal">$</span><span class="font-semibold">{price}</span>
+					</span>
+				</div>
+				<div class="flex items-center gap-3">
+					{priceLabel && (
+						<span class="text-slate-400 text-lg">{priceLabel}</span>
+					)}
+					{previousPrice && (
+						<span class="text-slate-400 text-lg relative">
+							${previousPrice}
+							<div class="absolute inset-0 flex items-center justify-center">
+								<div class="w-full h-0.5 bg-red-500 transform rotate-8 origin-center"></div>
+							</div>
+						</span>
+					)}
+				</div>
+			</div>
+			<p class="text-slate-300 text-base leading-relaxed mb-6">
+				{description}
+			</p>
+			<BotonPrimario href={href} class="w-full">
+				Comenzar proyecto
+			</BotonPrimario>
+		</div>
+
+		<!-- Características -->
+		<div class={`p-6 flex-1 bg-[url('${cardBackground}')] bg-cover bg-no-repeat bg-top bg-black/40 bg-blend-overlay`}>
+			<h4 class="text-slate-400 font-medium text-sm mb-4 uppercase tracking-wide">CARACTERÍSTICAS</h4>
+			
+			<div class="space-y-3">
+				<slot name="features" />
+			</div>
+
+			<!-- Lo que incluye -->
+			<slot name="includes" />
+		</div>
+	</div>
+</div>

@@ -1,0 +1,106 @@
+---
+export interface Props {
+  icon: string;
+  title: string;
+  text: string;
+  bgImage?: string;
+  class?: string;
+}
+
+const { icon, title, text, bgImage, class: className = '' } = Astro.props;
+---
+
+<div class={`feature-card ${className}`} style={bgImage ? `background-image: url(${bgImage})` : ''}>
+  <div class="feature-card-content">
+    <div class="feature-header">
+      <div class="feature-icon" set:html={icon}></div>
+      <h3 class="feature-title">{title}</h3>
+    </div>
+    <p class="feature-text">{text}</p>
+  </div>
+</div>
+
+<style>
+  .feature-card {
+    position: relative;
+    background-color: #00050c;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    height: auto;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .feature-card-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .feature-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .feature-icon {
+    display: flex;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+
+  .feature-icon :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #ffffff9a;
+    margin-bottom: 5px;
+  }
+
+  .feature-title {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .feature-text {
+    color: #aaaaaa;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 767px) {
+    .feature-card {
+      padding: 1rem;
+    }
+
+    .feature-header {
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-icon :global(svg) {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .feature-title {
+      font-size: 0.875rem;
+    }
+
+    .feature-text {
+      font-size: 0.7rem;
+    }
+  }
+</style>

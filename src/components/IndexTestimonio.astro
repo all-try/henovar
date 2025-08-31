@@ -1,0 +1,38 @@
+---
+import FiveStars from './icons/FiveStars.astro';
+
+export interface Props {
+	nombre: string;
+	foto: string;
+	cargo: string;
+	testimonio: string;
+	fecha: string;
+}
+
+const { nombre, foto, cargo, testimonio, fecha } = Astro.props;
+---
+
+<div class="bg-gray-800 border-radius-default p-6 min-w-[350px] max-w-[400px] flex-shrink-0 relative">
+	<!-- Estrellas en esquina superior derecha -->
+	<div class="absolute top-4 right-4">
+		<FiveStars size="sm" />
+	</div>
+	
+	<!-- Contenido principal -->
+	<div class="pr-8">
+		<!-- Autor -->
+		<div class="flex items-center mb-4">
+			<img src={foto} alt={nombre} class="w-12 h-12 rounded-full mr-4 object-cover" />
+			<div>
+				<p class="text-base font-semibold text-white mb-1">{nombre}</p>
+				<p class="text-sm text-gray-400 mb-0">{cargo}</p>
+			</div>
+		</div>
+		
+		<!-- Testimonio -->
+		<p class="text-gray-300 text-sm leading-relaxed mb-4">{testimonio}</p>
+		
+		<!-- Fecha -->
+		<p class="text-xs text-gray-500">{fecha}</p>
+	</div>
+</div>

@@ -2,210 +2,303 @@
 import Layout from '../layouts/Layout.astro';
 import Titulo from '../components/Titulo.astro';
 import Parrafo from '../components/Parrafo.astro';
-import Badge from '../components/Badge.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
+import FAQ from '../components/FAQ.astro';
+import ServiceFeature from '../components/ServiceFeature.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ServiceInclude from '../components/ServiceInclude.astro';
+
+const preguntasServicios = [
+	{
+		pregunta: "¿Cuánto tiempo toma desarrollar un sitio web?",
+		respuesta: "El tiempo de desarrollo varía según la complejidad del proyecto. Un sitio web básico puede tomar entre 2-4 semanas, mientras que una tienda online completa puede requerir 4-8 semanas. Te proporcionaremos un cronograma detallado después de evaluar tus necesidades específicas."
+	},
+	{
+		pregunta: "¿Incluyen el hosting y dominio?",
+		respuesta: "Sí, todos nuestros paquetes incluyen hosting por el primer año y te ayudamos con la configuración del dominio. Después del primer año, el hosting tiene un costo anual de $120 que incluye mantenimiento básico y actualizaciones de seguridad."
+	},
+	{
+		pregunta: "¿Puedo hacer cambios al sitio después de terminado?",
+		respuesta: "¡Absolutamente! Te proporcionamos capacitación completa para que puedas hacer cambios básicos por tu cuenta. Para modificaciones más complejas, ofrecemos servicios de mantenimiento y actualización con tarifas preferenciales para nuestros clientes."
+	},
+	{
+		pregunta: "¿Qué pasa si no estoy satisfecho con el resultado?",
+		respuesta: "Tu satisfacción es nuestra prioridad. Ofrecemos hasta 3 rondas de revisiones incluidas en todos nuestros paquetes. Si aún no estás completamente satisfecho, trabajaremos contigo hasta lograr el resultado que buscas, sin costo adicional."
+	},
+	{
+		pregunta: "¿Ofrecen servicios de SEO?",
+		respuesta: "Sí, todos nuestros sitios web incluyen optimización SEO básica (meta tags, estructura de URLs, sitemap, etc.). Para estrategias de SEO más avanzadas y marketing digital, ofrecemos servicios especializados que podemos discutir según tus objetivos de negocio."
+	}
+];
 ---
 
-<Layout 
-	title="Servicios - Henovar"
-	description="Descubre nuestros servicios de desarrollo web, consultoría tecnológica, optimización y mantenimiento. Soluciones digitales personalizadas."
-	keywords="servicios desarrollo web, consultoría tecnológica, optimización web, mantenimiento web, soluciones digitales"
->
+<Layout title="Servicios - Henovar">
+	<div class="bg-[url('/img/bg/large-bg.png')] bg-cover bg-top bg-no-repeat">
 	<!-- Hero Section -->
 	<section class="section section-padding">
-		<div class="max-w-7xl mx-auto text-center">
-			<Badge class="mb-6">Servicios</Badge>
-			<Titulo level={1} alignMobile="left" alignDesktop="center" highlight="servicios" class="mb-6">
-			Nuestros servicios digitales
-		</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" class="max-w-3xl mx-auto mb-8">
-			Ofrecemos soluciones tecnológicas completas para **impulsar tu negocio** al siguiente nivel digital.
-		</Parrafo>
+		<div class="max-w-4xl mx-auto text-center">
+			<Titulo level={1} alignMobile="center" alignDesktop="center" highlight="servicios" class="mb-6">
+				Nuestros servicios
+			</Titulo>
+			<Parrafo alignMobile="center" alignDesktop="center" class="text-xl">
+				Transformamos ideas en **experiencias digitales exitosas**. Desde sitios web profesionales hasta tiendas online completas.
+			</Parrafo>
 		</div>
 	</section>
 
-	<!-- Servicios Principales -->
-	<div class="container-bg-dark">
+		<!-- Servicios Grid -->
 		<section class="section section-padding">
 			<div class="max-w-7xl mx-auto">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-					<!-- Desarrollo Web -->
-					<div class="bg-gray-800 border-radius-large p-8">
-						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
-							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-							</svg>
-						</div>
-						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Desarrollo Web</Titulo>
-				<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
-					Creamos **sitios web modernos** y aplicaciones web personalizadas utilizando las últimas tecnologías y mejores prácticas del sector.
-				</Parrafo>
-						<ul class="space-y-3 mb-6">
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Sitios web responsive
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Aplicaciones web complejas
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								E-commerce personalizado
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Optimización SEO
-							</li>
-						</ul>
-						<BotonPrimario href="/contacto">Solicitar Presupuesto</BotonPrimario>
+				<div class="flex flex-col lg:flex-row gap-8">
+				<!-- Desarrollo Web & Portafolio -->
+				<ServiceCard
+						tag="68% DESCUENTO"
+						tagStyle="bg-gradient-to-r from-red-500 to-red-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+						headerBackground="/img/gradients/service-bg.png"
+						cardBackground="/img/gradients/service-bg.png"
+						icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+						border={true}
+						price="299,000"
+						previousPrice="969000"
+						title="Desarrollo Web & Portafolio"
+						description="Crea tu presencia digital profesional con un sitio web moderno que destaque tu trabajo y atraiga más clientes."
+					>
+						<div slot="features">
+							<!-- Características tipo card -->
+							<ServiceFeature 
+								name="Diseño Responsive Premium" 
+								icon="<path d='M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21C5,22.1 5.89,23 7,23H17C18.1,23 19,22.1 19,21V3C19,1.89 18.1,1 17,1Z'/>" 
+								description="Diseño que se adapta perfectamente a todos los dispositivos, desde móviles hasta pantallas 4K, garantizando una experiencia óptima."
+								isCard={true}
+							/>
+							<ServiceFeature 
+								name="SEO Avanzado" 
+								icon="<path d='M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z'/>" 
+								description="Optimización completa para motores de búsqueda con meta tags, schema markup, sitemap XML y análisis de palabras clave."
+								isCard={true}
+							/>
+							<ServiceFeature 
+								name="Galería Interactiva" 
+								icon="<path d='M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z'/>" 
+								description="Sistema de galería avanzado con lightbox, filtros por categoría, lazy loading y efectos de transición suaves."
+								isCard={true}
+								isLastCard={true}
+							/>
+							
+							<!-- Características normales -->
+							<ServiceFeature 
+								name="Hasta 5 páginas personalizadas" 
+								icon="<path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/>"
+							/>
+							<ServiceFeature 
+								name="Formulario de contacto integrado" 
+								icon="<path d='M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z'/>"
+							/>
+							<ServiceFeature 
+								name="Hosting premium por 1 año" 
+								icon="<path d='M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z'/>"
+							/>
+							<ServiceFeature 
+								name="Certificado SSL incluido" 
+								icon="<path d='M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z'/>"
+							/>
+							<ServiceFeature 
+							name="Capacitación y documentación" 
+							icon="<path d='M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z'/>"
+						/>
 					</div>
+					<div slot="includes">
+						<ServiceInclude 
+							items={[
+								"Dominio .com por 1 año",
+								"Hosting premium por 1 año",
+								"Certificado SSL incluido",
+								"Soporte técnico por 3 meses",
+								"Manual de administración"
+							]}
+						/>
+					</div>
+				</ServiceCard>
 
-					<!-- Consultoría -->
-					<div class="bg-gray-800 border-radius-large p-8">
-						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
-							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-							</svg>
-						</div>
-						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Consultoría Tecnológica</Titulo>
-				<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
-							Asesoramiento especializado para **optimizar procesos** y tomar las mejores decisiones tecnológicas para tu empresa.
-						</Parrafo>
-						<ul class="space-y-3 mb-6">
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Auditoría tecnológica
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Estrategia digital
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Selección de tecnologías
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Planificación de proyectos
-							</li>
-						</ul>
-						<BotonPrimario href="/contacto">Solicitar Consulta</BotonPrimario>
+				<!-- Tienda Online -->
+				<ServiceCard
+					tag="POPULAR"
+					tagStyle="bg-gradient-to-r from-blue-500 to-blue-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+					headerBackground="/img/gradients/service-bg2.png"
+					cardBackground="/img/gradients/service-bg2.png"
+					icon="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+					border={false}
+					price="599,000"
+					priceLabel="PRECIO ANTES"
+					previousPrice="969,000"
+					title="Tienda Online Completa"
+					description="Vende online 24/7 con nuestra tienda completa. Integración con WhatsApp y Shopify para maximizar tus ventas."
+				>
+					<div slot="features">
+						<!-- Características tipo card -->
+						<ServiceFeature 
+							name="Ventas Automáticas WhatsApp" 
+							icon="<path d='M17,12V3A1,1 0 0,0 16,2H3A1,1 0 0,0 2,3V12A1,1 0 0,0 3,13H16A1,1 0 0,0 17,12M4,4H15V11H4V4M20,6V10H18V6H20M20,19V15H18V19H20M20,13H18V11H20V13Z'/>" 
+							description="Sistema automatizado que envía detalles del producto y procesa pedidos directamente por WhatsApp, aumentando conversiones hasta 300%."
+							isCard={true}
+						/>
+						<ServiceFeature 
+							name="Integración Shopify Premium" 
+							icon="<path d='M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z'/>" 
+							description="Conexión completa con Shopify para gestión avanzada de inventario, pedidos, pagos y análisis de ventas en tiempo real."
+							isCard={true}
+						/>
+						<ServiceFeature 
+							name="Panel de Control Avanzado" 
+							icon="<path d='M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z'/>" 
+							description="Dashboard completo con métricas de ventas, gestión de productos, clientes, reportes detallados y herramientas de marketing."
+							isCard={true}
+							isLastCard={true}
+						/>
+						
+						<!-- Características normales -->
+						<ServiceFeature 
+							name="Carrito de compras inteligente" 
+							icon="<path d='M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/>"
+						/>
+						<ServiceFeature 
+							name="Pasarelas de pago múltiples" 
+							icon="<path d='M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.11,4 20,4M20,18H4V8H20V18Z'/>"
+						/>
+						<ServiceFeature 
+							name="Gestión de inventario automática" 
+							icon="<path d='M12,2A2,2 0 0,1 14,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H10V4A2,2 0 0,1 12,2M12,4V6H12V4M4,8V19H20V8H4Z'/>"
+						/>
+						<ServiceFeature 
+							name="Notificaciones en tiempo real" 
+							icon="<path d='M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21'/>"
+						/>
+						<ServiceFeature 
+							name="Capacitación personalizada" 
+							icon="<path d='M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z'/>"
+						/>
 					</div>
-				</div>
+					<div slot="includes">
+						<ServiceInclude 
+							items={[
+								"Dominio .com por 1 año",
+								"Hosting e-commerce premium por 1 año",
+								"Certificado SSL premium",
+								"Soporte técnico por 3 meses",
+								"Configuración de pasarela de pago",
+								"Carga de hasta 50 productos"
+							]}
+						/>
+					</div>
+				</ServiceCard>
 
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-					<!-- Optimización -->
-					<div class="bg-gray-800 border-radius-large p-8">
-						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
-							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-							</svg>
-						</div>
-						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Optimización y Rendimiento</Titulo>
-				<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
-					Mejoramos el **rendimiento de tus sistemas** existentes para ofrecer la mejor experiencia de usuario.
-				</Parrafo>
-						<ul class="space-y-3 mb-6">
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Optimización de velocidad
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Mejora de SEO técnico
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Optimización de bases de datos
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Seguridad y monitoreo
-							</li>
-						</ul>
-						<BotonPrimario href="/contacto">Optimizar Ahora</BotonPrimario>
+				<!-- Remodelación Web -->
+				<ServiceCard
+					headerBackground="/img/gradients/service-bg3.png"
+					cardBackground="/img/gradients/service-bg3.png"
+					icon="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
+					price="399,000"
+					priceLabel="precio inicial"
+					title="Remodelación Web"
+					description="Transforma tu sitio web obsoleto en una herramienta moderna que genere más leads y ventas para tu negocio."
+				>
+					<div slot="features">
+						<!-- Características tipo card -->
+						<ServiceFeature 
+							name="Análisis de Performance" 
+							icon="<path d='M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z'/>" 
+							description="Evaluación completa de velocidad, SEO y usabilidad con reporte detallado de mejoras y optimizaciones necesarias."
+							isCard={true}
+						/>
+						<ServiceFeature 
+							name="Diseño UX/UI Moderno" 
+							icon="<path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/>" 
+							description="Rediseño completo con las últimas tendencias en UX/UI, mejorando la experiencia del usuario y tasas de conversión."
+							isCard={true}
+						/>
+						<ServiceFeature 
+							name="Migración Segura de Datos" 
+							icon="<path d='M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z'/>" 
+							description="Proceso de migración sin pérdida de datos, con backup completo y verificación de integridad de toda la información."
+							isCard={true}
+							isLastCard={true}
+						/>
+						
+						<!-- Características normales -->
+						<ServiceFeature 
+							name="Optimización para móviles" 
+							icon="<path d='M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21C5,22.1 5.89,23 7,23H17C18.1,23 19,22.1 19,21V3C19,1.89 18.1,1 17,1Z'/>"
+						/>
+						<ServiceFeature 
+							name="Mejora de velocidad hasta 80%" 
+							icon="<path d='M12,16A3,3 0 0,1 9,13C9,11.88 9.61,10.9 10.5,10.39L20.21,4.77L14.68,14.35C14.18,15.33 13.17,16 12,16M12,3C13.81,3 15.5,3.5 16.97,4.32L14.87,5.53C14,5.19 13,5 12,5A8,8 0 0,0 4,13C4,15.21 4.89,17.21 6.34,18.65H6.35C6.74,19.04 6.74,19.67 6.35,20.06C5.96,20.45 5.33,20.45 4.94,20.06C3.1,18.22 2,15.76 2,13A10,10 0 0,1 12,3Z'/>"
+						/>
+						<ServiceFeature 
+							name="SEO técnico avanzado" 
+							icon="<path d='M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z'/>"
+						/>
+						<ServiceFeature 
+							name="Certificado SSL y seguridad" 
+							icon="<path d='M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z'/>"
+						/>
+						<ServiceFeature 
+							name="Capacitación completa incluida" 
+							icon="<path d='M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z'/>"
+						/>
 					</div>
-
-					<!-- Mantenimiento -->
-					<div class="bg-gray-800 border-radius-large p-8">
-						<div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
-							<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-							</svg>
-						</div>
-						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-4">Mantenimiento y Soporte</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
-			Mantenemos tus sistemas **funcionando perfectamente** con soporte técnico continuo y actualizaciones regulares.
-		</Parrafo>
-						<ul class="space-y-3 mb-6">
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Actualizaciones de seguridad
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Copias de seguridad automáticas
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Soporte técnico 24/7
-							</li>
-							<li class="flex items-center text-gray-300">
-								<svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Monitoreo de rendimiento
-							</li>
-						</ul>
-						<BotonPrimario href="/contacto">Contratar Mantenimiento</BotonPrimario>
+					<div slot="includes">
+						<ServiceInclude 
+							items={[
+								"Análisis completo del sitio actual",
+								"Backup completo antes de iniciar",
+								"Rediseño responsive completo",
+								"Optimización de velocidad",
+								"Soporte post-lanzamiento 30 días"
+							]}
+						/>
 					</div>
+				</ServiceCard>
 				</div>
 			</div>
 		</section>
-	</div>
 
-	<!-- CTA Section -->
-	<section class="section section-padding container-bg-darker">
-		<div class="max-w-4xl mx-auto text-center">
-			<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="proyecto" class="mb-6">
-			¿Necesitas ayuda con tu proyecto?
-		</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
-			Contáctanos para una **consulta gratuita** y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
-		</Parrafo>
-			<BotonPrimario href="/contacto">Contactar Ahora</BotonPrimario>
-		</div>
-	</section>
+		<FAQ preguntas={preguntasServicios} />
+
+		<!-- CTA Section -->
+		<section class="section section-padding">
+			<div class="max-w-4xl mx-auto text-center">
+				<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="proyecto" class="mb-6">
+					¿Necesitas ayuda con tu proyecto?
+				</Titulo>
+				<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
+					Contáctanos para una **consulta gratuita** y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
+				</Parrafo>
+				<BotonPrimario href="/contacto">Contactar Ahora</BotonPrimario>
+			</div>
+		</section>
+	</div>
 </Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const detailsElements = document.querySelectorAll('details');
+		
+		detailsElements.forEach(details => {
+			const content = details.querySelector('.animate-slideDown, .animate-slideUp');
+			
+			if (content) {
+				details.addEventListener('toggle', function() {
+					if (details.open) {
+						// Al abrir
+						content.classList.remove('animate-slideUp');
+						content.classList.add('animate-slideDown');
+					} else {
+						// Al cerrar
+						content.classList.remove('animate-slideDown');
+						content.classList.add('animate-slideUp');
+					}
+				});
+			}
+		});
+	});
+</script>
