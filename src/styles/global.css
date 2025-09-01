@@ -4,7 +4,7 @@
 :root {
   --bg-primary: #0f0f0f;
   --bg-secondary: #1a1a1a;
-  --bg-container: #2a2a2a;
+  --bg-container: #161616;
   --text-primary: #ffffff;
   --text-secondary: #e5e5e5;
   --text-muted: #a3a3a3;
@@ -69,11 +69,22 @@ body {
 }
 
 .animate-slide-left {
-  animation: slide-left 30s linear infinite;
+  animation: slide-left 60s linear infinite;
 }
 
 .animate-slide-right {
-  animation: slide-right 30s linear infinite;
+  animation: slide-right 60s linear infinite;
+}
+
+/* Velocidad más rápida en móviles */
+@media (max-width: 768px) {
+  .animate-slide-left {
+    animation: slide-left 30s linear infinite;
+  }
+  
+  .animate-slide-right {
+    animation: slide-right 30s linear infinite;
+  }
 }
 
 /* Pausar animación al hover */
@@ -116,6 +127,51 @@ body {
   .section {
     padding-top: 6rem;
     padding-bottom: 6rem;
+  }
+}
+
+/* Secciones sin padding en eje Y */
+.no-y-section {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.no-y-section-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .no-y-section-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .no-y-section-padding {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .no-y-section-padding {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+/* Compensación para header flotante */
+.header-offset {
+  padding-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  .header-offset {
+    padding-top: 6rem;
   }
 }
 

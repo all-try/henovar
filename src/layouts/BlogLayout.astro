@@ -1,0 +1,361 @@
+---
+import Layout from './Layout.astro';
+import Titulo from '../components/Titulo.astro';
+import Parrafo from '../components/Parrafo.astro';
+import Badge from '../components/Badge.astro';
+import BotonPrimario from '../components/BotonPrimario.astro';
+import BotonSecundario from '../components/BotonSecundario.astro';
+import '../styles/blog-general.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  author: {
+    name: string;
+    role: string;
+    company?: string;
+  };
+  category: string;
+  date: string;
+  readTime: string;
+  image: string;
+  tags: string[];
+  cta: {
+    text: string;
+    action: string;
+    service: string;
+  };
+}
+
+const { title, description, author, category, date, readTime, image, tags, cta } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-white">
+    <!-- Facebook-style Banner -->
+    <section class="relative h-120 lg:h-140 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+      <!-- Background Image or Gradient -->
+      {image ? (
+        <div class="absolute inset-0">
+          <img 
+            src={image} 
+            alt={title}
+            class="w-full h-full object-cover opacity-60"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+        </div>
+      ) : (
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900"></div>
+          <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#grid)" />
+            </svg>
+          </div>
+        </div>
+      )}
+      
+      <!-- Banner Content -->
+      <div class="relative z-10 h-full flex items-end">
+        <div class="w-full px-4 sm:px-6 lg:px-8 pb-8">
+          <div class="max-w-4xl mx-auto">
+            <!-- Category Badge -->
+            <div class="mb-4">
+              <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-black/20 backdrop-blur-sm text-white border border-white/30">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                {category}
+              </span>
+            </div>
+            
+            <!-- Title in Banner -->
+            <h1 class="text-3xl sm:text-3xl lg:text-5xl font-semibold text-white mb-4 leading-wide drop-shadow-lg">
+              {title}
+            </h1>
+            
+            <!-- Quick Meta in Banner -->
+            <div class="flex items-center space-x-4 text-white/90">
+              <span class="flex items-center text-sm">
+                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                </svg>
+                {new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </span>
+              <span class="flex items-center text-sm">
+                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                {readTime}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Description Section -->
+    <section class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-6xl mx-auto px-3 lg:px-0 py-8">
+        <!-- Description -->
+        <div class="">
+          <p class="text-xl text-gray-700 leading-relaxed font-light">
+            {description}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content with Two Column Layout -->
+    <article class="bg-white">
+      <div class="max-w-6xl mx-auto px-3 lg:px-0 py-12">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+          <!-- Table of Contents Sidebar (Desktop Only) -->
+          <aside class="hidden lg:block lg:col-span-3 lg:sticky lg:self-start" style="top: 150px;">
+            <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <!-- Author Info in Sidebar -->
+              <div class="mb-8 pb-6 border-b border-gray-200">
+                <div class="space-y-1">
+                  <p class="text-gray-700 text-lg font-medium">Por {author.name}</p>
+                  <p class="text-gray-600 text-sm">{author.role}</p>
+                  {author.company && <p class="text-gray-600 text-sm">{author.company}</p>}
+                  <p class="text-gray-500 text-xs">
+                    {new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </p>
+                  <p class="text-gray-500 text-xs">Lectura {readTime}</p>
+                </div>
+              </div>
+              
+              <!-- Table of Contents -->
+              <div>
+                <h3 class="text-lg font-semibold text-black mb-2">Contenido</h3>
+                <nav id="table-of-contents" class="flex flex-col max-h-[calc(100vh-170px)] overflow-y-auto">
+                  <!-- TOC will be populated by JavaScript -->
+                </nav>
+              </div>
+            </div>
+          </aside>
+          
+          <!-- Main Content -->
+          <main class="lg:col-span-9">
+            <!-- Mobile Author Info (Mobile Only) -->
+            <div class="lg:hidden mb-8 p-6 bg-gray-50 rounded-lg">
+              <h3 class="text-lg font-semibold text-black mb-3">Autor</h3>
+              <div class="flex justify-between items-start">
+                <div class="space-y-1">
+                  <p class="text-black font-medium">{author.name}</p>
+                  <p class="text-gray-600 text-sm">{author.role}</p>
+                  {author.company && <p class="text-gray-600 text-sm">{author.company}</p>}
+                </div>
+                <div class="text-right space-y-1">
+                  <p class="text-gray-500 text-xs">
+                    {new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </p>
+                  <p class="text-gray-500 text-xs">{readTime}</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Blog Content -->
+            <div class="blog-content prose prose-lg max-w-none">
+              <slot />
+            </div>
+          </main>
+        </div>
+      </div>
+    </article>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <Titulo level={2} alignMobile="center" alignDesktop="center" class="mb-4">
+            ¿Listo para implementar estas estrategias?
+          </Titulo>
+          <Parrafo alignMobile="center" alignDesktop="center" class="mb-8 text-xl">
+            {cta.action}
+          </Parrafo>
+          <BotonPrimario href="/contacto" class="bg-white text-blue-600 hover:bg-gray-100">
+            {cta.text}
+          </BotonPrimario>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tags -->
+    <section class="py-8 bg-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex flex-wrap gap-2">
+            <span class="text-gray-400 mr-4">Tags:</span>
+            {tags.map(tag => (
+              <Badge class="bg-gray-700 text-gray-300">{tag}</Badge>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Blogs Link -->
+    <section class="py-8 bg-white border-t border-gray-200">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <a href="/blog" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 font-medium">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Volver a los Blogs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="py-16 bg-gray-900">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <Titulo level={2} alignMobile="center" alignDesktop="center" class="mb-12">
+            Artículos Relacionados
+          </Titulo>
+          <div class="text-center">
+            <BotonSecundario href="/blog">
+              Ver Todos los Artículos
+            </BotonSecundario>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Scroll margin for headings */
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4 {
+    scroll-margin-top: 2rem;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Generate Table of Contents
+    const tocContainer = document.getElementById('table-of-contents');
+    const headings = document.querySelectorAll('.blog-content h1[data-toc-text], .blog-content h2[data-toc-text], .blog-content h3[data-toc-text]') as NodeListOf<HTMLElement>;
+    
+    if (tocContainer && headings.length > 0) {
+      const tocLinks: Array<{link: HTMLAnchorElement, heading: HTMLElement}> = [];
+      
+      headings.forEach((heading: HTMLElement, index) => {
+        // Create ID for heading if it doesn't have one
+        if (!heading.id) {
+          const text = heading.textContent?.toLowerCase()
+            ?.replace(/[^a-z0-9\s]/g, '')
+            ?.replace(/\s+/g, '-')
+            ?.trim();
+          heading.id = text || `heading-${index}`;
+        }
+        
+        // Get custom TOC text from data attribute
+        const tocText = heading.getAttribute('data-toc-text');
+        
+        // Create TOC link
+        const link = document.createElement('a');
+        link.href = `#${heading.id}`;
+        link.textContent = tocText || heading.textContent || '';
+        
+        // Apply uniform flat design with same size for all levels
+        const baseClasses = 'block py-1.5 px-0 text-gray-600 no-underline text-sm transition-colors duration-200 border-b border-gray-100 last:border-b-0';
+        
+        if (heading.tagName.toLowerCase() === 'h2') {
+          link.className = `${baseClasses} pl-0`;
+        } else if (heading.tagName.toLowerCase() === 'h3') {
+          link.className = `${baseClasses} pl-8`;
+        } else {
+          link.className = baseClasses;
+        }
+        
+        link.dataset.target = heading.id;
+        
+        // Add smooth scroll behavior
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.getElementById(heading.id);
+          if (target) {
+            // Remove active from all links
+            document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+            // Add active to clicked link
+            link.classList.add('active');
+            
+            // Calculate position with header offset
+            const headerOffset = 140;
+            const elementPosition = target.offsetTop;
+            const offsetPosition = elementPosition - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Update URL hash
+            history.pushState(null, '', `#${heading.id}`);
+          }
+        });
+        
+        tocContainer.appendChild(link);
+        tocLinks.push({ link, heading });
+      });
+      
+      // Function to update active link based on scroll position
+      function updateActiveLink() {
+        const headerOffset = 70;
+        const scrollPosition = window.scrollY + headerOffset + 50; // Adjust for header
+        let activeIndex = -1;
+        
+        // Find the current section based on scroll position
+        for (let i = 0; i < tocLinks.length; i++) {
+          const headingTop = tocLinks[i].heading.offsetTop;
+          if (scrollPosition >= headingTop) {
+            activeIndex = i;
+          }
+        }
+        
+        // Remove active class from all links
+        tocLinks.forEach(({ link }) => {
+          link.classList.remove('text-gray-900', 'font-medium');
+          link.classList.add('text-gray-500');
+        });
+        
+        // Add active class to current link with darker gray
+        if (activeIndex >= 0) {
+          const activeLink = tocLinks[activeIndex].link;
+          activeLink.classList.remove('text-gray-500');
+          activeLink.classList.add('text-gray-900', 'font-medium');
+        }
+      }
+      
+      // Listen to scroll events with throttling
+      let scrollTimeout;
+      let isScrolling = false;
+      
+      window.addEventListener('scroll', function() {
+        if (!isScrolling) {
+          window.requestAnimationFrame(function() {
+            updateActiveLink();
+            isScrolling = false;
+          });
+          isScrolling = true;
+        }
+      });
+      
+      // Initial call to set active link
+      setTimeout(updateActiveLink, 100);
+    }
+  });
+</script>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Badge from '../components/Badge.astro';
+import BlogBadge from '../components/BlogBadge.astro';
 import Titulo from '../components/Titulo.astro';
 import Parrafo from '../components/Parrafo.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
@@ -10,6 +11,10 @@ import IndexProyectos from '../components/IndexProyectos.astro';
 import IndexBlog from '../components/IndexBlog.astro';
 import FiveStars from '../components/icons/FiveStars.astro';
 import IndexTestimonio from '../components/IndexTestimonio.astro';
+import FAQ from '../components/FAQ.astro';
+import { blogPosts } from '../data/blogs';
+
+const firstThreeBlogs = blogPosts.slice(0, 3);
 ---
 
 <Layout 
@@ -19,8 +24,8 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 >
 	<div class="bg-[url('/img/bg/large-bg.png')] bg-cover bg-top bg-no-repeat">
 	<!-- Hero Section -->
-	<section class="pb-7 px-3 lg:px-7">
-		<div class="pb-5 pt-10 lg:pb-12 lg:pt-18 px-5 lg:px-5 max-w-full rounded-b-2xl mx-auto bg-[url('/img/bg/banner.webp')] bg-cover bg-top bg-no-repeat">
+	<section class="pb-7 px-3 lg:px-7 pt-25 lg:pt-0">
+		<div class="pb-5 lg:pb-12 pt-5 lg:pt-40 px-5 lg:px-5 max-w-full rounded-2xl lg:rounded-t-none mx-auto bg-[url('/img/bg/banner.webp')] bg-cover bg-top bg-no-repeat">
 		<div class="w-full">
 			<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<!-- Contenido izquierda -->
@@ -41,7 +46,7 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 				<!-- Imagen derecha -->
 				<div class="border-radius-large overflow-hidden">
 					<img 
-						src="/ruta-a-tu-imagen-hero.jpg" 
+						src="/img/stock/tiendas-ejemplos.png" 
 						alt="Hero Image" 
 						class="w-full h-96 lg:h-[500px] object-cover bg-black"
 					/>
@@ -101,9 +106,9 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 						<!-- Reemplaza esta imagen con la tuya -->
 						<div class="border-radius-large overflow-hidden">
 							<img 
-								src="/ruta-a-tu-imagen-desarrollo-web.jpg" 
+								src="/img/stock/web-ejemplo.png" 
 								alt="Desarrollo Web" 
-								class="w-full h-80 object-cover bg-black"
+								class="w-full h-full object-cover bg-black"
 							/>
 						</div>
 					</div>
@@ -113,9 +118,9 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 						<!-- Reemplaza esta imagen con la tuya -->
 						<div class="border-radius-large overflow-hidden">
 							<img 
-								src="/ruta-a-tu-imagen-consultoria.jpg" 
+								src="img/stock/tiendas-ejemplos.png" 
 								alt="Consultoría Tecnológica" 
-								class="w-full h-80 object-cover"
+								class="w-full h-full object-cover"
 							/>
 						</div>
 						<div>
@@ -137,7 +142,8 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 									title="Ventas WhatsApp"
 									text="Tu tienda online con mensajes directos a tu WhastApp."
 									bgImage="/img/gradients/abstract-3.webp"
-								/><!-- 
+								/>
+								<!-- 
 								<IndexFeatureCard 
 									icon='<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>'
 									title="Pagos Seguros"
@@ -152,26 +158,66 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 								/>-->
 							</div>
 						</div>
-					</div>
-				</div>
-				
-				<div class="text-center">
-					<BotonPrimario href="/servicios">Ver Todos los Servicios</BotonPrimario>
 				</div>
 			</div>
+			
+			<!-- Servicio 3: Texto izquierda, imagen derecha -->
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<div>
+					<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-4">Remodelación Web</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="left" class="mb-8">
+						¿Tu página web actual no refleja la calidad de tu negocio? Renovamos tu sitio web con diseño moderno, mejor rendimiento y funcionalidades actualizadas.
+					</Parrafo>
+					
+					<!-- Cards de características para Remodelación Web -->
+					<div class="grid grid-cols-2 gap-3">
+						<IndexFeatureCard 
+							icon='<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>'
+							title="Renovación Completa"
+							text="Actualizamos diseño, contenido y funcionalidades obsoletas."
+							bgImage="/img/gradients/abstract-1.webp"
+						/>
+						<IndexFeatureCard 
+							icon='<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>'
+							title="Mejor Rendimiento"
+							text="Optimización de velocidad y experiencia de usuario."
+							bgImage="/img/gradients/abstract-2.webp"
+						/>
+					</div>
+				</div>
+				<!-- Reemplaza esta imagen con la tuya -->
+				<div class="border-radius-large overflow-hidden">
+					<img 
+						src="/img/stock/remodelacion-web.png" 
+						alt="Remodelación Web" 
+						class="w-full h-full object-cover bg-black"
+					/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="text-center">
+			<BotonPrimario href="/precios-y-servicios" class:list={['mt-10', 'lg:mt-12']}>Ver Todos los Servicios</BotonPrimario>
+		</div>
+			
 		</section>
 
 		<!-- Proyectos Section -->
 		<section class="section section-padding">
 			<div class="max-w-6xl mx-auto">
-				<div class="text-center mb-12">
-					<Badge class="mb-4">Proyectos</Badge>
-					<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Nuestros Proyectos</Titulo>
-					<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
-						Descubre algunos de los **proyectos exitosos** que hemos desarrollado para nuestros clientes.
-					</Parrafo>
+				<div class="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-12">
+					<div class="text-left">
+						<Badge class="mb-4">Proyectos</Badge>
+						<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-6">Nuestros Proyectos</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="left" class="max-w-2xl">
+							Descubre algunos de los **proyectos exitosos** que hemos desarrollado para nuestros clientes.
+						</Parrafo>
+					</div>
+					<div class="mt-6 lg:mt-0">
+						<BotonPrimario href="/proyectos">Ver Todos los Proyectos</BotonPrimario>
+					</div>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					<IndexProyectos 
 						title="E-commerce Moderno"
 						description="Plataforma de comercio electrónico con diseño responsive y funcionalidades avanzadas."
@@ -194,24 +240,26 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 						link="/proyectos#educativo"
 					/>
 				</div>
-				<div class="text-center">
-					<BotonPrimario href="/proyectos">Ver Todos los Proyectos</BotonPrimario>
-				</div>
 			</div>
 		</section>
 	
 		<!-- Testimonios Section -->
 		<section class="section section-padding">
-			<div class="max-w-7xl mx-auto">
-				<div class="text-center mb-12">
-					<Badge class="mb-4">Testimonios</Badge>
-						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Lo que dicen nuestros clientes</Titulo>
-						<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
+			<div class="max-w-6xl mx-auto">
+				<div class="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-12">
+					<div class="text-left">
+						<Badge class="mb-4">Testimonios</Badge>
+						<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-6">Lo que dicen nuestros clientes</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="left" class="max-w-2xl">
 							La **satisfacción de nuestros clientes** es nuestra mayor recompensa.
 						</Parrafo>
+					</div>
+					<div class="mt-6 lg:mt-0">
+						<BotonPrimario href="/testimonios">Ver Más Testimonios</BotonPrimario>
+					</div>
 				</div>
 				<!-- Slider de Testimonios -->
-			<div class="overflow-hidden mb-12">
+		<div class="testimonios-slider overflow-hidden mb-12 relative" style="mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);">
 				<!-- Fila superior - movimiento hacia la izquierda -->
 				<div class="flex gap-6 mb-6 animate-slide-left" style="width: 200%;">
 					<IndexTestimonio 
@@ -360,15 +408,12 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 					/>
 				</div>
 			</div>
-				<div class="text-center">
-					<BotonPrimario href="/testimonios">Ver Más Testimonios</BotonPrimario>
-				</div>
 			</div>
 		</section>
 
 		<!-- Banner CTA -->
 		<section class="px-3">
-		<div class="pt-10 lg:pt-18 px-5 lg:px-5 max-w-7xl rounded-4xl mx-auto bg-[url('/img/bg/cta-banner.png')] bg-cover bg-top bg-no-repeat overflow-hidden">
+		<div class="pt-10 lg:pt-18 px-5 lg:px-5 max-w-7xl rounded-xl border-1 border-white/20 mx-auto bg-[url('/img/bg/cta-banner.png')] bg-cover bg-top bg-no-repeat overflow-hidden">
 			<div class="max-w-6xl mx-auto pb-0">
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 					<!-- Contenido izquierda -->
@@ -420,7 +465,7 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 					
 					<!-- Imagen derecha -->
 					<div class="w-full lg:flex lg:justify-end ">
-						<img src="/img/stock/banner.webp" alt="Banner CTA" class="w-full" />
+						<img src="/img/stock/banner.png" alt="Banner CTA" class="w-full" />
 					</div>
 				</div>
 			</div>
@@ -429,7 +474,7 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 
 		<!-- Nosotros Section -->
 		<section class="section section-padding">
-			<div class="max-w-7xl mx-auto">
+			<div class="max-w-6xl mx-auto">
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 					<div>
 						<Badge class="mb-4">Nosotros</Badge>
@@ -442,264 +487,98 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 						</Parrafo>
 						<BotonPrimario href="/nosotros">Conocer Más</BotonPrimario>
 					</div>
-					<div class="bg-gray-800 border-radius-large h-96"></div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Precios Section -->
-		<section class="section section-padding">
-			<div class="max-w-7xl mx-auto">
-				<div class="text-center mb-12">
-					<Badge class="mb-4">Precios</Badge>
-						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Planes que se Adaptan a Ti</Titulo>
-						<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
-							Elige el plan perfecto para tu proyecto. **Transparencia total** en nuestros precios.
-						</Parrafo>
-				</div>
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-					<!-- Plan Básico -->
-					<div class="bg-gray-800 border-radius-large p-8 text-center">
-						<Badge class="mb-4">Básico</Badge>
-						<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-2">€1,200</Titulo>
-						<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-6">Perfecto para empezar</Parrafo>
-						<ul class="text-left space-y-3 mb-8">
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Sitio web responsive
-							</li>
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Hasta 5 páginas
-							</li>
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								SEO básico
-							</li>
-						</ul>
-						<BotonSecundario href="/precios">Más Detalles</BotonSecundario>
-					</div>
-
-					<!-- Plan Profesional -->
-					<div class="bg-gray-800 border-radius-large p-8 text-center border-2 border-blue-600 relative">
-						<div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-							<Badge>Más Popular</Badge>
-						</div>
-						<Badge class="mb-4">Profesional</Badge>
-						<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-2">€2,500</Titulo>
-						<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-6">Para empresas en crecimiento</Parrafo>
-						<ul class="text-left space-y-3 mb-8">
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Todo del plan Básico
-							</li>
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Hasta 15 páginas
-							</li>
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								CMS integrado
-							</li>
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Soporte 3 meses
-							</li>
-						</ul>
-						<BotonPrimario href="/precios">Elegir Plan</BotonPrimario>
-					</div>
-
-					<!-- Plan Enterprise -->
-					<div class="bg-gray-800 border-radius-large p-8 text-center">
-						<Badge class="mb-4">Enterprise</Badge>
-						<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-2">€5,000+</Titulo>
-						<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mb-6">Soluciones a medida</Parrafo>
-						<ul class="text-left space-y-3 mb-8">
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Todo personalizado
-							</li>
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Páginas ilimitadas
-							</li>
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Soporte prioritario
-							</li>
-							<li class="flex items-center text-sm">
-								<svg class="w-4 h-4 text-green-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								Consultoría incluida
-							</li>
-						</ul>
-						<BotonSecundario href="/precios">Contactar</BotonSecundario>
-					</div>
-				</div>
-				<div class="text-center">
-					<BotonPrimario href="/precios">Ver Todos los Planes</BotonPrimario>
+					<img src="/img/stock/henovar-banner.png" class="h-full w-full object-cover rounded-2xl" alt="">
 				</div>
 			</div>
 		</section>
 
 		<!-- Blog Section -->
 		<section class="section section-padding">
-			<div class="max-w-7xl mx-auto">
-				<div class="text-center mb-12">
-					<Badge class="mb-4">Blog</Badge>
-						<Titulo level={2} alignMobile="left" alignDesktop="center" class="mb-6">Últimas Publicaciones</Titulo>
-						<Parrafo alignMobile="left" alignDesktop="center" class="max-w-2xl mx-auto">
+			<div class="max-w-6xl mx-auto">
+				<div class="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-12">
+					<div class="text-left">
+						<Badge class="mb-4">Blog</Badge>
+						<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-6">Últimas Publicaciones</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="left" class="max-w-2xl">
 							Mantente al día con las **últimas tendencias** en tecnología y desarrollo web.
 						</Parrafo>
+					</div>
+					<div class="mt-6 lg:mt-0">
+						<BotonPrimario href="/blog">Ver Todas las Publicaciones</BotonPrimario>
+					</div>
 				</div>
-				<div class="flex flex-col lg:flex-row gap-8 mb-12">
-					<IndexBlog 
-						title="Tendencias en Desarrollo Web 2024"
-						description="Descubre las tecnologías que están marcando el futuro del desarrollo web y cómo implementarlas en tus proyectos."
-						date="15 Enero 2024"
-						tags={["Desarrollo", "Frontend"]}
-						author={{name: "Juan Pérez", role: "Desarrollador Senior"}}
-						href="/blog/tendencias-desarrollo-web-2024"
-						gradient="from-blue-600 to-purple-700"
-					/>
-					
-					<IndexBlog 
-						title="Optimización SEO para 2024"
-						description="Estrategias efectivas para mejorar tu posicionamiento en buscadores y aumentar la visibilidad de tu sitio web."
-						date="12 Enero 2024"
-						tags={["SEO", "Marketing"]}
-						author={{name: "Ana García", role: "SEO Specialist"}}
-						href="/blog/optimizacion-seo-2024"
-						gradient="from-green-600 to-teal-700"
-					/>
-					
-					<IndexBlog 
-						title="Diseño UX que Convierte"
-						description="Principios de diseño para crear experiencias que generen resultados y mejoren la conversión de tu sitio web."
-						date="10 Enero 2024"
-						tags={["UX/UI", "Diseño"]}
-						author={{name: "Carlos López", role: "UX Designer"}}
-						href="/blog/diseno-ux-que-convierte"
-						gradient="from-purple-600 to-pink-700"
-					/>
-				</div>
-				<div class="text-center">
-					<BotonPrimario href="/blog">Ver Todas las Publicaciones</BotonPrimario>
-				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{firstThreeBlogs.map(post => (
+					<article class="border-radius-large overflow-hidden">
+						<div class="h-48 mb-4">
+							<img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
+						</div>
+						<div>
+							<div class="flex flex-col space-y-3">
+								<div class="flex items-center space-x-2">
+									<BlogBadge>{post.category}</BlogBadge>
+									<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-xs">
+										{new Date(post.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} • {post.readTime}
+									</Parrafo>
+								</div>
+								<Titulo level={4} alignMobile="left" alignDesktop="left" class="mb-2 line-clamp-2">
+									{post.title}
+								</Titulo>
+								<Parrafo alignMobile="left" alignDesktop="left" class="mb-4 text-sm line-clamp-3">
+									{post.excerpt}
+								</Parrafo>
+								<div class="flex items-center justify-between mt-auto">
+									<div class="flex items-center">
+										<div class="w-8 h-8 bg-gray-600 rounded-full mr-3">
+											<img src={post.author.avatar} alt={post.author.name} class="w-full h-full object-cover rounded-full" />
+										</div>
+										<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-sm">{post.author.name}</Parrafo>
+									</div>
+									<a href={`/blog/${post.slug}`} class="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">Leer →</a>
+								</div>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
 			</div>
 		</section>
 
 		<!-- FAQ Section -->
-		<section class="section section-padding">
-			<div class="max-w-7xl mx-auto">
-				<!-- Layout de 2 columnas en desktop, 1 en móvil -->
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-					<!-- Columna 1: Título y descripción -->
-					<div class="text-center lg:text-left">
-						<Badge class="mb-4">FAQ</Badge>
-						<Titulo level={2} alignMobile="center" alignDesktop="left" class="mb-6">Preguntas Frecuentes</Titulo>
-						<Parrafo alignMobile="center" alignDesktop="left" class="max-w-lg">
-							Resolvemos las **dudas más comunes** sobre nuestros servicios y procesos de desarrollo.
-						</Parrafo>
-					</div>
-					
-					<!-- Columna 2: Preguntas acordeón -->
-					<div class="faq-accordion space-y-4">
-						<!-- Pregunta 1 - Abierta por defecto -->
-						<div class="faq-item bg-gray-800 border-radius-large overflow-hidden" data-open="true">
-							<button class="faq-question w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
-								<span class="text-white font-semibold text-lg">¿Cuánto tiempo toma desarrollar un sitio web?</span>
-								<div class="faq-icon text-blue-400 text-2xl font-bold transition-transform duration-300 transform rotate-45">+</div>
-							</button>
-							<div class="faq-answer px-6 pb-6">
-								<Parrafo alignMobile="left" alignDesktop="left">El tiempo varía según la complejidad: sitios básicos toman 2-3 semanas, proyectos profesionales 4-6 semanas, y aplicaciones enterprise 8-12 semanas. Te proporcionamos un cronograma detallado al inicio del proyecto.</Parrafo>
-							</div>
-						</div>
-						
-						<!-- Pregunta 2 -->
-						<div class="faq-item bg-gray-800 border-radius-large overflow-hidden" data-open="false">
-							<button class="faq-question w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
-								<span class="text-white font-semibold text-lg">¿Qué tecnologías utilizan?</span>
-								<div class="faq-icon text-blue-400 text-2xl font-bold transition-transform duration-300">+</div>
-							</button>
-							<div class="faq-answer px-6 pb-6">
-								<Parrafo alignMobile="left" alignDesktop="left">Trabajamos con tecnologías modernas como React, Vue.js, Astro, Node.js, y bases de datos como PostgreSQL y MongoDB. Elegimos la tecnología más adecuada según las necesidades específicas de tu proyecto.</Parrafo>
-							</div>
-						</div>
-						
-						<!-- Pregunta 3 -->
-						<div class="faq-item bg-gray-800 border-radius-large overflow-hidden" data-open="false">
-							<button class="faq-question w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
-								<span class="text-white font-semibold text-lg">¿Incluyen hosting y dominio?</span>
-								<div class="faq-icon text-blue-400 text-2xl font-bold transition-transform duration-300">+</div>
-							</button>
-							<div class="faq-answer px-6 pb-6">
-								<Parrafo alignMobile="left" alignDesktop="left">El hosting y dominio se contratan por separado. Te ayudamos a elegir la mejor opción según tu presupuesto y necesidades. Ofrecemos hosting premium optimizado por €15/mes.</Parrafo>
-							</div>
-						</div>
-						
-						<!-- Pregunta 4 -->
-						<div class="faq-item bg-gray-800 border-radius-large overflow-hidden" data-open="false">
-							<button class="faq-question w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
-								<span class="text-white font-semibold text-lg">¿Ofrecen soporte después del lanzamiento?</span>
-								<div class="faq-icon text-blue-400 text-2xl font-bold transition-transform duration-300">+</div>
-							</button>
-							<div class="faq-answer px-6 pb-6">
-								<Parrafo alignMobile="left" alignDesktop="left">Sí, todos nuestros planes incluyen soporte post-lanzamiento: 1 mes en el plan Básico, 3 meses en el Profesional, y soporte prioritario 24/7 en Enterprise. También ofrecemos planes de mantenimiento continuo.</Parrafo>
-							</div>
-						</div>
-						
-						<!-- Pregunta 5 -->
-						<div class="faq-item bg-gray-800 border-radius-large overflow-hidden" data-open="false">
-							<button class="faq-question w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
-								<span class="text-white font-semibold text-lg">¿Puedo actualizar mi sitio web yo mismo?</span>
-								<div class="faq-icon text-blue-400 text-2xl font-bold transition-transform duration-300">+</div>
-							</button>
-							<div class="faq-answer px-6 pb-6">
-								<Parrafo alignMobile="left" alignDesktop="left">Absolutamente. En los planes Profesional y Enterprise incluimos un CMS intuitivo que te permite actualizar contenido fácilmente. También proporcionamos capacitación para que puedas gestionar tu sitio de forma autónoma.</Parrafo>
-							</div>
-						</div>
-						
-						<!-- Pregunta 6 -->
-						<div class="faq-item bg-gray-800 border-radius-large overflow-hidden" data-open="false">
-							<button class="faq-question w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
-								<span class="text-white font-semibold text-lg">¿Qué pasa si no estoy satisfecho con el resultado?</span>
-								<div class="faq-icon text-blue-400 text-2xl font-bold transition-transform duration-300">+</div>
-							</button>
-							<div class="faq-answer px-6 pb-6">
-								<Parrafo alignMobile="left" alignDesktop="left">Ofrecemos garantía de satisfacción. Trabajamos contigo hasta que el resultado cumpla con tus expectativas. Incluimos revisiones ilimitadas durante el proceso de desarrollo para asegurar tu completa satisfacción.</Parrafo>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="text-center mt-12">
-					<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">¿Tienes más preguntas?</Parrafo>
-					<BotonPrimario href="/contacto">Contáctanos</BotonPrimario>
-				</div>
-			</div>
-		</section>
+		<FAQ 
+			badge="Preguntas Frecuentes"
+			titulo="Preguntas y Respuestas"
+			descripcion="Resolvemos las **dudas más comunes** sobre nuestros servicios y procesos de desarrollo."
+			preguntas={[
+				{
+					pregunta: "¿Cuánto tiempo toma desarrollar un sitio web?",
+					respuesta: "El tiempo varía según la complejidad: sitios básicos toman 2-3 semanas, proyectos profesionales 4-6 semanas, y aplicaciones enterprise 8-12 semanas. Te proporcionamos un cronograma detallado al inicio del proyecto."
+				},
+				{
+					pregunta: "¿Qué tecnologías utilizan?",
+					respuesta: "Trabajamos con tecnologías modernas como React, Vue.js, Astro, Node.js, y bases de datos como PostgreSQL y MongoDB. Elegimos la tecnología más adecuada según las necesidades específicas de tu proyecto."
+				},
+				{
+					pregunta: "¿Incluyen hosting y dominio?",
+					respuesta: "El hosting y dominio se contratan por separado. Te ayudamos a elegir la mejor opción según tu presupuesto y necesidades. Ofrecemos hosting premium optimizado por €15/mes."
+				},
+				{
+					pregunta: "¿Ofrecen soporte después del lanzamiento?",
+					respuesta: "Sí, todos nuestros planes incluyen soporte post-lanzamiento: 1 mes en el plan Básico, 3 meses en el Profesional, y soporte prioritario 24/7 en Enterprise. También ofrecemos planes de mantenimiento continuo."
+				},
+				{
+					pregunta: "¿Puedo actualizar mi sitio web yo mismo?",
+					respuesta: "Absolutamente. En los planes Profesional y Enterprise incluimos un CMS intuitivo que te permite actualizar contenido fácilmente. También proporcionamos capacitación para que puedas gestionar tu sitio de forma autónoma."
+				},
+				{
+					pregunta: "¿Qué pasa si no estoy satisfecho con el resultado?",
+					respuesta: "Ofrecemos garantía de satisfacción. Trabajamos contigo hasta que el resultado cumpla con tus expectativas. Incluimos revisiones ilimitadas durante el proceso de desarrollo para asegurar tu completa satisfacción."
+				}
+			]}
+			mostrarContacto={true}
+			textoBotonContacto="Contáctanos"
+			urlContacto="/contacto"
+		/>
 	</div>
 	<style is:inline>
 		.hero-container {
@@ -707,115 +586,5 @@ import IndexTestimonio from '../components/IndexTestimonio.astro';
 			background-image: radial-gradient(at 100% 100%, hsla(222, 100%, 50%, 1) 0px, transparent 50%), 
 							radial-gradient(at 0% 0%, hsl(235deg 100% 17.09%) 0px, transparent 50%);
 		}
-		
-		/* FAQ Accordion Animations */
-		.faq-answer {
-			overflow: hidden;
-			max-height: 0;
-			opacity: 0;
-			transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease, padding 0.4s ease;
-			transform: translateY(-8px);
-			padding: 0 1.5rem;
-		}
-		
-		.faq-answer.active {
-			max-height: 800px;
-			opacity: 1;
-			transform: translateY(0);
-			padding: 1.5rem;
-		}
-		
-		.faq-answer.closing {
-			max-height: 0;
-			opacity: 0;
-			transform: translateY(-8px);
-			padding: 0 1.5rem;
-		}
-		
-		.faq-icon {
-			transition: transform 0.3s ease;
-			display: inline-block;
-			font-weight: bold;
-		}
-		
-		.faq-icon.rotated {
-			transform: rotate(45deg);
-		}
-		
-		.faq-question {
-			transition: background-color 0.2s ease;
-			cursor: pointer;
-			border-radius: 8px;
-			padding: 1rem;
-		}
-		
-		.faq-question:hover {
-			background-color: rgba(255, 255, 255, 0.05);
-		}
 	</style>
-
-	<script>
-		// FAQ Accordion functionality
-		document.addEventListener('DOMContentLoaded', function() {
-			const faqItems = document.querySelectorAll('.faq-item');
-			
-			// Configurar estado inicial
-			faqItems.forEach((item, index) => {
-				const answer = item.querySelector('.faq-answer') as HTMLElement;
-				const icon = item.querySelector('.faq-icon') as HTMLElement;
-				
-				if (answer && icon) {
-					if (index === 0) {
-						// Primera pregunta abierta por defecto
-						answer.classList.add('active');
-						icon.classList.add('rotated');
-						item.setAttribute('data-open', 'true');
-					} else {
-						// Resto cerradas
-						answer.classList.remove('active');
-						icon.classList.remove('rotated');
-						item.setAttribute('data-open', 'false');
-					}
-				}
-			});
-			
-			faqItems.forEach(item => {
-				const question = item.querySelector('.faq-question');
-				const answer = item.querySelector('.faq-answer');
-				const icon = item.querySelector('.faq-icon');
-				
-				if (!question || !answer || !icon) return;
-				
-				question.addEventListener('click', function() {
-				const answerEl = answer as HTMLElement;
-				const isCurrentlyOpen = answerEl.classList.contains('active');
-				
-				// Cerrar todas las respuestas simultáneamente
-				faqItems.forEach(faqItem => {
-					const faqAnswer = faqItem.querySelector('.faq-answer') as HTMLElement;
-					const faqIcon = faqItem.querySelector('.faq-icon') as HTMLElement;
-					
-					if (faqAnswer && faqIcon) {
-						// Añadir clase de cierre para animación suave
-						faqAnswer.classList.add('closing');
-						faqAnswer.classList.remove('active');
-						faqIcon.classList.remove('rotated');
-						faqItem.setAttribute('data-open', 'false');
-					}
-				});
-				
-				// Si no estaba abierta, abrir la actual simultáneamente
-				if (!isCurrentlyOpen) {
-					// Pequeño delay para sincronizar las animaciones
-					setTimeout(() => {
-						answerEl.classList.remove('closing');
-						answerEl.classList.add('active');
-						icon.classList.add('rotated');
-						item.setAttribute('data-open', 'true');
-					}, 50);
-				}
-			});
-			});
-		});
-	</script>
 </Layout>

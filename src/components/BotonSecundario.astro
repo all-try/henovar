@@ -5,9 +5,11 @@ export interface Props {
   disabled?: boolean;
   class?: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
+  id?: string;
+  style?: string;
 }
 
-const { href, type = 'button', disabled = false, class: className = '', target = '_self' } = Astro.props;
+const { href, type = 'button', disabled = false, class: className = '', target = '_self', id, style } = Astro.props;
 const Element = href ? 'a' : 'button';
 ---
 
@@ -17,6 +19,8 @@ const Element = href ? 'a' : 'button';
   disabled={!href ? disabled : undefined}
   target={href ? target : undefined}
   class={`btn-secondary ${className}`}
+  id={id}
+  style={style}
 >
   <slot />
 </Element>

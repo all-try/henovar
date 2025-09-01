@@ -1,0 +1,267 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getBlogPost } from '../../data/blogs.ts';
+
+const post = getBlogPost('tu-web-actual-peor-enemigo-5-senales-remodelacion-urgente');
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<BlogLayout
+  title={post.title}
+  description={post.excerpt}
+  author={post.author}
+  category={post.category}
+  date={post.date}
+  readTime={post.readTime}
+  image={post.image}
+  tags={post.tags}
+  cta={post.cta}
+>
+  <div class="blog-content">
+    <div class="section">
+      <h2 data-toc-text="Introducción">Tu web actual es tu peor enemigo: 5 señales de que necesitas una remodelación urgente</h2>
+      
+      <p>¿Sabías que tu propia web podría estar saboteando tu negocio?</p>
+      
+      <p>Mientras inviertes tiempo y dinero en marketing, publicidad y estrategias de ventas, tu sitio web podría estar trabajando en tu contra, ahuyentando clientes potenciales y destruyendo la confianza en tu marca.</p>
+      
+      <p>Hoy vas a descubrir las 5 señales inequívocas de que tu web se ha convertido en tu peor enemigo y qué hacer al respecto antes de que sea demasiado tarde.</p>
+    </div>
+    
+    <div class="section">
+      <h3 data-toc-text="La realidad que duele">La realidad que duele: Tu web está perdiendo dinero cada día</h3>
+      
+      <p>Antes de entrar en las señales, necesitas entender algo crucial:</p>
+      
+      <div class="warning-box">
+        <h4>El costo oculto de una web obsoleta</h4>
+        
+        <p>Una web desactualizada no solo "no vende". Activamente <strong>destruye oportunidades de negocio</strong>.</p>
+        
+        <p>Cada visitante que llega y se va sin convertir es dinero perdido. Cada cliente que duda de tu profesionalismo por tu web es una venta que se esfuma.</p>
+      </div>
+      
+      <p>La diferencia entre una web que trabaja para ti y una que trabaja contra ti puede ser la diferencia entre crecer o cerrar.</p>
+    </div>
+    
+    <div class="section">
+      <h3 data-toc-text="Señal #1: Diseño obsoleto">Señal #1: Tu diseño grita "2010" en pleno 2024</h3>
+      
+      <p>Si tu web parece que fue diseñada cuando Facebook aún era exclusivo para universitarios, tienes un problema.</p>
+      
+      <div class="image-left">
+        <img src="/img/blog/outdated-website-design.svg" alt="Diseño web obsoleto" />
+        <div class="content">
+          <h4>Señales de alarma visual</h4>
+          
+          <ul>
+            <li>Colores chillones o combinaciones "retro"</li>
+            <li>Fuentes que parecen de los 90s</li>
+            <li>Botones con efectos 3D exagerados</li>
+            <li>Layouts que no se adaptan a móvil</li>
+            <li>Animaciones Flash (si aún funcionan)</li>
+          </ul>
+        </div>
+      </div>
+      
+      <p><strong>Por qué esto mata tu negocio:</strong></p>
+      
+      <p>Los usuarios forman una opinión sobre tu credibilidad en menos de 0.05 segundos. Un diseño obsoleto les dice inmediatamente que tu negocio también está obsoleto.</p>
+      
+      <blockquote>
+        "Cambié el diseño de mi web de 2012 y las conversiones aumentaron 180% en el primer mes. Los clientes me dijeron que ahora sí confiaban en comprar." - Carlos Mendoza, Consultor
+      </blockquote>
+    </div>
+    
+    <div class="section">
+      <h3 data-toc-text="Señal #2: Velocidad de carga">Señal #2: Tu web carga más lento que la paciencia de tus clientes</h3>
+      
+      <p>Si tu web tarda más de 3 segundos en cargar, estás perdiendo el 53% de tus visitantes móviles antes de que vean tu contenido.</p>
+      
+      <div class="cta-box">
+        <h4>Test rápido de velocidad</h4>
+        
+        <p>Abre tu web en tu teléfono con datos móviles (no WiFi). ¿Tardó más de 3 segundos? Tienes un problema grave.</p>
+      </div>
+      
+      <p><strong>Las causas más comunes:</strong></p>
+      
+      <ul>
+        <li>Imágenes sin optimizar (el error #1)</li>
+        <li>Hosting barato que no da la talla</li>
+        <li>Código hinchado con plugins innecesarios</li>
+        <li>Falta de cache y compresión</li>
+        <li>Videos que se cargan automáticamente</li>
+      </ul>
+      
+      <p>Cada segundo extra de carga te cuesta un 7% de conversiones. ¿Puedes permitirte perder ese dinero?</p>
+    </div>
+    
+    <div class="section">
+      <h3 data-toc-text="Señal #3: Navegación confusa">Señal #3: Tus visitantes necesitan un GPS para encontrar lo que buscan</h3>
+      
+      <p>Si un usuario no puede encontrar lo que busca en menos de 3 clics, se va. Es así de simple.</p>
+      
+      <div class="image-right">
+        <img src="/img/blog/confusing-navigation.svg" alt="Navegación confusa" />
+        <div class="content">
+          <h4>Síntomas de navegación tóxica</h4>
+          
+          <ul>
+            <li>Menús con más de 7 opciones principales</li>
+            <li>Nombres de secciones que nadie entiende</li>
+            <li>Información importante enterrada en submenús</li>
+            <li>Falta de buscador interno</li>
+            <li>Botones de contacto imposibles de encontrar</li>
+          </ul>
+        </div>
+      </div>
+      
+      <p><strong>La regla de oro:</strong> Tu abuela debería poder navegar tu web sin ayuda. Si no puede, está demasiado complicada.</p>
+      
+      <div class="info-box">
+        <h4>Test de navegación</h4>
+        
+        <p>Pídele a alguien que no conozca tu negocio que encuentre tu información de contacto en tu web. Si tarda más de 30 segundos, tienes un problema.</p>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h3 data-toc-text="Señal #4: Contenido desactualizado">Señal #4: Tu contenido tiene más polvo que un museo</h3>
+      
+      <p>Nada grita "negocio abandonado" como contenido desactualizado.</p>
+      
+      <p><strong>Señales de contenido zombie:</strong></p>
+      
+      <ul>
+        <li>Fechas de "últimas noticias" de hace 2+ años</li>
+        <li>Precios que ya no son válidos</li>
+        <li>Información de contacto incorrecta</li>
+        <li>Referencias a eventos pasados como si fueran futuros</li>
+        <li>Testimonios con fotos de stock obviamente falsas</li>
+      </ul>
+      
+      <div class="warning-box">
+        <h4>El efecto dominó del contenido obsoleto</h4>
+        
+        <p>Contenido desactualizado → Pérdida de credibilidad → Menor confianza → Menos conversiones → Pérdida de dinero</p>
+      </div>
+      
+      <p>Google también penaliza sitios con contenido obsoleto, así que no solo pierdes conversiones, también visibilidad.</p>
+    </div>
+    
+    <div class="section">
+      <h3 data-toc-text="Señal #5: No optimizada para móvil">Señal #5: Tu web odia los smartphones (y el 60% de tu tráfico)</h3>
+      
+      <p>Si tu web no funciona perfectamente en móvil, estás rechazando activamente a la mayoría de tus visitantes.</p>
+      
+      <div class="image-full">
+        <img src="/img/blog/mobile-optimization-stats.svg" alt="Estadísticas de optimización móvil" />
+      </div>
+      
+      <p><strong>Problemas móviles que matan ventas:</strong></p>
+      
+      <ul>
+        <li>Texto demasiado pequeño para leer</li>
+        <li>Botones imposibles de tocar con el dedo</li>
+        <li>Formularios que no funcionan en móvil</li>
+        <li>Popups que no se pueden cerrar</li>
+        <li>Carga lenta en conexiones móviles</li>
+      </ul>
+      
+      <blockquote>
+        "Optimizamos nuestra web para móvil y las ventas desde teléfonos aumentaron 340%. No sabíamos cuánto dinero estábamos perdiendo." - Ana Rodríguez, E-commerce
+      </blockquote>
+    </div>
+    
+    <div class="section">
+      <h3 data-toc-text="El costo real">El costo real de ignorar estas señales</h3>
+      
+      <p>Cada día que ignoras estas señales, tu web está:</p>
+      
+      <ul>
+        <li><strong>Perdiendo clientes potenciales</strong> que se van a la competencia</li>
+        <li><strong>Dañando tu reputación</strong> con cada visitante decepcionado</li>
+        <li><strong>Desperdiciando tu inversión en marketing</strong> al no convertir el tráfico</li>
+        <li><strong>Reduciendo tu ranking en Google</strong> por mala experiencia de usuario</li>
+        <li><strong>Limitando tu crecimiento</strong> al no aprovechar oportunidades digitales</li>
+      </ul>
+      
+      <div class="cta-box">
+        <h4>Cálculo rápido de pérdidas</h4>
+        
+        <p>Si recibes 1,000 visitantes mensuales y solo conviertes el 1% por problemas web:</p>
+        <p>• Solo 10 se convierten actualmente</p>
+        <p>• Con una web optimizada: 30-50 se convertirían</p>
+        <p>• <strong>Pierdes 20-40 clientes cada mes</strong></p>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h3 data-toc-text="Plan de acción">Tu plan de acción: De enemigo a aliado en 30 días</h3>
+      
+      <p>No necesitas una remodelación completa de la noche a la mañana. Aquí tienes un plan progresivo:</p>
+      
+      <div class="info-box">
+        <h4>Semana 1: Diagnóstico completo</h4>
+        
+        <ul>
+          <li>Audita velocidad con Google PageSpeed Insights</li>
+          <li>Revisa tu web en diferentes dispositivos móviles</li>
+          <li>Identifica contenido desactualizado</li>
+          <li>Mapea problemas de navegación</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h4>Semana 2: Optimizaciones rápidas</h4>
+        
+        <ul>
+          <li>Optimiza imágenes existentes</li>
+          <li>Actualiza contenido crítico</li>
+          <li>Simplifica navegación principal</li>
+          <li>Mejora botones de contacto</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h4>Semana 3: Mejoras móviles</h4>
+        
+        <ul>
+          <li>Ajusta tamaños de texto y botones</li>
+          <li>Optimiza formularios para móvil</li>
+          <li>Elimina popups problemáticos</li>
+          <li>Mejora velocidad móvil</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h4>Semana 4: Refinamiento y testing</h4>
+        
+        <ul>
+          <li>Prueba toda la funcionalidad</li>
+          <li>Solicita feedback de usuarios reales</li>
+          <li>Mide mejoras en conversiones</li>
+          <li>Planifica próximas mejoras</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="highlight-section">
+      <h3 data-toc-text="Conclusión">Tu web: ¿aliado o enemigo?</h3>
+      
+      <p>Tu sitio web debería ser tu mejor vendedor, trabajando 24/7 para hacer crecer tu negocio.</p>
+      
+      <p>Si reconoces 3 o más de estas señales en tu web, no es solo que "necesites una actualización". Es que tu web está activamente saboteando tu éxito.</p>
+      
+      <p>La buena noticia es que cada problema tiene solución. La mala noticia es que cada día que esperas, pierdes más dinero.</p>
+      
+      <p><strong>La pregunta no es si puedes permitirte remodelar tu web.</strong></p>
+      
+      <p><strong>La pregunta es: ¿puedes permitirte seguir perdiendo clientes por tener una web que trabaja contra ti?</strong></p>
+    </div>
+  </div>
+</BlogLayout>

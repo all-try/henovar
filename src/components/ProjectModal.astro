@@ -1,0 +1,152 @@
+---
+import BotonPrimario from './BotonPrimario.astro';
+import BotonSecundario from './BotonSecundario.astro';
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div id="project-modal" class={`fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300 ease-in-out ${className}`} style="display: none;">
+  <div class="absolute inset-0 bg-black/75 backdrop-blur-sm" onclick="closeProjectModal()"></div>
+  <div class="relative bg-gray-800 rounded-2xl max-w-6xl w-full h-auto max-h-[90vh] flex flex-col overflow-hidden shadow-2xl transform scale-90 transition-transform duration-300 ease-in-out">
+    <!-- Header fijo -->
+    <div class="sticky top-0 bg-gray-900 z-10">
+      <div class="flex items-center justify-between p-6">
+        <div class="flex-grow">
+          <h2 id="modal-title" class="text-white text-3xl font-bold mb-2 leading-tight">Título del Proyecto</h2>
+          <div class="flex items-center gap-4">
+            <span id="modal-year" class="text-gray-400 text-lg font-medium">2024</span>
+            <span id="modal-status" class="px-3 py-1 rounded-full text-xs font-semibold text-white bg-black">Completado</span>
+          </div>
+        </div>
+        <button class="text-gray-400 p-2 rounded-lg transition-all duration-200 hover:text-white hover:bg-gray-600" onclick="closeProjectModal()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Contenido scrolleable -->
+    <div class="flex-grow overflow-y-auto modal-scroll">
+      <!-- Imagen del proyecto -->
+      <div class="w-full max-h-[500px] md:max-h-[600px] overflow-hidden">
+        <img id="modal-image" src="" alt="" class="w-full h-full object-cover bg-gray-600" />
+      </div>
+
+      <!-- Información del proyecto -->
+      <div class="p-8">
+        <!-- Descripción principal -->
+        <div class="mb-8 bg-gradient-to-br from-gray-600 to-gray-500 border border-gray-500 rounded-2xl p-8 shadow-lg">
+          <h4 class="text-white text-2xl font-semibold mb-4 flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14,2 14,8 20,8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10,9 9,9 8,9"/>
+            </svg>
+            Descripción
+          </h4>
+          <p id="modal-description" class="text-gray-300 text-lg leading-relaxed m-0">-</p>
+        </div>
+
+
+
+        <!-- Grid de 2 columnas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <!-- Columna 1: Información del proyecto -->
+          <div class="bg-gradient-to-br from-gray-600 to-gray-500 border border-gray-500 rounded-2xl p-6 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl">
+            <h4 class="text-white text-lg font-semibold mb-5 flex items-center gap-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              Información
+            </h4>
+            <div class="flex flex-col gap-4">
+              <div class="bg-gray-600/50 p-4 rounded-xl border border-gray-500/30">
+                <h5 class="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">Cliente</h5>
+                <p id="modal-client" class="text-white text-sm font-medium m-0">-</p>
+              </div>
+              <div class="bg-gray-600/50 p-4 rounded-xl border border-gray-500/30">
+                <h5 class="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">Duración</h5>
+                <p id="modal-duration" class="text-white text-sm font-medium m-0">-</p>
+              </div>
+              <div class="bg-gray-600/50 p-4 rounded-xl border border-gray-500/30">
+                <h5 class="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">Equipo</h5>
+                <p id="modal-developers" class="text-white text-sm font-medium m-0">-</p>
+              </div>
+              <div class="bg-gray-600/50 p-4 rounded-xl border border-gray-500/30">
+                <h5 class="text-gray-400 text-xs font-semibold mb-2 uppercase tracking-wider">Categoría</h5>
+                <p id="modal-category" class="text-white text-sm font-medium m-0">-</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna 2: Lo que incluye -->
+          <div class="bg-gradient-to-br from-gray-600 to-gray-500 border border-gray-500 rounded-2xl p-6 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl">
+            <h4 class="text-white text-lg font-semibold mb-5 flex items-center gap-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11l3 3l8-8"/>
+                <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.51 0 2.93.37 4.18 1.03"/>
+              </svg>
+              Lo que Incluye
+            </h4>
+            <ul id="modal-features" class="list-none p-0 m-0 flex flex-col gap-3">
+              <!-- Las características se insertan dinámicamente -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="flex gap-4 mt-8 flex-col md:flex-row">
+          <BotonPrimario href="/contacto" class="flex-1">
+            Empezar mi Proyecto
+          </BotonPrimario>
+          <BotonSecundario id="modal-project-url" href="#" class="flex-1" style="display: none;">
+            Ver Proyecto
+          </BotonSecundario>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Clases para mostrar/ocultar el modal */
+  .show {
+    opacity: 1 !important;
+  }
+
+  .show .modal-container {
+    transform: scale(1) !important;
+  }
+
+  /* Estilos personalizados para el scroll */
+  .modal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #6b7280 #374151;
+  }
+
+  .modal-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .modal-scroll::-webkit-scrollbar-track {
+    background: #374151;
+    border-radius: 4px;
+  }
+
+  .modal-scroll::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modal-scroll::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>

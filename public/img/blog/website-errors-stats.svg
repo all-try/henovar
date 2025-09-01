@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" class="w-full h-auto">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGradient)" rx="12"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" class="text-2xl font-bold" fill="#1e293b">
+    Estadísticas de Abandono Web
+  </text>
+  
+  <!-- Chart Background -->
+  <rect x="100" y="80" width="600" height="320" fill="white" stroke="#e2e8f0" stroke-width="2" rx="8"/>
+  
+  <!-- Y-axis labels -->
+  <text x="90" y="120" text-anchor="end" class="text-sm" fill="#64748b">100%</text>
+  <text x="90" y="180" text-anchor="end" class="text-sm" fill="#64748b">75%</text>
+  <text x="90" y="240" text-anchor="end" class="text-sm" fill="#64748b">50%</text>
+  <text x="90" y="300" text-anchor="end" class="text-sm" fill="#64748b">25%</text>
+  <text x="90" y="360" text-anchor="end" class="text-sm" fill="#64748b">0%</text>
+  
+  <!-- Grid lines -->
+  <line x1="110" y1="120" x2="690" y2="120" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="110" y1="180" x2="690" y2="180" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="110" y1="240" x2="690" y2="240" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="110" y1="300" x2="690" y2="300" stroke="#f1f5f9" stroke-width="1"/>
+  
+  <!-- Bars -->
+  <!-- 1 segundo: 7% abandono -->
+  <rect x="140" y="343" width="80" height="17" fill="url(#barGradient)" rx="2"/>
+  <text x="180" y="355" text-anchor="middle" class="text-xs font-medium" fill="white">7%</text>
+  
+  <!-- 2 segundos: 87% abandono -->
+  <rect x="240" y="151" width="80" height="209" fill="url(#barGradient)" rx="2"/>
+  <text x="280" y="260" text-anchor="middle" class="text-xs font-medium" fill="white">87%</text>
+  
+  <!-- 3 segundos: 53% abandono -->
+  <rect x="340" y="233" width="80" height="127" fill="url(#barGradient)" rx="2"/>
+  <text x="380" y="300" text-anchor="middle" class="text-xs font-medium" fill="white">53%</text>
+  
+  <!-- 5 segundos: 90% abandono -->
+  <rect x="440" y="144" width="80" height="216" fill="url(#barGradient)" rx="2"/>
+  <text x="480" y="255" text-anchor="middle" class="text-xs font-medium" fill="white">90%</text>
+  
+  <!-- X-axis labels -->
+  <text x="180" y="385" text-anchor="middle" class="text-sm font-medium" fill="#374151">1s</text>
+  <text x="280" y="385" text-anchor="middle" class="text-sm font-medium" fill="#374151">2s</text>
+  <text x="380" y="385" text-anchor="middle" class="text-sm font-medium" fill="#374151">3s</text>
+  <text x="480" y="385" text-anchor="middle" class="text-sm font-medium" fill="#374151">5s</text>
+  
+  <!-- X-axis title -->
+  <text x="400" y="415" text-anchor="middle" class="text-sm font-semibold" fill="#1f2937">
+    Tiempo de Carga
+  </text>
+  
+  <!-- Key insight -->
+  <rect x="520" y="100" width="160" height="80" fill="#fef2f2" stroke="#fecaca" stroke-width="1" rx="6"/>
+  <text x="600" y="125" text-anchor="middle" class="text-sm font-bold" fill="#dc2626">
+    ¡CRÍTICO!
+  </text>
+  <text x="600" y="145" text-anchor="middle" class="text-xs" fill="#991b1b">
+    Más de 3 segundos =
+  </text>
+  <text x="600" y="160" text-anchor="middle" class="text-xs" fill="#991b1b">
+    53% de abandono
+  </text>
+  
+  <!-- Footer note -->
+  <text x="400" y="470" text-anchor="middle" class="text-xs" fill="#6b7280">
+    Fuente: Estudios de comportamiento web 2024
+  </text>
+</svg>

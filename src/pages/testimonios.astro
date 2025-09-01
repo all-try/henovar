@@ -4,6 +4,71 @@ import Titulo from '../components/Titulo.astro';
 import Parrafo from '../components/Parrafo.astro';
 import Badge from '../components/Badge.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
+import FiveStars from '../components/icons/FiveStars.astro';
+
+// Datos de testimonios
+const testimonios = [
+	{
+		id: 1,
+		nombre: "María González",
+		cargo: "CEO",
+		empresa: "TechStart Solutions",
+		testimonio: "El equipo de Henovar transformó completamente nuestra presencia digital. Su enfoque profesional y atención al detalle superaron nuestras expectativas.",
+		rating: 5,
+		avatar: "/images/avatar-1.jpg",
+		size: "large" // Para bento grid
+	},
+	{
+		id: 2,
+		nombre: "Carlos Rodríguez",
+		cargo: "Director de Marketing",
+		empresa: "InnovateCorp",
+		testimonio: "Increíble trabajo en nuestra plataforma e-commerce. Las ventas aumentaron un 300% después del lanzamiento.",
+		rating: 5,
+		avatar: "/images/avatar-2.jpg",
+		size: "medium"
+	},
+	{
+		id: 3,
+		nombre: "Ana Martínez",
+		cargo: "Fundadora",
+		empresa: "EduLearn",
+		testimonio: "La plataforma educativa que desarrollaron es intuitiva y potente. Nuestros estudiantes están encantados.",
+		rating: 5,
+		avatar: "/images/avatar-3.jpg",
+		size: "medium"
+	},
+	{
+		id: 4,
+		nombre: "Roberto Silva",
+		cargo: "CTO",
+		empresa: "DataFlow Systems",
+		testimonio: "Excelente arquitectura técnica y código limpio. El sistema es escalable y fácil de mantener.",
+		rating: 5,
+		avatar: "/images/avatar-4.jpg",
+		size: "small"
+	},
+	{
+		id: 5,
+		nombre: "Laura Fernández",
+		cargo: "Product Manager",
+		empresa: "FinTech Pro",
+		testimonio: "Su experiencia en desarrollo de aplicaciones financieras es excepcional. Cumplieron todos los estándares de seguridad.",
+		rating: 5,
+		avatar: "/images/avatar-5.jpg",
+		size: "small"
+	},
+	{
+		id: 6,
+		nombre: "Diego Morales",
+		cargo: "Gerente General",
+		empresa: "RetailMax",
+		testimonio: "La aplicación móvil que desarrollaron ha revolucionado nuestra operación. Interface perfecta y rendimiento excelente.",
+		rating: 5,
+		avatar: "/images/avatar-6.jpg",
+		size: "large"
+	}
+];
 ---
 
 <Layout 
@@ -24,168 +89,98 @@ import BotonPrimario from '../components/BotonPrimario.astro';
 		</div>
 	</section>
 
-	<!-- Testimonios Grid -->
+	<!-- Testimonios con Bento Grid -->
 	<div class="container-bg-dark">
 		<section class="section section-padding">
-			<div class="max-w-7xl mx-auto">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-					<!-- Testimonio Destacado 1 -->
-					<div class="bg-gray-800 border-radius-large p-8">
-						<div class="flex items-center mb-6">
-							<div class="w-16 h-16 bg-gray-600 rounded-full mr-4"></div>
-							<div>
-								<Titulo level={4} class="mb-1">María García</Titulo>
-								<Parrafo color="muted">CEO, TechStart Solutions</Parrafo>
-								<div class="flex items-center mt-2">
-									{[...Array(5)].map(() => (
-										<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-											<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-										</svg>
-									))}
+			<div class="max-w-6xl mx-auto">
+				<!-- Layout Flexbox: 2-1-3 para Desktop, Stack para móvil -->
+				<div class="testimonials-container">
+					<!-- Primera fila: 2 cards -->
+					<div class="testimonials-row row-2">
+						{testimonios.slice(0, 2).map((testimonio) => (
+							<div class="testimonial-card">
+								<div class="testimonial-content">
+									<div class="testimonial-text">
+										<p>"{testimonio.testimonio}"</p>
+									</div>
+									<div class="testimonial-footer">
+										<div class="testimonial-avatar">
+											<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+												{testimonio.nombre.split(' ').map(n => n[0]).join('')}
+											</div>
+										</div>
+										<div class="testimonial-info">
+											<h5 class="testimonial-name">{testimonio.nombre}</h5>
+											<p class="testimonial-role">{testimonio.cargo}, {testimonio.empresa}</p>
+											<div class="testimonial-rating">
+												<FiveStars size="sm" />
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-						<Parrafo class="mb-4">
-							"Trabajar con Henovar fue una experiencia **excepcional**. No solo entregaron exactamente lo que necesitábamos, sino que superaron nuestras expectativas en términos de calidad y tiempo de entrega."
-						</Parrafo>
-						<Parrafo color="muted">
-							"Su **atención al detalle** y capacidad para entender nuestras necesidades específicas hizo que todo el proceso fuera fluido y profesional."
-						</Parrafo>
+						))}
 					</div>
 
-					<!-- Testimonio Destacado 2 -->
-					<div class="bg-gray-800 border-radius-large p-8">
-						<div class="flex items-center mb-6">
-							<div class="w-16 h-16 bg-gray-600 rounded-full mr-4"></div>
-							<div>
-								<Titulo level={4} class="mb-1">Carlos López</Titulo>
-								<Parrafo color="muted">Director Técnico, InnovaWeb</Parrafo>
-								<div class="flex items-center mt-2">
-									{[...Array(5)].map(() => (
-										<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-											<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-										</svg>
-									))}
+					<!-- Segunda fila: 1 card largo con imagen -->
+					<div class="testimonials-row row-1">
+						{testimonios.slice(2, 3).map((testimonio) => (
+							<div class="testimonial-card testimonial-wide">
+								<div class="testimonial-content-wide">
+									<div class="testimonial-text-section">
+										<div class="testimonial-text">
+											<p>"{testimonio.testimonio}"</p>
+										</div>
+										<div class="testimonial-footer-wide">
+											<div class="testimonial-author-info">
+												<div class="testimonial-avatar">
+													<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+														{testimonio.nombre.split(' ').map(n => n[0]).join('')}
+													</div>
+												</div>
+												<div class="testimonial-info">
+												<h5 class="testimonial-name">{testimonio.nombre}</h5>
+												<p class="testimonial-role">{testimonio.cargo}, {testimonio.empresa}</p>
+												<div class="testimonial-rating">
+													<FiveStars size="sm" />
+												</div>
+											</div>
+										</div>
+										</div>
+									</div>
+									<div class="testimonial-image">
+										<img src="/img/testimonial-image.png" alt="Testimonio" class="w-full h-auto max-h-80 lg:max-h-96 rounded-lg object-cover" />
+									</div>
 								</div>
 							</div>
-						</div>
-						<Parrafo class="mb-4">
-							"La **calidad del código** y la arquitectura que implementaron superaron nuestras expectativas. El proyecto se entregó a tiempo y funcionó perfectamente desde el primer día."
-						</Parrafo>
-						<Parrafo color="muted">
-							"Su **experiencia técnica** y capacidad para resolver problemas complejos los convierte en un socio tecnológico invaluable."
-						</Parrafo>
-					</div>
-				</div>
-
-				<!-- Grid de Testimonios -->
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="flex items-center mb-4">
-							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
-							<div>
-								<Titulo level={5} class="mb-1">Ana Martín</Titulo>
-								<Parrafo color="muted">Fundadora, DigitalPlus</Parrafo>
-							</div>
-						</div>
-						<div class="flex items-center mb-3">
-							{[...Array(5)].map(() => (
-								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-								</svg>
-							))}
-						</div>
-						<Parrafo>"**Comunicación excelente** durante todo el proyecto. Muy recomendables para cualquier desarrollo web."</Parrafo>
+						))}
 					</div>
 
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="flex items-center mb-4">
-							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
-							<div>
-								<Titulo level={5} class="mb-1">Roberto Silva</Titulo>
-								<Parrafo color="muted">CTO, StartupFlow</Parrafo>
+					<!-- Tercera fila: 3 cards -->
+					<div class="testimonials-row row-3">
+						{testimonios.slice(3, 6).map((testimonio) => (
+							<div class="testimonial-card">
+								<div class="testimonial-content">
+									<div class="testimonial-text">
+										<p>"{testimonio.testimonio}"</p>
+									</div>
+									<div class="testimonial-footer">
+										<div class="testimonial-avatar">
+											<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+												{testimonio.nombre.split(' ').map(n => n[0]).join('')}
+											</div>
+										</div>
+										<div class="testimonial-info">
+											<h5 class="testimonial-name">{testimonio.nombre}</h5>
+											<p class="testimonial-role">{testimonio.cargo}, {testimonio.empresa}</p>
+											<div class="testimonial-rating">
+												<FiveStars size="sm" />
+											</div>
+										</div>
+									</div>	
+								</div>
 							</div>
-						</div>
-						<div class="flex items-center mb-3">
-							{[...Array(5)].map(() => (
-								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-								</svg>
-							))}
-						</div>
-						<Parrafo>"Increíble **velocidad de desarrollo** sin comprometer la calidad. Definitivamente volveremos a trabajar con ellos."</Parrafo>
-					</div>
-
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="flex items-center mb-4">
-							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
-							<div>
-								<Titulo level={5} class="mb-1">Laura Fernández</Titulo>
-								<Parrafo color="muted">Directora, EcoTech</Parrafo>
-							</div>
-						</div>
-						<div class="flex items-center mb-3">
-							{[...Array(5)].map(() => (
-								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-								</svg>
-							))}
-						</div>
-						<Parrafo>"El **soporte post-lanzamiento** ha sido excepcional. Siempre disponibles para resolver cualquier duda."</Parrafo>
-					</div>
-
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="flex items-center mb-4">
-							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
-							<div>
-								<Titulo level={5} class="mb-1">Miguel Torres</Titulo>
-								<Parrafo color="muted">CEO, DataFlow</Parrafo>
-							</div>
-						</div>
-						<div class="flex items-center mb-3">
-							{[...Array(5)].map(() => (
-								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-								</svg>
-							))}
-						</div>
-						<Parrafo>"**Soluciones innovadoras** que realmente impactaron en nuestro crecimiento. Altamente profesionales."</Parrafo>
-					</div>
-
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="flex items-center mb-4">
-							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
-							<div>
-								<Titulo level={5} class="mb-1">Carmen Ruiz</Titulo>
-								<Parrafo color="muted">Fundadora, CreativeHub</Parrafo>
-							</div>
-						</div>
-						<div class="flex items-center mb-3">
-							{[...Array(5)].map(() => (
-								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-								</svg>
-							))}
-						</div>
-						<Parrafo>"El **diseño y la funcionalidad** superaron todas nuestras expectativas. Un equipo realmente talentoso."</Parrafo>
-					</div>
-
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="flex items-center mb-4">
-							<div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
-							<div>
-								<Titulo level={5} class="mb-1">David Morales</Titulo>
-								<Parrafo color="muted">Director, TechSolutions</Parrafo>
-							</div>
-						</div>
-						<div class="flex items-center mb-3">
-							{[...Array(5)].map(() => (
-								<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-								</svg>
-							))}
-						</div>
-						<Parrafo>"**Entrega puntual** y resultados que superaron nuestras expectativas. Los recomiendo sin dudarlo."</Parrafo>
+						))}
 					</div>
 				</div>
 			</div>
@@ -205,3 +200,216 @@ import BotonPrimario from '../components/BotonPrimario.astro';
 		</div>
 	</section>
 </Layout>
+
+<style>
+	/* Contenedor principal con Grid */
+	.testimonials-container {
+		display: grid;
+		gap: 2rem;
+		grid-template-columns: 1fr;
+	}
+
+	/* Filas de testimonios */
+	.testimonials-row {
+		display: grid;
+		gap: 2rem;
+	}
+
+	/* Desktop Layout con Grid */
+	@media (min-width: 1024px) {
+		.row-2 {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.row-1 {
+			grid-template-columns: 1fr;
+		}
+
+		.row-3 {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	/* Mobile: Stack vertical */
+	@media (max-width: 1023px) {
+		.testimonials-container {
+			gap: 1rem;
+		}
+
+		.testimonials-row {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.testimonial-card {
+			min-height: 200px;
+		}
+	}
+
+	/* Estilos de las tarjetas */
+	.testimonial-card {
+		background: rgba(0, 0, 0, 0.4);
+		border-radius: 1rem;
+		padding: 2rem;
+		position: relative;
+		overflow: hidden;
+		backdrop-filter: blur(10px);
+	}
+
+	.testimonial-content {
+		position: relative;
+		z-index: 1;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.testimonial-footer {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-top: 1.5rem;
+	}
+
+	.testimonial-avatar {
+		flex-shrink: 0;
+	}
+
+	.testimonial-info {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.testimonial-name {
+		color: white;
+		font-size: 1.125rem;
+		font-weight: 600;
+		margin: 0 0 0.25rem 0;
+		text-align: left;
+	}
+
+	.testimonial-role {
+		color: #9CA3AF;
+		font-size: 0.875rem;
+		margin: 0 0 0.5rem 0;
+		text-align: left;
+		line-height: 1.4;
+	}
+
+	.testimonial-rating {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	.testimonial-text {
+		flex: 1;
+	}
+
+	.testimonial-text p {
+		color: #E5E7EB;
+		line-height: 1.6;
+		margin: 0;
+		font-size: 1rem;
+		text-align: left;
+		font-style: italic;
+	}
+
+	/* Estilos especiales para card ancho */
+	.testimonial-content-wide {
+		display: grid;
+		gap: 2rem;
+		height: 100%;
+	}
+
+	.testimonial-text-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.testimonial-footer-wide {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 1.5rem;
+	}
+
+	.testimonial-author-info {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.testimonial-rating-desktop {
+		display: none;
+	}
+
+	.testimonial-rating-mobile {
+		display: block;
+		margin-top: 0.5rem;
+	}
+
+	.testimonial-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.testimonial-wide .testimonial-text p {
+		font-size: 1.125rem;
+		line-height: 1.7;
+	}
+
+	/* Desktop layout para card ancho */
+	@media (min-width: 1024px) {
+		.testimonial-content-wide {
+			grid-template-columns: 2fr 1fr;
+			align-items: center;
+		}
+
+		.testimonial-rating-desktop {
+			display: block;
+		}
+
+		.testimonial-rating-mobile {
+			display: none;
+		}
+
+
+	}
+
+	/* Mobile layout para card ancho */
+	@media (max-width: 1023px) {
+		.testimonial-content-wide {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto auto;
+		}
+
+
+	}
+
+	/* Responsive adjustments */
+	@media (min-width: 1024px) {
+		.testimonial-wide .testimonial-name {
+			font-size: 1.25rem;
+		}
+
+		.testimonial-wide .testimonial-role {
+			font-size: 1rem;
+		}
+
+		.row-3 .testimonial-card .testimonial-text p {
+			font-size: 0.875rem;
+		}
+
+		.row-3 .testimonial-card .testimonial-name {
+			font-size: 1rem;
+		}
+
+		.row-3 .testimonial-card .testimonial-role {
+			font-size: 0.75rem;
+		}
+	}
+</style>

@@ -4,6 +4,9 @@ import Titulo from '../components/Titulo.astro';
 import Parrafo from '../components/Parrafo.astro';
 import Badge from '../components/Badge.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProjectModal from '../components/ProjectModal.astro';
+import { projects } from '../data/projects.ts';
 ---
 
 <Layout 
@@ -11,8 +14,9 @@ import BotonPrimario from '../components/BotonPrimario.astro';
 	description="Descubre nuestros proyectos exitosos de desarrollo web, aplicaciones y soluciones digitales personalizadas."
 	keywords="proyectos desarrollo web, portfolio, casos de éxito, aplicaciones web, e-commerce"
 >
+	<div class="bg-[url('/img/bg/large-bg.png')] bg-cover bg-top bg-no-repeat">
 	<!-- Hero Section -->
-	<section class="section section-padding">
+	<section class="header-offset section section-padding">
 		<div class="max-w-7xl mx-auto text-center">
 			<Badge class="mb-6">Proyectos</Badge>
 			<Titulo level={1} alignMobile="left" alignDesktop="center" highlight="proyectos" class="mb-6">
@@ -25,184 +29,33 @@ import BotonPrimario from '../components/BotonPrimario.astro';
 	</section>
 
 	<!-- Proyectos Grid -->
-	<div class="container-bg-dark">
+	<div class="">
 		<section class="section section-padding">
-			<div class="max-w-7xl mx-auto">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-					<!-- Proyecto 1 -->
-					<div class="bg-gray-800 border-radius-large overflow-hidden">
-						<div class="h-64 bg-gray-700"></div>
-						<div class="p-8">
-							<div class="flex items-center gap-2 mb-4">
-								<Badge>E-commerce</Badge>
-						<Badge>React</Badge>
-							</div>
-							<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-4">Tienda Online Moderna</Titulo>
-			<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
-				Plataforma de **comercio electrónico completa** con sistema de pagos integrado, gestión de inventario y panel de administración.
-			</Parrafo>
-							<ul class="space-y-2 mb-6">
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Diseño responsive y moderno
-								</li>
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Integración con pasarelas de pago
-								</li>
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Panel de administración completo
-								</li>
-							</ul>
-							<BotonPrimario href="/contacto">Ver Detalles</BotonPrimario>
-						</div>
-					</div>
-
-					<!-- Proyecto 2 -->
-					<div class="bg-gray-800 border-radius-large overflow-hidden">
-						<div class="h-64 bg-gray-700"></div>
-						<div class="p-8">
-							<div class="flex items-center gap-2 mb-4">
-								<Badge>Corporativo</Badge>
-						<Badge>Vue.js</Badge>
-							</div>
-							<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-4">Aplicación Empresarial</Titulo>
-			<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
-				Sistema de **gestión empresarial** con módulos de CRM, facturación y reportes avanzados para optimizar procesos internos.
-			</Parrafo>
-							<ul class="space-y-2 mb-6">
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Dashboard interactivo
-								</li>
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Sistema de roles y permisos
-								</li>
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Reportes y analytics
-								</li>
-							</ul>
-							<BotonPrimario href="/contacto">Ver Detalles</BotonPrimario>
-						</div>
-					</div>
-				</div>
-
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-					<!-- Proyecto 3 -->
-					<div class="bg-gray-800 border-radius-large overflow-hidden">
-						<div class="h-64 bg-gray-700"></div>
-						<div class="p-8">
-							<div class="flex items-center gap-2 mb-4">
-								<Badge>Educación</Badge>
-						<Badge>Next.js</Badge>
-							</div>
-							<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-4">Plataforma Educativa</Titulo>
-			<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
-				Portal de **aprendizaje online** con sistema de cursos, evaluaciones y seguimiento del progreso estudiantil.
-			</Parrafo>
-							<ul class="space-y-2 mb-6">
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Sistema de cursos interactivos
-								</li>
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Evaluaciones automáticas
-								</li>
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Seguimiento de progreso
-								</li>
-							</ul>
-							<BotonPrimario href="/contacto">Ver Detalles</BotonPrimario>
-						</div>
-					</div>
-
-					<!-- Proyecto 4 -->
-					<div class="bg-gray-800 border-radius-large overflow-hidden">
-						<div class="h-64 bg-gray-700"></div>
-						<div class="p-8">
-							<div class="flex items-center gap-2 mb-4">
-								<Badge>SaaS</Badge>
-						<Badge>Astro</Badge>
-							</div>
-							<Titulo level={3} alignMobile="left" alignDesktop="center" class="mb-4">Aplicación SaaS</Titulo>
-			<Parrafo alignMobile="left" alignDesktop="center" class="mb-6">
-				Plataforma de **software como servicio** con suscripciones, API REST y dashboard de analytics en tiempo real.
-			</Parrafo>
-							<ul class="space-y-2 mb-6">
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Sistema de suscripciones
-								</li>
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									API REST completa
-								</li>
-								<li class="flex items-center text-gray-300 text-sm">
-									<svg class="w-4 h-4 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									Analytics en tiempo real
-								</li>
-							</ul>
-							<BotonPrimario href="/contacto">Ver Detalles</BotonPrimario>
-						</div>
-					</div>
-				</div>
-
-				<!-- Más Proyectos Grid -->
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="h-48 bg-gray-700 border-radius-default mb-4"></div>
-						<Badge class="mb-3">Landing Page</Badge>
-						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-2">Startup Tech</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" color="muted">Landing page optimizada para conversión con animaciones modernas.</Parrafo>
-					</div>
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="h-48 bg-gray-700 border-radius-default mb-4"></div>
-						<Badge class="mb-3">Blog</Badge>
-						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-2">Blog Corporativo</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" color="muted">Plataforma de blog con CMS personalizado y SEO optimizado.</Parrafo>
-					</div>
-					<div class="bg-gray-800 border-radius-default p-6">
-						<div class="h-48 bg-gray-700 border-radius-default mb-4"></div>
-						<Badge class="mb-3">Portfolio</Badge>
-						<Titulo level={4} alignMobile="left" alignDesktop="center" class="mb-2">Portfolio Creativo</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" color="muted">Sitio web portfolio con galería interactiva y animaciones.</Parrafo>
-					</div>
+			<div class="max-w-6xl mx-auto">
+				<!-- Grid de 10 proyectos -->
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{projects.map((project) => (
+						<ProjectCard
+							id={project.id.toString()}
+							title={project.title}
+							description={project.shortDescription}
+							category={project.category}
+							technologies={project.technologies}
+							images={[project.image]}
+							year={project.year}
+							status={project.status}
+						/>
+					))}
 				</div>
 			</div>
 		</section>
 	</div>
 
+	<!-- Modal de proyecto -->
+	<ProjectModal />
+
 	<!-- CTA Section -->
-	<section class="section section-padding container-bg-darker">
+	<section class="section section-padding">
 		<div class="max-w-4xl mx-auto text-center">
 			<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="proyecto" class="mb-6">
 			¿Tienes un proyecto en mente?
@@ -213,4 +66,147 @@ import BotonPrimario from '../components/BotonPrimario.astro';
 			<BotonPrimario href="/contacto">Iniciar Proyecto</BotonPrimario>
 		</div>
 	</section>
+	</div>
 </Layout>
+
+<script define:vars={{ projects }}>
+	// Variables globales para el modal
+	let currentProjectIndex = 0;
+	let projectsData = projects || [];
+
+	// Función para abrir el modal
+	function openProjectModal(projectId) {
+		console.log('openProjectModal called with ID:', projectId, 'type:', typeof projectId);
+		console.log('projectsData:', projectsData);
+		
+		// Convertir projectId a número si es string
+		const numericId = typeof projectId === 'string' ? parseInt(projectId) : projectId;
+		console.log('Converted ID:', numericId);
+		
+		currentProjectIndex = projectsData.findIndex(p => p.id === numericId);
+		console.log('currentProjectIndex:', currentProjectIndex);
+		
+		if (currentProjectIndex === -1) {
+			console.log('Project not found!');
+			return;
+		}
+		
+		const project = projectsData[currentProjectIndex];
+		console.log('Found project:', project);
+		updateModalContent(project);
+		
+		const modal = document.getElementById('project-modal');
+		console.log('Modal element:', modal);
+		if (modal) {
+			modal.style.display = 'flex';
+			document.body.style.overflow = 'hidden';
+			// Añadir clase show después de un pequeño delay para la transición
+			setTimeout(() => {
+				modal.classList.add('show');
+			}, 10);
+			console.log('Modal should be visible now');
+		} else {
+			console.log('Modal element not found!');
+		}
+	}
+
+	// Función para cerrar el modal
+	function closeProjectModal() {
+		const modal = document.getElementById('project-modal');
+		if (modal) {
+			modal.classList.remove('show');
+			// Esperar a que termine la transición antes de ocultar
+			setTimeout(() => {
+				modal.style.display = 'none';
+				document.body.style.overflow = 'auto';
+			}, 300);
+		}
+	}
+
+	// Función para actualizar el contenido del modal
+	function updateModalContent(project) {
+		// Título y meta información
+		const titleElement = document.getElementById('modal-title');
+		const yearElement = document.getElementById('modal-year');
+		const statusElement = document.getElementById('modal-status');
+		
+		if (titleElement) titleElement.textContent = project.title || '';
+		if (yearElement) yearElement.textContent = (project.year && project.year.toString()) || '';
+		if (statusElement) statusElement.textContent = project.status || '';
+		
+		// Configurar color del estado
+		if (statusElement) {
+			const statusColors = {
+				'Completado': '#10b981',
+				'En Desarrollo': '#3b82f6',
+				'Mantenimiento': '#f59e0b'
+			};
+			statusElement.style.backgroundColor = statusColors[project.status] || '#6b7280';
+		}
+		
+		// Imagen
+		const imageElement = document.getElementById('modal-image');
+		if (imageElement) {
+			imageElement.src = project.image || '';
+			imageElement.alt = project.title || '';
+		}
+		
+		// Información básica
+		const clientElement = document.getElementById('modal-client');
+		const durationElement = document.getElementById('modal-duration');
+		const developersElement = document.getElementById('modal-developers');
+		const categoryElement = document.getElementById('modal-category');
+		
+		if (clientElement) clientElement.textContent = project.client || '';
+		if (durationElement) durationElement.textContent = project.duration || '';
+		if (developersElement) developersElement.textContent = `${project.developers || 0} desarrolladores`;
+		if (categoryElement) categoryElement.textContent = project.category || '';
+		
+		// Descripción
+		const descriptionElement = document.getElementById('modal-description');
+		if (descriptionElement) descriptionElement.textContent = project.longDescription || '';
+		
+		// Tecnologías
+		const techContainer = document.getElementById('modal-technologies');
+		if (techContainer && project.technologies) {
+			techContainer.innerHTML = project.technologies.map(tech => 
+				`<span class="tech-badge">${tech}</span>`
+			).join('');
+		}
+		
+		// Características
+		const featuresContainer = document.getElementById('modal-features');
+		if (featuresContainer && project.features) {
+			featuresContainer.innerHTML = project.features.map(feature => 
+				`<li class="flex items-center gap-3 text-white text-sm">
+					<svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+					</svg>
+					<span>${feature}</span>
+				</li>`
+			).join('');
+		}
+		
+		// Botón de URL del proyecto
+		const urlButton = document.getElementById('modal-project-url');
+		if (urlButton) {
+			if (project.url) {
+				urlButton.href = project.url;
+				urlButton.style.display = 'inline-flex';
+			} else {
+				urlButton.style.display = 'none';
+			}
+		}
+	}
+
+	// Cerrar modal con Escape
+	document.addEventListener('keydown', function(e) {
+		if (e.key === 'Escape') {
+			closeProjectModal();
+		}
+	});
+
+	// Hacer funciones disponibles globalmente
+	window.openProjectModal = openProjectModal;
+	window.closeProjectModal = closeProjectModal;
+</script>

@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Titulo from '../components/Titulo.astro';
 import Parrafo from '../components/Parrafo.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
+import BotonSecundario from '../components/BotonSecundario.astro';
+import BotonTercio from '../components/BotonTercio.astro';
 import FAQ from '../components/FAQ.astro';
 import ServiceFeature from '../components/ServiceFeature.astro';
 import ServiceCard from '../components/ServiceCard.astro';
@@ -35,29 +37,30 @@ const preguntasServicios = [
 <Layout title="Servicios - Henovar">
 	<div class="bg-[url('/img/bg/large-bg.png')] bg-cover bg-top bg-no-repeat">
 	<!-- Hero Section -->
-	<section class="section section-padding">
+	<section class="header-offset section section-padding">
 		<div class="max-w-4xl mx-auto text-center">
 			<Titulo level={1} alignMobile="center" alignDesktop="center" highlight="servicios" class="mb-6">
 				Nuestros servicios
 			</Titulo>
-			<Parrafo alignMobile="center" alignDesktop="center" class="text-xl">
+			<Parrafo alignMobile="center" alignDesktop="center" class="text-xl max-w-2xl mx-auto">
 				Transformamos ideas en **experiencias digitales exitosas**. Desde sitios web profesionales hasta tiendas online completas.
 			</Parrafo>
 		</div>
 	</section>
 
 		<!-- Servicios Grid -->
-		<section class="section section-padding">
+		<section class="no-p-section section-padding">
 			<div class="max-w-7xl mx-auto">
-				<div class="flex flex-col lg:flex-row gap-8">
+				<div class="flex flex-col lg:flex-row gap-17">
 				<!-- Desarrollo Web & Portafolio -->
 				<ServiceCard
 						tag="68% DESCUENTO"
-						tagStyle="bg-gradient-to-r from-red-500 to-red-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
-						headerBackground="/img/gradients/service-bg.png"
+						tagStyle="bg-gradient-to-r ring-2 ring-blue-300 from-blue-900 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+						headerBackground="/img/gradients/header-service-bg.png"
 						cardBackground="/img/gradients/service-bg.png"
 						icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
 						border={true}
+						priceLabel="PRECIO ANTES"
 						price="299,000"
 						previousPrice="969000"
 						title="Desarrollo Web & Portafolio"
@@ -80,18 +83,18 @@ const preguntasServicios = [
 							<ServiceFeature 
 								name="Galería Interactiva" 
 								icon="<path d='M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z'/>" 
-								description="Sistema de galería avanzado con lightbox, filtros por categoría, lazy loading y efectos de transición suaves."
+								description="Pagina de Inicio, Precios y Servicios, Proyectos, Testimonios y Sobre Mi. Diseño profesional, efectos de transición y animaciones suaves."
 								isCard={true}
 								isLastCard={true}
 							/>
 							
 							<!-- Características normales -->
 							<ServiceFeature 
-								name="Hasta 5 páginas personalizadas" 
+								name="Hasta 6 páginas personalizadas" 
 								icon="<path d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/>"
 							/>
 							<ServiceFeature 
-								name="Formulario de contacto integrado" 
+								name="Formulario de contacto integrado que envía los datos a tu correo electronico o WhatsApp" 
 								icon="<path d='M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z'/>"
 							/>
 							<ServiceFeature 
@@ -103,18 +106,19 @@ const preguntasServicios = [
 								icon="<path d='M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z'/>"
 							/>
 							<ServiceFeature 
-							name="Capacitación y documentación" 
+							name="Capacitación y documentación de como funcionará tu Página Web" 
 							icon="<path d='M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z'/>"
 						/>
 					</div>
 					<div slot="includes">
 						<ServiceInclude 
 							items={[
+								"Soporte técnico y cambios en tu Página Web por 1 mes gratis.",
+								"Enlace a redes sociales",
+								"Botones que llevan directo a tu WhatsApp o correo electronico",
 								"Dominio .com por 1 año",
 								"Hosting premium por 1 año",
-								"Certificado SSL incluido",
-								"Soporte técnico por 3 meses",
-								"Manual de administración"
+								"Certificado SSL para generar confianza y seguridad en tus clientes",
 							]}
 						/>
 					</div>
@@ -122,36 +126,36 @@ const preguntasServicios = [
 
 				<!-- Tienda Online -->
 				<ServiceCard
-					tag="POPULAR"
+					tag="EL MÁS POPULAR"
 					tagStyle="bg-gradient-to-r from-blue-500 to-blue-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
-					headerBackground="/img/gradients/service-bg2.png"
+					headerBackground="/img/gradients/header-service-bg2.png"
 					cardBackground="/img/gradients/service-bg2.png"
 					icon="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
 					border={false}
-					price="599,000"
+					price="659,000"
 					priceLabel="PRECIO ANTES"
-					previousPrice="969,000"
+					previousPrice="1,340,000"
 					title="Tienda Online Completa"
-					description="Vende online 24/7 con nuestra tienda completa. Integración con WhatsApp y Shopify para maximizar tus ventas."
+					description="Vende 24/7 con tu tienda online con Shopify o mensajes de pedidos a WhatsApp para maximizar tus ventas."
 				>
 					<div slot="features">
 						<!-- Características tipo card -->
 						<ServiceFeature 
-							name="Ventas Automáticas WhatsApp" 
+							name="(Opcion 1) Ventas directas a WhatsApp" 
 							icon="<path d='M17,12V3A1,1 0 0,0 16,2H3A1,1 0 0,0 2,3V12A1,1 0 0,0 3,13H16A1,1 0 0,0 17,12M4,4H15V11H4V4M20,6V10H18V6H20M20,19V15H18V19H20M20,13H18V11H20V13Z'/>" 
-							description="Sistema automatizado que envía detalles del producto y procesa pedidos directamente por WhatsApp, aumentando conversiones hasta 300%."
+							description="Sistema automatizado que envía detalles del producto y para procesar pedidos directamente por WhatsApp, aumentando conversiones hasta 300% y teniendo más cercanía con tus clientes."
 							isCard={true}
 						/>
 						<ServiceFeature 
-							name="Integración Shopify Premium" 
+							name="(Opcion 2) Integración Shopify Premium" 
 							icon="<path d='M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z'/>" 
-							description="Conexión completa con Shopify para gestión avanzada de inventario, pedidos, pagos y análisis de ventas en tiempo real."
+							description="Tú eliges el plan mensual con Shopify y nosotros no encargamos de hacer la Página Web con la conexión completa para la gestión de inventario, pedidos, pagos y análisis de ventas en tiempo real."
 							isCard={true}
 						/>
 						<ServiceFeature 
 							name="Panel de Control Avanzado" 
 							icon="<path d='M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z'/>" 
-							description="Dashboard completo con métricas de ventas, gestión de productos, clientes, reportes detallados y herramientas de marketing."
+							description="Dashboard completo con métricas de ventas, gestión de productos, clientes, reportes, y herramientas de marketing."
 							isCard={true}
 							isLastCard={true}
 						/>
@@ -166,13 +170,13 @@ const preguntasServicios = [
 							icon="<path d='M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.11,4 20,4M20,18H4V8H20V18Z'/>"
 						/>
 						<ServiceFeature 
-							name="Gestión de inventario automática" 
+							name="Gestión de inventario fácil de usar" 
 							icon="<path d='M12,2A2,2 0 0,1 14,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H10V4A2,2 0 0,1 12,2M12,4V6H12V4M4,8V19H20V8H4Z'/>"
-						/>
+						/><!-- 
 						<ServiceFeature 
 							name="Notificaciones en tiempo real" 
 							icon="<path d='M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21'/>"
-						/>
+						/>-->
 						<ServiceFeature 
 							name="Capacitación personalizada" 
 							icon="<path d='M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z'/>"
@@ -181,12 +185,13 @@ const preguntasServicios = [
 					<div slot="includes">
 						<ServiceInclude 
 							items={[
+								"Dashboard para agregar, eliminar, editar y gestionar productos.",
 								"Dominio .com por 1 año",
 								"Hosting e-commerce premium por 1 año",
 								"Certificado SSL premium",
-								"Soporte técnico por 3 meses",
+								"Soporte técnico por 2 meses",
 								"Configuración de pasarela de pago",
-								"Carga de hasta 50 productos"
+								"Carga de hasta 1000 productos"
 							]}
 						/>
 					</div>
@@ -194,11 +199,13 @@ const preguntasServicios = [
 
 				<!-- Remodelación Web -->
 				<ServiceCard
-					headerBackground="/img/gradients/service-bg3.png"
+					tag="RENOVACIÓN"
+					tagStyle="bg-gradient-to-r from-gray-800 to-gray-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+					headerBackground="/img/gradients/header-service-bg3.png"
 					cardBackground="/img/gradients/service-bg3.png"
 					icon="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
-					price="399,000"
-					priceLabel="precio inicial"
+					price="269,000"
+					priceLabel="Puede aumentar según proyecto"
 					title="Remodelación Web"
 					description="Transforma tu sitio web obsoleto en una herramienta moderna que genere más leads y ventas para tu negocio."
 				>
@@ -250,10 +257,11 @@ const preguntasServicios = [
 						<ServiceInclude 
 							items={[
 								"Análisis completo del sitio actual",
-								"Backup completo antes de iniciar",
+								"Copia de seguridad completa antes de iniciar",
+								"Rediseño de imagenes y/o videos",
 								"Rediseño responsive completo",
 								"Optimización de velocidad",
-								"Soporte post-lanzamiento 30 días"
+								"Soporte después del lanzamiento por 30 días"
 							]}
 						/>
 					</div>
@@ -264,17 +272,65 @@ const preguntasServicios = [
 
 		<FAQ preguntas={preguntasServicios} />
 
-		<!-- CTA Section -->
-		<section class="section section-padding">
-			<div class="max-w-4xl mx-auto text-center">
-				<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="proyecto" class="mb-6">
-					¿Necesitas ayuda con tu proyecto?
-				</Titulo>
-				<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
-					Contáctanos para una **consulta gratuita** y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
-				</Parrafo>
-				<BotonPrimario href="/contacto">Contactar Ahora</BotonPrimario>
+		<!-- Banner CTA -->
+		<section class="px-3">
+		<div class="pt-10 lg:pt-18 px-5 lg:px-5 max-w-7xl rounded-4xl mx-auto bg-[url('/img/bg/cta-banner.png')] bg-cover bg-top bg-no-repeat overflow-hidden">
+			<div class="max-w-6xl mx-auto pb-0">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+					<!-- Contenido izquierda -->
+					<div class="text-center lg:text-left">
+						<Titulo level={1} alignMobile="left" alignDesktop="left" highlight="proyecto" class="mb-6">
+							¿Necesitas ayuda con tu proyecto?
+						</Titulo>
+						<Parrafo alignMobile="left" alignDesktop="left" class="mb-8 max-w-[450px]">
+							Contáctanos para una **consulta gratuita** y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
+						</Parrafo>
+						<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+							<BotonPrimario href="/contacto">Contactar Ahora</BotonPrimario>
+							<BotonSecundario href="/servicios">Ver Servicios</BotonSecundario>
+						</div>
+						
+						<!-- Métricas -->
+						<div class="flex flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8">
+							<!-- Métrica 1 -->
+							<div class="flex flex-col items-center text-center">
+								<svg class="w-8 h-8 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+								</svg>
+								<span class="text-gray-400 text-lg">+Ventas</span>
+							</div>
+							
+							<!-- Separador -->
+							<div class="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-white to-transparent opacity-30"></div>
+							
+							<!-- Métrica 2 -->
+							<div class="flex flex-col items-center text-center">
+								<svg class="w-8 h-8 text-green-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+								</svg>
+								<span class="text-gray-400 text-lg">+Ganancias</span>
+							</div>
+							
+							<!-- Separador -->
+							<div class="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-white to-transparent opacity-30"></div>
+							
+							<!-- Métrica 3 -->
+							<div class="flex flex-col items-center text-center">
+								<svg class="w-8 h-8 text-purple-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+								</svg>
+								<span class="text-gray-400 text-lg">+Clientes</span>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Imagen derecha -->
+					<div class="w-full lg:flex lg:justify-end ">
+						<img src="/img/stock/banner.webp" alt="Banner CTA" class="w-full" />
+					</div>
+				</div>
 			</div>
+		</div>
 		</section>
 	</div>
 </Layout>

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" class="w-full h-auto">
+  <defs>
+    <linearGradient id="weakBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef2f2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fee2e2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="strongBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0fdf4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dcfce7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="weakBtn" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f3f4f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e5e7eb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="strongBtn" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8fafc" rx="12"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="text-xl font-bold" fill="#1e293b">
+    CTAs Débiles vs CTAs Fuertes
+  </text>
+  
+  <!-- Divider line -->
+  <line x1="400" y1="50" x2="400" y2="370" stroke="#d1d5db" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- WEAK CTA Section -->
+  <rect x="20" y="60" width="360" height="300" fill="url(#weakBg)" stroke="#fca5a5" stroke-width="2" rx="8"/>
+  
+  <!-- Weak CTA Header -->
+  <text x="200" y="85" text-anchor="middle" class="text-lg font-bold" fill="#dc2626">
+    ❌ CTA Débil
+  </text>
+  
+  <!-- Weak CTA Example -->
+  <rect x="40" y="110" width="320" height="180" fill="white" stroke="#e5e7eb" stroke-width="1" rx="6"/>
+  
+  <!-- Weak CTA Content -->
+  <text x="200" y="135" text-anchor="middle" class="text-sm" fill="#374151">
+    Nuestros servicios son muy buenos
+  </text>
+  <text x="200" y="155" text-anchor="middle" class="text-sm" fill="#6b7280">
+    Ofrecemos soluciones de calidad
+  </text>
+  <text x="200" y="175" text-anchor="middle" class="text-sm" fill="#6b7280">
+    para empresas como la suya
+  </text>
+  
+  <!-- Weak Button -->
+  <rect x="140" y="200" width="120" height="35" fill="url(#weakBtn)" stroke="#d1d5db" stroke-width="1" rx="4"/>
+  <text x="200" y="220" text-anchor="middle" class="text-sm" fill="#6b7280">
+    Más información
+  </text>
+  
+  <!-- Weak CTA Problems -->
+  <text x="50" y="315" class="text-xs font-semibold" fill="#dc2626">Problemas:</text>
+  <text x="50" y="330" class="text-xs" fill="#991b1b">• Vago y genérico</text>
+  <text x="50" y="345" class="text-xs" fill="#991b1b">• Sin urgencia ni beneficio claro</text>
+  
+  <!-- STRONG CTA Section -->
+  <rect x="420" y="60" width="360" height="300" fill="url(#strongBg)" stroke="#86efac" stroke-width="2" rx="8"/>
+  
+  <!-- Strong CTA Header -->
+  <text x="600" y="85" text-anchor="middle" class="text-lg font-bold" fill="#16a34a">
+    ✅ CTA Fuerte
+  </text>
+  
+  <!-- Strong CTA Example -->
+  <rect x="440" y="110" width="320" height="180" fill="white" stroke="#e5e7eb" stroke-width="1" rx="6"/>
+  
+  <!-- Strong CTA Content -->
+  <text x="600" y="135" text-anchor="middle" class="text-sm font-semibold" fill="#1f2937">
+    Duplica tus ventas en 90 días
+  </text>
+  <text x="600" y="155" text-anchor="middle" class="text-sm" fill="#374151">
+    Estrategia probada que ha ayudado
+  </text>
+  <text x="600" y="175" text-anchor="middle" class="text-sm" fill="#374151">
+    a +200 empresas a crecer
+  </text>
+  
+  <!-- Strong Button -->
+  <rect x="520" y="195" width="160" height="40" fill="url(#strongBtn)" stroke="#15803d" stroke-width="1" rx="6"/>
+  <text x="600" y="218" text-anchor="middle" class="text-sm font-bold" fill="white">
+    QUIERO MI CONSULTA GRATIS
+  </text>
+  
+  <!-- Urgency indicator -->
+  <rect x="540" y="245" width="120" height="20" fill="#fbbf24" rx="10"/>
+  <text x="600" y="257" text-anchor="middle" class="text-xs font-bold" fill="#92400e">
+    Solo por 48 horas
+  </text>
+  
+  <!-- Strong CTA Benefits -->
+  <text x="450" y="315" class="text-xs font-semibold" fill="#16a34a">Beneficios:</text>
+  <text x="450" y="330" class="text-xs" fill="#15803d">• Específico y con beneficio claro</text>
+  <text x="450" y="345" class="text-xs" fill="#15803d">• Urgencia y llamada a la acción directa</text>
+  
+  <!-- Conversion rates -->
+  <circle cx="200" cy="380" r="15" fill="#dc2626"/>
+  <text x="200" y="385" text-anchor="middle" class="text-xs font-bold" fill="white">2%</text>
+  <text x="200" y="395" text-anchor="middle" class="text-xs" fill="#6b7280">Conversión</text>
+  
+  <circle cx="600" cy="380" r="15" fill="#16a34a"/>
+  <text x="600" y="385" text-anchor="middle" class="text-xs font-bold" fill="white">12%</text>
+  <text x="600" y="395" text-anchor="middle" class="text-xs" fill="#6b7280">Conversión</text>
+  
+  <!-- Arrow showing improvement -->
+  <path d="M 220 380 Q 400 360 580 380" stroke="#059669" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669" />
+    </marker>
+  </defs>
+  
+  <text x="400" y="350" text-anchor="middle" class="text-sm font-bold" fill="#059669">
+    +500% mejora
+  </text>
+</svg>

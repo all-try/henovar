@@ -1,0 +1,129 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getBlogPost } from '../../data/blogs.ts';
+
+const post = getBlogPost('7-errores-mortales-web-negocios-ahuyentan-ventas');
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<BlogLayout
+  title={post.title}
+  description={post.excerpt}
+  author={post.author}
+  category={post.category}
+  date={post.date}
+  readTime={post.readTime}
+  image={post.image}
+  tags={post.tags}
+  cta={post.cta}
+>
+  <h1 data-toc-text="Introducción">Los 7 errores mortales en una web de negocios que ahuyentan ventas</h1>
+  
+  <p>Tu sitio web es la cara digital de tu negocio, pero ¿sabías que podría estar ahuyentando a tus mejores clientes sin que te des cuenta? En este artículo, descubrirás los 7 errores más comunes que están costándole dinero a tu negocio cada día.</p>
+
+  <h2 data-toc-text="1. Tiempo de carga lento">1. Tiempo de carga lento: El asesino silencioso de conversiones</h2>
+  
+  <p>Un sitio web que tarda más de 3 segundos en cargar pierde el 40% de sus visitantes antes de que siquiera vean tu contenido. Esto no es solo una estadística, es dinero que se va por el desagüe.</p>
+  
+  <div class="info-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>Dato importante</h4>
+    <p>Google considera la velocidad de carga como factor de ranking. Un sitio lento no solo pierde visitantes, sino también posicionamiento en buscadores.</p>
+  </div>
+
+  <h3>¿Cómo solucionarlo?</h3>
+  <ul>
+    <li>Optimiza las imágenes (usa formatos WebP)</li>
+    <li>Minimiza el código CSS y JavaScript</li>
+    <li>Utiliza un CDN (Content Delivery Network)</li>
+    <li>Elige un hosting de calidad</li>
+  </ul>
+
+  <h2 data-toc-text="2. Diseño no responsive">2. Diseño no responsive: Perdiendo el 60% del tráfico móvil</h2>
+  
+  <p>Más del 60% de las búsquedas se realizan desde dispositivos móviles. Si tu sitio no se ve bien en smartphones y tablets, estás literalmente rechazando a la mayoría de tus potenciales clientes.</p>
+
+  <div class="warning-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>Alerta</h4>
+    <p>Google usa "Mobile-First Indexing", lo que significa que evalúa tu sitio principalmente desde la perspectiva móvil para determinar tu ranking.</p>
+  </div>
+
+  <h2 data-toc-text="3. Navegación confusa">3. Navegación confusa: El laberinto que espanta clientes</h2>
+  
+  <p>Si un visitante no puede encontrar lo que busca en menos de 3 clics, se irá a la competencia. Una navegación clara y intuitiva es fundamental para mantener a los usuarios en tu sitio.</p>
+
+  <h3>Elementos clave de una buena navegación:</h3>
+  <ul>
+    <li>Menú principal claro y visible</li>
+    <li>Breadcrumbs (migas de pan)</li>
+    <li>Buscador interno funcional</li>
+    <li>Enlaces internos relevantes</li>
+  </ul>
+
+  <h2 data-toc-text="4. Falta de CTAs claras">4. Falta de llamadas a la acción claras</h2>
+  
+  <p>Muchos sitios web son como vendedores tímidos: muestran sus productos pero nunca piden la venta. Sin CTAs (Call-to-Action) claros y estratégicamente ubicados, los visitantes no sabrán qué hacer a continuación.</p>
+
+  <div class="highlight-section">
+    <h3>Características de un CTA efectivo:</h3>
+    <ul>
+      <li><strong>Acción clara:</strong> "Compra ahora", "Solicita cotización", "Descarga gratis"</li>
+      <li><strong>Colores contrastantes:</strong> Que destaque del resto del diseño</li>
+      <li><strong>Ubicación estratégica:</strong> Above the fold y al final de secciones importantes</li>
+      <li><strong>Urgencia:</strong> "Oferta limitada", "Solo por hoy"</li>
+    </ul>
+  </div>
+
+  <h2 data-toc-text="5. Contenido pobre">5. Contenido pobre o desactualizado</h2>
+  
+  <p>El contenido es el rey, pero un rey sin corona no inspira confianza. Contenido mal escrito, con errores ortográficos o información desactualizada hace que tu negocio se vea poco profesional.</p>
+
+  <h3>Señales de contenido pobre:</h3>
+  <ul>
+    <li>Textos genéricos copiados de otros sitios</li>
+    <li>Información de contacto desactualizada</li>
+    <li>Precios obsoletos</li>
+    <li>Noticias o blog abandonado</li>
+  </ul>
+
+  <h2 data-toc-text="6. Falta de confianza">6. Ausencia de elementos de confianza</h2>
+  
+  <p>En el mundo digital, la confianza se construye con elementos visibles. Sin testimonios, certificaciones, garantías o información de contacto clara, los visitantes dudarán de tu legitimidad.</p>
+
+  <div class="info-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>Elementos que generan confianza</h4>
+    <ul>
+      <li>Testimonios reales con fotos</li>
+      <li>Certificados SSL (candado verde)</li>
+      <li>Información de contacto completa</li>
+      <li>Políticas de privacidad y términos</li>
+      <li>Logos de clientes o partners</li>
+    </ul>
+  </div>
+
+  <h2 data-toc-text="7. Formularios complicados">7. Formularios complicados o invasivos</h2>
+  
+  <p>Pedir demasiada información muy pronto es como pedirle matrimonio en la primera cita. Los formularios largos y complicados son una barrera enorme para la conversión.</p>
+
+  <h3>Mejores prácticas para formularios:</h3>
+  <ul>
+    <li>Pide solo la información esencial</li>
+    <li>Usa validación en tiempo real</li>
+    <li>Explica por qué necesitas cada dato</li>
+    <li>Ofrece algo a cambio (lead magnet)</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>¿Tu sitio web comete estos errores?</h3>
+    <p>No dejes que estos errores sigan costándote clientes y dinero. Nuestro equipo puede identificar y corregir estos problemas para convertir tu sitio web en una máquina de generar leads.</p>
+    <p><strong>Solicita una auditoría gratuita de tu sitio web y descubre qué está fallando.</strong></p>
+  </div>
+
+  <h2 data-toc-text="Conclusión">Conclusión: Tu sitio web debe trabajar para ti, no en tu contra</h2>
+  
+  <p>Estos 7 errores son más comunes de lo que piensas, pero la buena noticia es que todos tienen solución. Un sitio web optimizado no es un gasto, es una inversión que se paga sola generando más leads, más ventas y más crecimiento para tu negocio.</p>
+
+  <p>Recuerda: en el mundo digital, no tienes una segunda oportunidad para causar una primera buena impresión. Asegúrate de que tu sitio web esté trabajando a tu favor, no en tu contra.</p>
+</BlogLayout>
