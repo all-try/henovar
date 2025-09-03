@@ -13,8 +13,7 @@ import FAQ from '../components/FAQ.astro';
 import { projects } from '../data/projects.ts';
 import { getOptimizedImage } from '../utils/imageMap';
 import ModalScript from '../components/ModalScript.astro';
-import ctaBannerBg from '../../public/img/bg/cta-banner.png';
-import bannerWebs from '../../public/img/stock/banner-webs.png';
+
 import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 
 const preguntasProyectos = [
@@ -86,8 +85,8 @@ const preguntasProyectos = [
 		titulo="¿Tienes un proyecto en mente?"
 		highlight="proyecto"
 		parrafo="Contáctanos y descubre cómo podemos **hacer realidad tu visión** con soluciones digitales innovadoras."
-		imagenFondo={ctaBannerBg}
-		imagenAcompanante={bannerWebs}
+		imagenFondo={getOptimizedImage('/img/bg/cta-banner.png')}
+		imagenAcompanante={getOptimizedImage('/img/stock/banner-webs.png')}
 		imagenAlt="Proyectos Banner CTA"
 		metricas={[
 			{

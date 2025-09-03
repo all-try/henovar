@@ -9,8 +9,7 @@ import BannerCTA from '../components/BannerCTA.astro';
 import NosotrosCard from '../components/NosotrosCard.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import { getOptimizedImage } from '../utils/imageMap';
-import ctaBannerBg from '../../public/img/bg/cta-banner.png';
-import bannerWebs from '../../public/img/stock/banner-webs.png';
+
 import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 ---
 
@@ -180,8 +179,8 @@ import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 			titulo="¿Tienes una idea? Hablemos"
 			highlight="idea"
 			parrafo="Independientemente de la complejidad o especificidad de tu proyecto, **estamos aquí para escucharte** y explorar cómo podemos ayudarte a materializarlo."
-			imagenFondo={ctaBannerBg}
-			imagenAcompanante={bannerWebs}
+			imagenFondo={getOptimizedImage('/img/bg/cta-banner.png')}
+			imagenAcompanante={getOptimizedImage('/img/stock/banner-webs.png')}
 			imagenAlt="Nosotros Banner CTA"
 			metricas={[
 				{

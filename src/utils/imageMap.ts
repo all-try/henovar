@@ -30,6 +30,7 @@ import felipeCordoba from '../assets/images/persons/felipe-cordoba.webp';
 import fernandaCaro from '../assets/images/persons/fernanda-caro.webp';
 import miguelGonzales from '../assets/images/persons/miguel-gonzales.webp';
 import pedroMarin from '../assets/images/persons/pedro-marin.webp';
+import defaultPerson from '../assets/images/persons/default.webp';
 
 // Gradient images
 import abstract1 from '../assets/images/gradients/abstract-1.webp';
@@ -37,6 +38,12 @@ import abstract2 from '../assets/images/gradients/abstract-2.webp';
 import abstract3 from '../assets/images/gradients/abstract-3.webp';
 import abstract4 from '../assets/images/gradients/abstract-4.webp';
 import topLight from '../assets/images/gradients/top-light.webp';
+import headerServiceBg from '../assets/images/gradients/header-service-bg.png';
+import serviceBg from '../assets/images/gradients/service-bg.png';
+import headerServiceBg2 from '../assets/images/gradients/header-service-bg2.png';
+import serviceBg2 from '../assets/images/gradients/service-bg2.png';
+import headerServiceBg3 from '../assets/images/gradients/header-service-bg3.png';
+import serviceBg3 from '../assets/images/gradients/service-bg3.png';
 
 // Imágenes de stock
 import tiendasEjemplos from '../assets/images/stock/tiendas-ejemplos.png';
@@ -48,6 +55,9 @@ import testimonioWeb from '../assets/images/stock/testimonio-web.png';
 import remodelacionWeb from '../assets/images/stock/remodelacion-web.png';
 import banner from '../assets/images/stock/banner.png';
 import henovarBanner from '../assets/images/stock/henovar-banner.png';
+import bannerLaptopWeb from '../assets/images/stock/banner-laptop-web.png';
+import bannerWebs from '../assets/images/stock/banner-webs.png';
+import testimonialWeb from '../assets/images/stock/testimonial-web.png';
 
 // Imágenes de fondo
 import largeBg from '../assets/images/bg/large-bg.png';
@@ -108,6 +118,7 @@ export const imageMap = {
   '/img/persons/fernanda-caro.webp': fernandaCaro,
   '/img/persons/miguel-gonzales.webp': miguelGonzales,
   '/img/persons/pedro-marin.webp': pedroMarin,
+  '/img/persons/default.webp': defaultPerson,
   
   // Gradients
   '/img/gradients/abstract-1.webp': abstract1,
@@ -115,6 +126,12 @@ export const imageMap = {
   '/img/gradients/abstract-3.webp': abstract3,
   '/img/gradients/abstract-4.webp': abstract4,
   '/img/gradients/top-light.webp': topLight,
+  '/img/gradients/header-service-bg.png': headerServiceBg,
+  '/img/gradients/service-bg.png': serviceBg,
+  '/img/gradients/header-service-bg2.png': headerServiceBg2,
+  '/img/gradients/service-bg2.png': serviceBg2,
+  '/img/gradients/header-service-bg3.png': headerServiceBg3,
+  '/img/gradients/service-bg3.png': serviceBg3,
   
   // Stock images
   '/img/stock/tiendas-ejemplos.png': tiendasEjemplos,
@@ -126,6 +143,9 @@ export const imageMap = {
   '/img/stock/remodelacion-web.png': remodelacionWeb,
   '/img/stock/banner.png': banner,
   '/img/stock/henovar-banner.png': henovarBanner,
+  '/img/stock/banner-laptop-web.png': bannerLaptopWeb,
+  '/img/stock/banner-webs.png': bannerWebs,
+  '/img/stock/testimonial-web.png': testimonialWeb,
   '/img/stock/404.png': error404,
 
   // Background images
@@ -159,4 +179,10 @@ export const imageMap = {
 // Función helper para obtener imagen optimizada
 export function getOptimizedImage(path: string) {
   return imageMap[path as keyof typeof imageMap] || path;
+}
+
+// Función helper para obtener URL de imagen para CSS
+export function getOptimizedImageSrc(path: string) {
+  const image = imageMap[path as keyof typeof imageMap];
+  return image ? image.src : path;
 }

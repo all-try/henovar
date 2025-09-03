@@ -16,7 +16,7 @@ import ProjectModal from '../components/ProjectModal.astro';
 import { Image } from 'astro:assets';
 import { blogPosts, getFeaturedPosts } from '../data/blogs';
 import { projects } from '../data/projects';
-import { getOptimizedImage } from '../utils/imageMap';
+import { getOptimizedImage, getOptimizedImageSrc } from '../utils/imageMap';
 import ModalScript from '../components/ModalScript.astro';
 
 // Obtener blogs destacados primero, luego completar con regulares hasta máximo 3
@@ -44,10 +44,10 @@ const originalImagePaths: { [key: string]: string } = {
 	description="Transformamos ideas en soluciones digitales innovadoras. Especialistas en desarrollo web, consultoría tecnológica y proyectos digitales."
 	keywords="desarrollo web, consultoría tecnológica, soluciones digitales, programación, diseño web, proyectos digitales"
 >
-	<div class="bg-[url('/img/bg/large-bg.png')] bg-cover bg-top bg-no-repeat">
+	<div class="bg-cover bg-top bg-no-repeat" style={`background-image: url('${getOptimizedImageSrc('/img/bg/large-bg.png')}')`}>
 	<!-- Hero Section -->
 	<section class="pb-7 px-3 lg:px-7 pt-25 lg:pt-0">
-		<div class="pb-5 lg:pb-12 pt-5 lg:pt-40 px-5 lg:px-5 max-w-full rounded-2xl lg:rounded-t-none mx-auto bg-[url('/img/bg/banner.webp')] bg-cover bg-top bg-no-repeat">
+		<div class="pb-5 lg:pb-12 pt-5 lg:pt-40 px-5 lg:px-5 max-w-full rounded-2xl lg:rounded-t-none mx-auto bg-cover bg-top bg-no-repeat" style={`background-image: url('${getOptimizedImageSrc('/img/bg/banner.webp')}')`}>
 		<div class="w-full">
 			<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<!-- Contenido izquierda -->
@@ -292,70 +292,70 @@ const originalImagePaths: { [key: string]: string } = {
 				<div class="flex gap-6 mb-6 animate-slide-left" style="width: 200%;">
 					<IndexTestimonio 
 						nombre="María González"
-						foto="/img/persons/maria-gonzales.webp"
+						foto={getOptimizedImageSrc("/img/persons/maria-gonzales.webp")}
 						cargo="CEO, Veo Solutions"
 						testimonio="El equipo de Henovar transformó completamente nuestra presencia digital. Su enfoque profesional y atención al detalle superaron nuestras expectativas."
 						fecha="10 de enero de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Carlos Rodríguez"
-						foto="/img/persons/carlos-rodriguez.webp"
+						foto={getOptimizedImageSrc("/img/persons/carlos-rodriguez.webp")}
 						cargo="Dropshipper"
 						testimonio="Increíble trabajo en nuestra plataforma e-commerce. Las ventas aumentaron un 300% después del lanzamiento."
 						fecha="12 de junio de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Ana Martínez"
-						foto="/img/persons/ana-martinez.webp"
+						foto={getOptimizedImageSrc("/img/persons/ana-martinez.webp")}
 						cargo="Fundadora, DigitalPlus"
 						testimonio="Increíble trabajo de Henovar. Mi página web se ve súper profesional y moderna. Los clientes ahora me encuentran fácilmente y las ventas han aumentado considerablemente."
 						fecha="15 de abril de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Roberto Silva"
-						foto="/img/persons/roberto-silva.webp"
+						foto={getOptimizedImageSrc("/img/persons/roberto-silva.webp")}
 						cargo="Diseñador UX"
 						testimonio="Los contraté porque no tenía tiempo para renovar la web de un cliente fijo. Excelente arquitectura técnica y código limpio."
 						fecha="8 de marzo de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Laura Fernández"
-						foto="/img/persons/laura-fernandez.webp"
+						foto={getOptimizedImageSrc("/img/persons/laura-fernandez.webp")}
 						cargo="Abogada"
 						testimonio="Su experiencia en desarrollo de portafolios web es excepcional. Cumplieron todos los estándares de información y venta para mis servicios."
 						fecha="10 de mayo de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Adolfo Parra"
-						foto="/img/persons/adolfo-parra.webp"
+						foto={getOptimizedImageSrc("/img/persons/adolfo-parra.webp")}
 						cargo="CEO, TechStart"
 						testimonio="Me encantó el resultado final. La página quedó muy profesional y con los botones de WhatsApp integrados ahora mis clientes me contactan directamente."
 						fecha="10 de enero de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Matías Puerta"
-						foto="/img/persons/matias-puerta.webp"
+						foto={getOptimizedImageSrc("/img/persons/matias-puerta.webp")}
 						cargo="Director, InnovaWeb"
 						testimonio="Henovar transformó por completo la presencia digital de mi empresa. Pasamos de no tener nada a tener una página web profesional que genera confianza."
 						fecha="12 de junio de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Clara Murillo"
-						foto="/img/persons/clara-murillo.webp"
+						foto={getOptimizedImageSrc("/img/persons/clara-murillo.webp")}
 						cargo="Fundadora, DigitalPlus"
 						testimonio="Increíble trabajo de Henovar. Mi página web se ve súper profesional y moderna. Los clientes ahora me encuentran fácilmente."
 						fecha="15 de abril de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Elizabeth Jaramillo"
-						foto="/img/persons/elizabeth-jaramillo.webp"
+						foto={getOptimizedImageSrc("/img/persons/elizabeth-jaramillo.webp")}
 						cargo="Gerente, SolutionsPro"
 						testimonio="El sitio web que Henovar diseñó para mi empresa superó todas mis expectativas. Es rápido, moderno y totalmente personalizado."
 						fecha="8 de marzo de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Kely Martínez"
-						foto="/img/persons/kely-martinez.webp"
+						foto={getOptimizedImageSrc("/img/persons/kely-martinez.webp")}
 						cargo="CTO, DevSolutions"
 						testimonio="Gracias a Henovar, logramos tener nuestra página lista en pocos días. El diseño refleja perfectamente la identidad de nuestra marca."
 						fecha="10 de mayo de 2025"
@@ -366,70 +366,70 @@ const originalImagePaths: { [key: string]: string } = {
 				<div class="flex gap-6 animate-slide-right" style="width: 200%;">
 					<IndexTestimonio 
 						nombre="Saray Fuentes"
-						foto="/img/persons/saray-fuentes.webp"
+						foto={getOptimizedImageSrc("/img/persons/saray-fuentes.webp")}
 						cargo="Directora, CreativeStudio"
 						testimonio="La atención al cliente de Henovar es excepcional. Siempre estuvieron disponibles para resolver mis dudas y hacer ajustes."
 						fecha="22 de febrero de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Felipe Córdoba"
-						foto="/img/persons/felipe-cordoba.webp"
+						foto={getOptimizedImageSrc("/img/persons/felipe-cordoba.webp")}
 						cargo="Propietario, LocalBusiness"
 						testimonio="Desde que tengo mi página web con Henovar, mi negocio local ha crecido exponencialmente. Los clientes me encuentran en Google."
 						fecha="5 de enero de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Fernanda Caro"
-						foto="/img/persons/fernanda-caro.webp"
+						foto={getOptimizedImageSrc("/img/persons/fernanda-caro.webp")}
 						cargo="Consultora, BusinessGrow"
 						testimonio="Henovar no solo me entregó una página web, sino una herramienta de ventas completa. El diseño es elegante y funcional."
 						fecha="18 de abril de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Miguel Gonzales"
-						foto="/img/persons/miguel-gonzales.webp"
+						foto={getOptimizedImageSrc("/img/persons/miguel-gonzales.webp")}
 						cargo="Fundador, StartupTech"
 						testimonio="La velocidad de carga de mi sitio web es impresionante. Henovar optimizó todo perfectamente y ahora tengo una ventaja competitiva."
 						fecha="30 de marzo de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Pedro Marín"
-						foto="/img/persons/pedro-marin.webp"
+						foto={getOptimizedImageSrc("/img/persons/pedro-marin.webp")}
 						cargo="Gerente, RetailPlus"
 						testimonio="El equipo de Henovar entendió perfectamente mi visión y la plasmó en una página web espectacular. La integración con redes sociales funciona de maravilla."
 						fecha="14 de febrero de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Clara Murillo"
-						foto="/img/persons/clara-murillo.webp"
+						foto={getOptimizedImageSrc("/img/persons/clara-murillo.webp")}
 						cargo="Directora, CreativeStudio"
 						testimonio="La atención al cliente de Henovar es excepcional. Siempre estuvieron disponibles para resolver mis dudas y hacer ajustes."
 						fecha="22 de febrero de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Adolfo Parra"
-						foto="/img/persons/adolfo-parra.webp"
+						foto={getOptimizedImageSrc("/img/persons/adolfo-parra.webp")}
 						cargo="Propietario, LocalBusiness"
 						testimonio="Desde que tengo mi página web con Henovar, mi negocio local ha crecido exponencialmente. Los clientes me encuentran en Google."
 						fecha="5 de enero de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Elizabeth Jaramillo"
-						foto="/img/persons/elizabeth-jaramillo.webp"
+						foto={getOptimizedImageSrc("/img/persons/elizabeth-jaramillo.webp")}
 						cargo="Consultora, BusinessGrow"
 						testimonio="Henovar no solo me entregó una página web, sino una herramienta de ventas completa. El diseño es elegante y funcional."
 						fecha="18 de abril de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Matías Puerta"
-						foto="/img/persons/matias-puerta.webp"
+						foto={getOptimizedImageSrc("/img/persons/matias-puerta.webp")}
 						cargo="Fundador, StartupTech"
 						testimonio="La velocidad de carga de mi sitio web es impresionante. Henovar optimizó todo perfectamente y ahora tengo una ventaja competitiva."
 						fecha="30 de marzo de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Kely Martínez"
-						foto="/img/persons/kely-martinez.webp"
+						foto={getOptimizedImageSrc("/img/persons/kely-martinez.webp")}
 						cargo="Gerente, RetailPlus"
 						testimonio="El equipo de Henovar entendió perfectamente mi visión y la plasmó en una página web espectacular. La integración con redes sociales funciona de maravilla."
 						fecha="14 de febrero de 2025"
@@ -441,7 +441,7 @@ const originalImagePaths: { [key: string]: string } = {
 
 		<!-- Banner CTA -->
 		<section class="px-3">
-		<div class="pt-10 lg:pt-18 px-5 lg:px-5 max-w-7xl rounded-xl border-1 border-white/20 mx-auto bg-[url('/img/bg/cta-banner.png')] bg-cover bg-top bg-no-repeat overflow-hidden">
+		<div class="pt-10 lg:pt-18 px-5 lg:px-5 max-w-7xl rounded-xl border-1 border-white/20 mx-auto bg-cover bg-top bg-no-repeat overflow-hidden" style={`background-image: url('${getOptimizedImageSrc('/img/bg/cta-banner.png')}')`}>
 			<div class="max-w-6xl mx-auto pb-0">
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 					<!-- Contenido izquierda -->
@@ -493,7 +493,7 @@ const originalImagePaths: { [key: string]: string } = {
 					
 					<!-- Imagen derecha -->
 					<div class="w-full lg:flex lg:justify-end ">
-						<Image src={getOptimizedImage("/img/stock/banner.png")} alt="Banner CTA" class="w-full" loading="lazy" />
+						<Image src={getOptimizedImage("/img/stock/banner.png")} alt="Banner CTA" class="w-full" loading="lazy" width={800} height={500} />
 					</div>
 				</div>
 			</div>
@@ -515,7 +515,7 @@ const originalImagePaths: { [key: string]: string } = {
 						</Parrafo>
 						<BotonPrimario href="/nosotros" icon="support">Conocer Más</BotonPrimario>
 					</div>
-					<Image src={getOptimizedImage("/img/stock/henovar-banner.png")} class="h-full w-full object-cover rounded-2xl" alt="" loading="lazy" />
+					<Image src={getOptimizedImage("/img/stock/henovar-banner.png")} class="h-full w-full object-cover rounded-2xl" alt="" loading="lazy" width={800} height={500} />
 				</div>
 			</div>
 		</section>
