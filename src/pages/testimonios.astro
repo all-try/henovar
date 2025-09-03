@@ -11,7 +11,7 @@ import BannerCTA from '../components/BannerCTA.astro';
 import '../styles/testimonials-general.css';
 import FAQ from '../components/FAQ.astro';
 import { Image } from 'astro:assets';
-import { getOptimizedImage, getOptimizedImageSrc } from '../utils/imageMap';
+import { getOptimizedImage } from '../utils/imageMap';
 
 import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 
@@ -24,7 +24,7 @@ const testimonios = [
 		empresa: "Veo Solutions",
 		testimonio: "El equipo de Henovar transformó completamente nuestra presencia digital. Su enfoque profesional y atención al detalle superaron nuestras expectativas.",
 		rating: 5,
-		avatar: getOptimizedImageSrc("/img/persons/maria-gonzales.webp"),
+		avatar: getOptimizedImage("/img/persons/maria-gonzales.webp"),
 		size: "large" // Para bento grid
 	},
 	{
@@ -34,7 +34,7 @@ const testimonios = [
 		empresa: "Independiente",
 		testimonio: "Increíble trabajo en nuestra plataforma e-commerce. Las ventas aumentaron un 300% después del lanzamiento.",
 		rating: 5,
-		avatar: getOptimizedImageSrc("/img/persons/carlos-rodriguez.webp"),
+		avatar: getOptimizedImage("/img/persons/carlos-rodriguez.webp"),
 		size: "medium"
 	},
 	{
@@ -44,7 +44,7 @@ const testimonios = [
 		empresa: "Onsite",
 		testimonio: "Estamos muy felices con nuestro sitio web. Nos dió una imagen más profesional, más confianza a nuestros visitantes, más seguridad en línea y más clientes. Honestamente, nuestro equipo y yo estamos maravillados con la calidad del producto y la velocidad de desarrollo.",
 		rating: 5,
-		avatar: getOptimizedImageSrc("/img/persons/ana-martinez.webp"),
+		avatar: getOptimizedImage("/img/persons/ana-martinez.webp"),
 		size: "medium"
 	},
 	{
@@ -54,7 +54,7 @@ const testimonios = [
 		empresa: "Independiente",
 		testimonio: "Los contraté porque no tenía tiempo para renovar la web de un cliente fijo. Tengo que decir que excelente arquitectura técnica y código limpio. El sistema es escalable y fácil de mantener.",
 		rating: 5,
-		avatar: getOptimizedImageSrc("/img/persons/roberto-silva.webp"),
+		avatar: getOptimizedImage("/img/persons/roberto-silva.webp"),
 		size: "small"
 	},
 	{
@@ -64,7 +64,7 @@ const testimonios = [
 		empresa: "Independiente",
 		testimonio: "Su experiencia en desarrollo de portafolios web es excepcional. Cumplieron todos los estándares de iformacion y venta para mis servicios como abogada.",
 		rating: 5,
-		avatar: getOptimizedImageSrc("/img/persons/laura-fernandez.webp"),
+		avatar: getOptimizedImage("/img/persons/laura-fernandez.webp"),
 		size: "small"
 	},
 	{
@@ -74,7 +74,7 @@ const testimonios = [
 		empresa: "Tuplax",
 		testimonio: "La software que desarrollaron para mi equipo ha revolucionado nuestra operación. Interfaz perfecta y rendimiento excelente. Hasta ahora ningún problema.",
 		rating: 5,
-		avatar: getOptimizedImageSrc("/img/persons/diego-morales.webp"),
+		avatar: getOptimizedImage("/img/persons/diego-morales.webp"),
 		size: "large"
 	}
 ];

@@ -82,6 +82,26 @@ import disenoResponsiveMovil from '../assets/images/blog/stock/diseno-responsive
 import datosEstructurados from '../assets/images/blog/stock/datos-estructurados.png';
 import senalesAutoridad from '../assets/images/blog/stock/senales-autoridad.png';
 import optimizacionBusqueda from '../assets/images/blog/stock/optimizacion-busqueda.png';
+
+// Main blog images
+import astroFrameworkVelocidad from '../assets/images/blog/astro-framework-velocidad.png';
+import astroVsWordpressComparacion from '../assets/images/blog/astro-vs-wordpress-comparacion.png';
+import authorAvatar from '../assets/images/blog/author-avatar.svg';
+import enemigoWebRediseno from '../assets/images/blog/enemigo-web-rediseño.png';
+import erroresMortalesWeb from '../assets/images/blog/errores-moratles-web.png';
+import iconChart from '../assets/images/blog/icon-chart.svg';
+import iconCheck from '../assets/images/blog/icon-check.svg';
+import iconInfo from '../assets/images/blog/icon-info.svg';
+import iconLightbulb from '../assets/images/blog/icon-lightbulb.svg';
+import iconTarget from '../assets/images/blog/icon-target.svg';
+import iconWarning from '../assets/images/blog/icon-warning.svg';
+import seoInvisibleGoogle from '../assets/images/blog/seo-invisible-google.png';
+import seoPaginasPequenasLocal from '../assets/images/blog/seo-paginas-pequenas-local.png';
+import ventasRapidaOptimizada from '../assets/images/blog/ventas-rapida-optimizada.png';
+import weakVsStrongCta from '../assets/images/blog/weak-vs-strong-cta.svg';
+import websiteErrorsStats from '../assets/images/blog/website-errors-stats.svg';
+import whatsappEcommerceIntegration from '../assets/images/blog/whatsapp-ecommerce-integration.png';
+
 import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 import ctaBanner from '../assets/images/bg/cta-banner.png';
 import ctaBannerPreciosServicios from '../assets/images/bg/cta-banner-precios-y-servicios.png';
@@ -171,6 +191,26 @@ export const imageMap = {
   '/img/blog/stock/datos-estructurados.png': datosEstructurados,
   '/img/blog/stock/senales-autoridad.png': senalesAutoridad,
   '/img/blog/stock/optimizacion-busqueda.png': optimizacionBusqueda,
+
+  // Main blog images
+  '/img/blog/astro-framework-velocidad.png': astroFrameworkVelocidad,
+  '/img/blog/astro-vs-wordpress-comparacion.png': astroVsWordpressComparacion,
+  '/img/blog/author-avatar.svg': authorAvatar,
+  '/img/blog/enemigo-web-rediseño.png': enemigoWebRediseno,
+  '/img/blog/errores-moratles-web.png': erroresMortalesWeb,
+  '/img/blog/icon-chart.svg': iconChart,
+  '/img/blog/icon-check.svg': iconCheck,
+  '/img/blog/icon-info.svg': iconInfo,
+  '/img/blog/icon-lightbulb.svg': iconLightbulb,
+  '/img/blog/icon-target.svg': iconTarget,
+  '/img/blog/icon-warning.svg': iconWarning,
+  '/img/blog/seo-invisible-google.png': seoInvisibleGoogle,
+  '/img/blog/seo-paginas-pequenas-local.png': seoPaginasPequenasLocal,
+  '/img/blog/ventas-rapida-optimizada.png': ventasRapidaOptimizada,
+  '/img/blog/weak-vs-strong-cta.svg': weakVsStrongCta,
+  '/img/blog/website-errors-stats.svg': websiteErrorsStats,
+  '/img/blog/whatsapp-ecommerce-integration.png': whatsappEcommerceIntegration,
+
   '/img/bg/page-top-banner.png': pageTopBanner,
   '/img/bg/cta-banner.png': ctaBanner,
   '/img/bg/cta-banner-precios-y-servicios.png': ctaBannerPreciosServicios,
