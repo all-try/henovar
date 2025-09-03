@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import error404 from '../assets/images/stock/404.png';
+---
+
+<Layout title="Página no encontrada - 404 | Henovar">
+	<div class="min-h-screen flex items-center justify-center px-4 py-16">
+		<div class="max-w-2xl mx-auto text-center">
+			<!-- Imagen 404 
+			<div class="mb-8">
+				<OptimizedImage 
+					src={error404} 
+					alt="Error 404 - Página no encontrada" 
+					class="w-full max-w-md mx-auto h-auto"
+					loading="eager"
+					width={400}
+					height={300}
+				/>
+			</div>-->
+
+			<!-- Contenido -->
+			<div class="space-y-6">
+				<h1 class="text-9xl font-bold text-white mb-4">
+					404
+				</h1>
+				
+				<h2 class="text-3xl lg:text-4xl font-semibold text-white mb-4">
+					Oh, esta pagina no existe
+				</h2>
+				
+				<p class="text-lg text-gray-300 mb-8 max-w-lg mx-auto">
+					Lo sentimos, la página que buscas no existe o ha sido movida. 
+					Pero no te preocupes, podemos ayudarte a encontrar lo que necesitas.
+				</p>
+				
+				<!-- Enlace de regreso -->
+				<div class="mt-8">
+					<a 
+						href="/" 
+						class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-200 text-lg font-medium group"
+					>
+						<svg class="w-5 h-5 mr-2 transition-transform duration-200 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+						</svg>
+						Volver al inicio
+					</a>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</Layout>

@@ -1,6 +1,8 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getBlogPost } from '../../data/blogs.ts';
+import { Image } from 'astro:assets';
+import { getOptimizedImage } from '../../utils/imageMap.ts';
 
 const post = getBlogPost('como-web-rapida-optimizada-duplica-ventas');
 
@@ -32,7 +34,7 @@ if (!post) {
   <h2 data-toc-text="Estadísticas de impacto">Los números que van a cambiar tu perspectiva</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/estadisticas-velocidad-web.png" alt="Gráfico de estadísticas sobre velocidad web y conversiones" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/estadisticas-velocidad-web.png")} alt="Gráfico de estadísticas sobre velocidad web y conversiones" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Antes de entrar en las estrategias, necesitas entender el impacto real de la velocidad en tus resultados:</p>
@@ -55,7 +57,14 @@ if (!post) {
   <p>Te voy a contar la historia de una empresa que transformó completamente sus resultados solo optimizando la velocidad.</p>
   
   <div class="my-8">
-    <img src="/img/blog/stock/caso-optimizacion-velocidad.png" alt="Caso real de optimización de velocidad web" class="blog-image" />
+    <Image 
+      src={getOptimizedImage("/img/blog/stock/caso-optimizacion-velocidad.png")} 
+      alt="Caso real de optimización de velocidad web" 
+      class="blog-image" 
+      loading="lazy"
+      width={800}
+      height={500}
+    />
   </div>
   
   <div class="highlight-section">
@@ -97,7 +106,14 @@ if (!post) {
   
   <p>La diferencia entre un hosting de $5/mes y uno de $25/mes puede ser la diferencia entre 2% y 8% de conversión.</p>
   
-  <img src="/img/blog/stock/rendimiento-hosting.png" alt="Rendimiento de hosting" class="blog-image" />
+  <Image 
+    src={getOptimizedImage("/img/blog/stock/rendimiento-hosting.png")} 
+    alt="Rendimiento de hosting" 
+    class="blog-image" 
+    loading="lazy"
+    width={800}
+    height={500}
+  />
   
   <div class="info-box">
     <h4><svg class="inline w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>Qué buscar en un hosting</h4>
@@ -113,7 +129,7 @@ if (!post) {
   <h3 data-toc-text="Código limpio">3. Código limpio y optimizado</h3>
   
   <div class="my-8">
-    <img src="/img/blog/stock/codigo-optimizado-web.png" alt="Comparación de código limpio vs código hinchado" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/codigo-optimizado-web.png")} alt="Comparación de código limpio vs código hinchado" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>El código hinchado es el enemigo silencioso de la velocidad.</p>
@@ -145,7 +161,12 @@ if (!post) {
   <h3 data-toc-text="Optimización móvil">5. Optimización móvil prioritaria</h3>
   
   <div class="my-8">
-    <img src="/img/blog/stock/optimizacion-movil-web.png" alt="Optimización web para dispositivos móviles" class="blog-image" />
+    <Image 
+      src={getOptimizedImage("/img/blog/stock/optimizacion-movil-web.png")} 
+      alt="Optimización web para dispositivos móviles" 
+      class="blog-image" 
+      loading="lazy"
+    />
   </div>
   
   <p>El 60% de tu tráfico viene de móvil, pero la mayoría de webs están optimizadas para desktop.</p>
@@ -165,7 +186,7 @@ if (!post) {
   
   <p>No puedes mejorar lo que no mides. Estas herramientas te dirán exactamente qué está ralentizando tu web:</p>
   
-  <img src="/img/blog/stock/speed-testing-tools.png" alt="Herramientas de testing de velocidad" class="blog-image" />
+  <Image src={getOptimizedImage("/img/blog/stock/speed-testing-tools.png")} alt="Herramientas de testing de velocidad" class="blog-image" loading="lazy" width={800} height={500} />
   
   <div class="info-box">
     <h4><svg class="inline w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>Herramientas esenciales</h4>

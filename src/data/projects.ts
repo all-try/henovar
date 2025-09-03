@@ -1,3 +1,6 @@
+import type { ImageMetadata } from 'astro';
+import { getOptimizedImage } from '../utils/imageMap';
+
 export interface Project {
   id: number;
   title: string;
@@ -11,9 +14,9 @@ export interface Project {
   category: string;
   technologies: string[];
   features: string[];
-  image: string;
+  image: string | ImageMetadata;
   url?: string;
-  bgImage: string;
+  bgImage: string | ImageMetadata;
 }
 
 export const projects: Project[] = [
@@ -25,7 +28,7 @@ export const projects: Project[] = [
     year: 2025,
     status: "Completado",
     developers: 2,
-    duration: "3 meses",
+    duration: "4 dias",
     client: "Asesor Financiero",
     category: "Portafolio",
     technologies: ["Astro", "Tailwind", "CSS", "Javascript", "HTML"],
@@ -39,9 +42,8 @@ export const projects: Project[] = [
       "Usabilidad mejorada",
       "Diseño responsive"
     ],
-    image: "/img/projects/Asesorias.png",
-    url: "https://www.asesoriaschv.com/",
-    bgImage: "/img/gradients/abstract-1.webp"
+    image: getOptimizedImage("/img/projects/Asesorias.png"),
+    bgImage: getOptimizedImage("/img/gradients/abstract-1.webp")
   },
   {
     id: 2,
@@ -51,7 +53,7 @@ export const projects: Project[] = [
     year: 2025,
     status: "Completado",
     developers: 2,
-    duration: "2 meses",
+    duration: "5 días",
     client: "Agencia de Marketing",
     category: "Marketing",
     technologies: ["Astro", "Tailwind", "CSS", "Javascript", "HTML"],
@@ -65,8 +67,8 @@ export const projects: Project[] = [
       "Usabilidad mejorada",
       "Generación de leads"
     ],
-    image: "/img/projects/Onsite.png",
-    bgImage: "/img/gradients/abstract-2.webp"
+    image: getOptimizedImage("/img/projects/Onsite.png"),
+    bgImage: getOptimizedImage("/img/gradients/abstract-2.webp")
   },
   {
     id: 3,
@@ -76,7 +78,7 @@ export const projects: Project[] = [
     year: 2025,
     status: "Completado",
     developers: 3,
-    duration: "4 meses",
+    duration: "2 meses",
     client: "Empresa de Productividad",
     category: "Productividad",
     technologies: ["Laravel", "Filament", "Tailwind", "Javascript", "PHP", "HTML"],
@@ -90,18 +92,18 @@ export const projects: Project[] = [
       "Usabilidad mejorada",
       "Automatización con IA"
     ],
-    image: "/img/projects/Opsify.png",
-    bgImage: "/img/gradients/abstract-3.webp"
+    image: getOptimizedImage("/img/projects/Opsify.png"),
+    bgImage: getOptimizedImage("/img/gradients/abstract-3.webp")
   },
   {
     id: 4,
     title: "Pulsara",
-    shortDescription: "Herramienta de productividad orientada a usuarios individuales.",
-    longDescription: "Herramienta de productividad orientada a usuarios individuales. Facilita la organización personal, gestión de tareas y automatización ligera en la vida diaria. La plataforma está diseñada para ayudar a personas a mantener el control de sus actividades diarias, establecer metas personales y optimizar su tiempo de manera eficiente.",
+    shortDescription: "Landing page para herramienta de productividad orientada a usuarios individuales.",
+    longDescription: "Pagina web profesional para herramienta de productividad orientada a usuarios individuales. Facilita la organización personal, gestión de tareas y automatización ligera en la vida diaria. La plataforma está diseñada para ayudar a personas a mantener el control de sus actividades diarias, establecer metas personales y optimizar su tiempo de manera eficiente.",
     year: 2025,
     status: "Completado",
     developers: 2,
-    duration: "3 meses",
+    duration: "1 semana",
     client: "Productividad Personal",
     category: "Productividad",
     technologies: ["Astro", "Tailwind", "CSS", "Javascript", "HTML"],
@@ -115,8 +117,8 @@ export const projects: Project[] = [
       "Usabilidad mejorada",
       "Organización personal"
     ],
-    image: "/img/projects/Pulsara.png",
-    bgImage: "/img/gradients/abstract-4.webp"
+    image: getOptimizedImage("/img/projects/Pulsara.png"),
+    bgImage: getOptimizedImage("/img/gradients/abstract-4.webp")
   },
   {
     id: 5,
@@ -126,7 +128,7 @@ export const projects: Project[] = [
     year: 2025,
     status: "Completado",
     developers: 2,
-    duration: "2 meses",
+    duration: "1 semana",
     client: "Aplicación de Marketing",
     category: "Marketing",
     technologies: ["Astro", "Tailwind", "CSS", "Javascript", "HTML"],
@@ -140,8 +142,8 @@ export const projects: Project[] = [
       "Usabilidad mejorada",
       "Automatización inteligente"
     ],
-    image: "/img/projects/Taskoi.png",
-    bgImage: "/img/gradients/abstract-1.webp"
+    image: getOptimizedImage("/img/projects/Taskoi.png"),
+    bgImage: getOptimizedImage("/img/gradients/abstract-1.webp")
   },
   {
     id: 6,
@@ -151,7 +153,7 @@ export const projects: Project[] = [
     year: 2025,
     status: "Completado",
     developers: 3,
-    duration: "5 meses",
+    duration: "2 meses",
     client: "Plataforma Blockchain",
     category: "Blockchain",
     technologies: ["Laravel", "Filament", "Tailwind", "Javascript", "PHP", "HTML"],
@@ -165,18 +167,18 @@ export const projects: Project[] = [
       "Usabilidad mejorada",
       "Tecnología Web3"
     ],
-    image: "/img/projects/Tokenix.png",
-    bgImage: "/img/gradients/abstract-2.webp"
+    image: getOptimizedImage("/img/projects/Tokenix.png"),
+    bgImage: getOptimizedImage("/img/gradients/abstract-2.webp")
   },
   {
     id: 7,
     title: "Flovo",
-    shortDescription: "Solución financiera inteligente que simplifica la facturación, gestión de gastos y contabilidad.",
-    longDescription: "Solución financiera inteligente que simplifica la facturación, gestión de gastos y contabilidad. Ideal para autónomos, startups y pequeñas empresas. La plataforma integra herramientas financieras esenciales para facilitar la gestión económica y optimizar los procesos contables de manera automatizada y eficiente.",
+    shortDescription: "Página web para palataforma de solución financiera inteligente que simplifica la facturación, gestión de gastos y contabilidad.",
+    longDescription: "Landing page completa, con navegación a herramienta de soluciónes financieras inteligentes que simplifican la facturación, gestión de gastos y contabilidad. Ideal para autónomos, startups y pequeñas empresas. La plataforma integra herramientas financieras esenciales para facilitar la gestión económica y optimizar los procesos contables de manera automatizada y eficiente.",
     year: 2025,
     status: "Completado",
     developers: 3,
-    duration: "4 meses",
+    duration: "2 semanas",
     client: "Solución Financiera",
     category: "Fintech",
     technologies: ["Laravel", "Filament", "Tailwind", "Javascript", "PHP", "HTML"],
@@ -190,7 +192,7 @@ export const projects: Project[] = [
       "Usabilidad mejorada",
       "Gestión financiera"
     ],
-    image: "/img/projects/Flovo.png",
-    bgImage: "/img/gradients/abstract-3.webp"
+    image: getOptimizedImage("/img/projects/Flovo.png"),
+    bgImage: getOptimizedImage("/img/gradients/abstract-3.webp")
   }
 ];

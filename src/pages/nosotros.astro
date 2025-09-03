@@ -7,6 +7,11 @@ import BotonPrimario from '../components/BotonPrimario.astro';
 import PageBanner from '../components/PageBanner.astro';
 import BannerCTA from '../components/BannerCTA.astro';
 import NosotrosCard from '../components/NosotrosCard.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import { getOptimizedImage } from '../utils/imageMap';
+import ctaBannerBg from '../../public/img/bg/cta-banner.png';
+import bannerWebs from '../../public/img/stock/banner-webs.png';
+import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 ---
 
 <Layout 
@@ -20,7 +25,7 @@ import NosotrosCard from '../components/NosotrosCard.astro';
 			parrafo="Desde Medellín, combinamos experiencia técnica con un enfoque humano para transformar ideas en soluciones digitales que impulsan el crecimiento de nuestros clientes."
 			badge="Nosotros"
 			highlight="experiencias digitales"
-			imagenFondo="/img/bg/page-top-banner.png"
+			imagenFondo={pageTopBanner}
 		/>
 
 		<!-- Secciones principales -->
@@ -97,10 +102,11 @@ import NosotrosCard from '../components/NosotrosCard.astro';
 
 						<!-- Imagen 1 -->
 						<div class="border-radius-large overflow-hidden">
-							<img 
-								src="/img/stock/team-collaboration.png" 
+							<OptimizedImage 
+								src={getOptimizedImage("/img/stock/team-collaboration.png")} 
 								alt="Valores del equipo" 
 								class="w-full h-64 lg:h-80 object-cover bg-black"
+								loading="lazy"
 							/>
 						</div>
 
@@ -133,10 +139,11 @@ import NosotrosCard from '../components/NosotrosCard.astro';
 
 						<!-- Imagen 2 -->
 						<div class="border-radius-large overflow-hidden">
-							<img 
-								src="/img/stock/nosotros-code.png" 
+							<OptimizedImage 
+								src={getOptimizedImage("/img/stock/nosotros-code.png")} 
 								alt="Innovación tecnológica" 
 								class="w-full h-64 lg:h-80 object-cover bg-black"
+								loading="lazy"
 							/>
 						</div>
 
@@ -155,10 +162,11 @@ import NosotrosCard from '../components/NosotrosCard.astro';
 
 						<!-- Imagen 3 -->
 						<div class="border-radius-large overflow-hidden">
-							<img 
-								src="/img/stock/estadisticas.png" 
+							<OptimizedImage 
+								src={getOptimizedImage("/img/stock/estadisticas.png")} 
 								alt="Compromiso del equipo" 
 								class="w-full h-64 lg:h-80 object-cover bg-black"
+								loading="lazy"
 							/>
 						</div>
 					</div>
@@ -172,8 +180,8 @@ import NosotrosCard from '../components/NosotrosCard.astro';
 			titulo="¿Tienes una idea? Hablemos"
 			highlight="idea"
 			parrafo="Independientemente de la complejidad o especificidad de tu proyecto, **estamos aquí para escucharte** y explorar cómo podemos ayudarte a materializarlo."
-			imagenFondo="/img/bg/cta-banner.png"
-			imagenAcompanante="/img/stock/banner-webs.png"
+			imagenFondo={ctaBannerBg}
+			imagenAcompanante={bannerWebs}
 			imagenAlt="Nosotros Banner CTA"
 			metricas={[
 				{

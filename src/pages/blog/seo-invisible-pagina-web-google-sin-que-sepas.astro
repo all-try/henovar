@@ -1,6 +1,8 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getBlogPost } from '../../data/blogs.ts';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+import { getOptimizedImage } from '../../utils/imageMap.ts';
 
 const post = getBlogPost('seo-invisible-pagina-web-google-sin-que-sepas');
 
@@ -47,7 +49,12 @@ if (!post) {
   
   <p>Los datos estructurados son como "etiquetas" invisibles que le dicen a Google exactamente qué es cada parte de tu contenido.</p>
   
-  <img src="/img/blog/stock/datos-estructurados.png" alt="Ejemplo de datos estructurados" class="blog-image" />
+  <OptimizedImage 
+    src={getOptimizedImage("/img/blog/stock/datos-estructurados.png")} 
+    alt="Ejemplo de datos estructurados" 
+    class="blog-image" 
+    loading="lazy"
+  />
   
   <div class="info-box">
     <h4><svg class="inline w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 616 0z" clip-rule="evenodd"></path></svg>Lo que Google ve con datos estructurados</h4>
@@ -92,7 +99,12 @@ if (!post) {
   
   <p>Google constantemente evalúa qué tan "autorizada" es tu web en tu industria.</p>
   
-  <img src="/img/blog/stock/senales-autoridad.png" alt="Señales de autoridad" class="blog-image" />
+  <OptimizedImage 
+    src={getOptimizedImage("/img/blog/stock/senales-autoridad.png")} 
+    alt="Señales de autoridad" 
+    class="blog-image" 
+    loading="lazy"
+  />
   
   <div class="info-box">
     <h4><svg class="inline w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 616 0z" clip-rule="evenodd"></path></svg>Señales invisibles de autoridad</h4>
@@ -135,7 +147,12 @@ if (!post) {
   
   <p>El 50% de adultos usa búsqueda por voz diariamente, pero la mayoría de webs no están optimizadas para esto.</p>
   
-  <img src="/img/blog/stock/optimizacion-busqueda.png" alt="Optimización para búsqueda por voz" class="blog-image" />
+  <OptimizedImage 
+    src={getOptimizedImage("/img/blog/stock/optimizacion-busqueda.png")} 
+    alt="Optimización para búsqueda por voz" 
+    class="blog-image" 
+    loading="lazy"
+  />
       
       <p><strong>Cómo optimizar para búsquedas invisibles por voz:</strong></p>
       

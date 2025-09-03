@@ -1,0 +1,263 @@
+---
+// Componente para centralizar la lógica del modal
+export interface Props {
+	projects: any[];
+	mode?: 'index' | 'projects';
+}
+
+const { projects, mode = 'index' } = Astro.props;
+---
+
+<script is:inline>
+	// Función para obtener imagen optimizada (usar directamente las rutas públicas)
+	function getOptimizedImage(path) {
+		// Las imágenes ya están en /public/img/projects/ y son accesibles directamente
+		return path;
+	}
+
+	// Variables globales para el modal
+	let currentProjectIndex = 0;
+	let projectsData = [];
+
+	// Función para inicializar los datos de proyectos
+	function initializeProjectsData(projects) {
+		projectsData = projects || [];
+	}
+
+	// Función para actualizar el contenido del modal
+	function updateModalContent(project) {
+		// Título y meta información
+		const titleElement = document.getElementById('modal-title');
+		const yearElement = document.getElementById('modal-year');
+		const statusElement = document.getElementById('modal-status');
+		
+		if (titleElement) titleElement.textContent = project.title || '';
+		if (yearElement) yearElement.textContent = (project.year && project.year.toString()) || '';
+		if (statusElement) {
+			statusElement.textContent = project.status || '';
+			// Cambiar a azul oscuro gradiente
+			statusElement.className = 'px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-800 to-blue-900';
+		}
+		
+		// Imagen
+		const imageElement = document.getElementById('modal-image');
+		if (imageElement && project.image) {
+			// Si project.image es un objeto ImageMetadata de Astro, usar su propiedad src
+			// Si es un string, usarlo directamente
+			let imageSrc;
+			if (typeof project.image === 'object' && project.image.src) {
+				imageSrc = project.image.src;
+			} else if (typeof project.image === 'string') {
+				imageSrc = project.image;
+			} else {
+				// Fallback: intentar usar la ruta pública
+				imageSrc = `/img/projects/${project.title}.png`;
+			}
+			
+			imageElement.src = imageSrc;
+			imageElement.alt = project.title || '';
+			console.log('Setting image src:', imageSrc, 'for project:', project.title);
+		}
+		
+		// Información básica
+		const clientElement = document.getElementById('modal-client');
+		const durationElement = document.getElementById('modal-duration');
+		const developersElement = document.getElementById('modal-developers');
+		const categoryElement = document.getElementById('modal-category');
+		
+		if (clientElement) clientElement.textContent = project.client || '';
+		if (durationElement) durationElement.textContent = project.duration || '';
+		if (developersElement) developersElement.textContent = `${project.developers || 0} desarrolladores`;
+		if (categoryElement) categoryElement.textContent = project.category || '';
+		
+		// Descripción
+		const descriptionElement = document.getElementById('modal-description');
+		if (descriptionElement) descriptionElement.textContent = project.longDescription || '';
+		
+		// Características
+		const featuresElement = document.getElementById('modal-features');
+		if (featuresElement && project.features) {
+			featuresElement.innerHTML = '';
+			project.features.forEach(feature => {
+				const li = document.createElement('li');
+				li.className = 'flex items-center text-gray-300';
+				li.innerHTML = `
+					<svg class="w-4 h-4 text-blue-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+					</svg>
+					${feature}
+				`;
+				featuresElement.appendChild(li);
+			});
+		}
+		
+		// Tecnologías
+		const technologiesElement = document.getElementById('modal-technologies');
+		if (technologiesElement && project.technologies) {
+			technologiesElement.innerHTML = '';
+			project.technologies.forEach(tech => {
+				const span = document.createElement('span');
+				span.className = 'px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm';
+				span.textContent = tech;
+				technologiesElement.appendChild(span);
+			});
+		}
+		
+		// Actualizar mensaje del botón "Empezar mi Proyecto"
+		const startProjectBtn = document.querySelector('#modal-buttons-container a[href*="wa.me"]');
+		if (startProjectBtn) {
+			const newMessage = `Hola! Me interesa el proyecto de ${project.title}, ¿Me pueden ayudar con algo similar?`;
+			const whatsappUrl = `https://wa.me/573053374208?text=${encodeURIComponent(newMessage)}`;
+			startProjectBtn.href = whatsappUrl;
+		}
+		
+		// Centrar el contenedor de botones
+		const buttonsContainer = document.getElementById('modal-buttons');
+		if (buttonsContainer) {
+			buttonsContainer.classList.add('max-w-3xl', 'mx-auto');
+		}
+	}
+
+	// Función para abrir el modal por ID (para proyectos.astro)
+	function openProjectModalById(projectId) {
+		console.log('openProjectModalById called with ID:', projectId, 'type:', typeof projectId);
+		console.log('projectsData:', projectsData);
+		
+		// Convertir projectId a número si es string
+		const numericId = typeof projectId === 'string' ? parseInt(projectId) : projectId;
+		console.log('Converted ID:', numericId);
+		
+		currentProjectIndex = projectsData.findIndex(p => p.id === numericId);
+		console.log('currentProjectIndex:', currentProjectIndex);
+		
+		if (currentProjectIndex === -1) {
+			console.log('Project not found!');
+			return;
+		}
+		
+		const project = projectsData[currentProjectIndex];
+		console.log('Found project:', project);
+		updateModalContent(project);
+		
+		showModal();
+	}
+
+	// Función para abrir el modal por título (para index.astro)
+	function openProjectModalByTitle(title, description, year, image, url) {
+		console.log('openProjectModalByTitle called with:', { title, description, year, image, url });
+		
+		// Buscar el proyecto completo por título
+		const project = projectsData.find(p => p.title === title);
+		
+		if (project) {
+			console.log('Found project:', project);
+			updateModalContent(project);
+		} else {
+			console.log('Project not found, using basic data');
+			// Fallback con datos básicos si no se encuentra el proyecto
+			const basicProject = {
+				title: title,
+				longDescription: description,
+				year: year,
+				image: image,
+				url: url,
+				status: 'Completado',
+				client: 'Cliente confidencial',
+				duration: 'Consultar',
+				developers: 2,
+				category: 'Desarrollo Web',
+				features: [
+					'Diseño responsive',
+					'Optimización SEO',
+					'Carga rápida',
+					'Interfaz intuitiva'
+				]
+			};
+			updateModalContent(basicProject);
+		}
+		
+		showModal();
+	}
+
+	// Función para mostrar el modal
+	function showModal() {
+		const modal = document.getElementById('project-modal');
+		if (modal) {
+			modal.style.display = 'flex';
+			document.body.style.overflow = 'hidden';
+			// Añadir clase show después de un pequeño delay para la transición
+			setTimeout(() => {
+				modal.classList.add('show');
+			}, 10);
+		}
+	}
+
+	// Función para cerrar el modal
+	function closeProjectModal() {
+		const modal = document.getElementById('project-modal');
+		if (modal) {
+			modal.classList.remove('show');
+			// Esperar a que termine la transición antes de ocultar
+			setTimeout(() => {
+				modal.style.display = 'none';
+				document.body.style.overflow = 'auto';
+			}, 300);
+		}
+	}
+
+	// Función para navegar entre proyectos
+	function navigateProject(direction) {
+		if (direction === 'prev') {
+			currentProjectIndex = currentProjectIndex > 0 ? currentProjectIndex - 1 : projectsData.length - 1;
+		} else {
+			currentProjectIndex = currentProjectIndex < projectsData.length - 1 ? currentProjectIndex + 1 : 0;
+		}
+		
+		const project = projectsData[currentProjectIndex];
+		updateModalContent(project);
+	}
+
+	// Exportar funciones para uso global
+	if (typeof window !== 'undefined') {
+		window.initializeProjectsData = initializeProjectsData;
+		window.openProjectModalById = openProjectModalById;
+		window.openProjectModalByTitle = openProjectModalByTitle;
+		window.closeProjectModal = closeProjectModal;
+		window.navigateProject = navigateProject;
+		window.getOptimizedImage = getOptimizedImage;
+	}
+</script>
+
+<script define:vars={{ projects, mode }}>
+	// Inicializar datos de proyectos
+	initializeProjectsData(projects);
+
+	// Configuración específica según el modo
+	if (mode === 'index') {
+		// Función para abrir el modal con datos básicos (para index.astro)
+		function openProjectModal(title, description, year, image, url) {
+			openProjectModalByTitle(title, description, year, image, url);
+		}
+		
+		// Hacer función disponible globalmente
+		window.openProjectModal = openProjectModal;
+	} else if (mode === 'projects') {
+		// Función para abrir el modal por ID (para proyectos.astro)
+		function openProjectModal(projectId) {
+			openProjectModalById(projectId);
+		}
+		
+		// Hacer función disponible globalmente
+		window.openProjectModal = openProjectModal;
+	}
+	
+	// Cerrar modal con Escape
+	document.addEventListener('keydown', function(e) {
+		if (e.key === 'Escape') {
+			closeProjectModal();
+		}
+	});
+	
+	// Hacer funciones disponibles globalmente
+	window.closeProjectModal = closeProjectModal;
+</script>

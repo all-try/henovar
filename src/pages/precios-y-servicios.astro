@@ -11,6 +11,9 @@ import ServiceCard from '../components/ServiceCard.astro';
 import ServiceInclude from '../components/ServiceInclude.astro';
 import PageBanner from '../components/PageBanner.astro';
 import BannerCTA from '../components/BannerCTA.astro';
+import ctaBannerBg from '../assets/images/bg/cta-banner-precios-y-servicios.png';
+import bannerLaptop from '../../public/img/stock/banner-laptop-web.png';
+import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 
 // Variables de precios en diferentes divisas
 const precios = {
@@ -73,7 +76,7 @@ const preguntasServicios = [
 		parrafo="Transformamos ideas en **experiencias digitales exitosas**. Desde sitios web profesionales hasta tiendas online completas."
 		badge="Servicios"
 		highlight="Diseñados"
-		imagenFondo="/img/bg/page-top-banner.png"
+		imagenFondo={pageTopBanner}
 	/>
 
 		<!-- Toggle de Divisas -->
@@ -122,7 +125,7 @@ const preguntasServicios = [
 				<!-- Desarrollo Web & Portafolio -->
 				<ServiceCard
 					tag="68% DESCUENTO"
-					tagStyle="bg-gradient-to-r ring-2 ring-blue-300 from-blue-900 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+					tagStyle="bg-gradient-to-r ring-1 ring-blue-300 from-blue-900 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
 					headerBackground="/img/gradients/header-service-bg.png"
 					cardBackground="/img/gradients/service-bg.png"
 					icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
@@ -194,7 +197,7 @@ const preguntasServicios = [
 				<!-- Tienda Online -->
 				<ServiceCard
 					tag="EL MÁS POPULAR"
-					tagStyle="bg-gradient-to-r from-teal-700 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+					tagStyle="bg-gradient-to-r from-blue-900 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
 					headerBackground="/img/gradients/header-service-bg2.png"
 					cardBackground="/img/gradients/service-bg2.png"
 					icon="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
@@ -267,7 +270,7 @@ const preguntasServicios = [
 				<!-- Remodelación Web -->
 				<ServiceCard
 					tag="RENOVACIÓN"
-					tagStyle="bg-gradient-to-r from-purple-600 to-blue-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+					tagStyle="bg-gradient-to-r from-purple-900 to-blue-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
 					headerBackground="/img/gradients/header-service-bg3.png"
 					cardBackground="/img/gradients/service-bg3.png"
 					icon="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
@@ -346,8 +349,8 @@ const preguntasServicios = [
 			titulo="¿Necesitas ayuda con tu proyecto?"
 			highlight="proyecto"
 			parrafo="Contáctanos para una **consulta gratuita** y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales."
-			imagenFondo="/img/bg/cta-banner-precios-y-servicios.png"
-			imagenAcompanante="/img/stock/banner-laptop-web.png"
+			imagenFondo={ctaBannerBg}
+			imagenAcompanante={bannerLaptop}
 			imagenAlt="Banner CTA"
 		metricas={[
 			{

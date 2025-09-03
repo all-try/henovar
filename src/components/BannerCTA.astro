@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Titulo from './Titulo.astro';
 import Parrafo from './Parrafo.astro';
 import BotonPrimario from './BotonPrimario.astro';
 import BotonSecundario from './BotonSecundario.astro';
+import OptimizedImage from './OptimizedImage.astro';
 
 export interface Props {
   // Contenido
@@ -11,8 +14,8 @@ export interface Props {
   highlight?: string;
   
   // Imágenes
-  imagenFondo: string;
-  imagenAcompanante: string;
+  imagenFondo: ImageMetadata;
+  imagenAcompanante: ImageMetadata;
   imagenAlt?: string;
   
   // Métricas/Iconos
@@ -69,12 +72,17 @@ const iconColor = 'text-blue-500';
 ---
 
 <section class="px-3 pb-10 lg:pb-20">
-  <div 
-    class="pt-10 lg:pt-18 px-5 lg:px-5 max-w-7xl rounded-2xl mx-auto bg-cover bg-top bg-no-repeat overflow-hidden"
-    style={`background-image: url('${imagenFondo}')`}
-  >
-    <div class="max-w-6xl mx-auto pb-0">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+  <div class="relative pt-10 lg:pt-18 px-5 lg:px-5 max-w-7xl rounded-2xl mx-auto overflow-hidden">
+    <!-- Imagen de fondo optimizada -->
+    <Image 
+      src={imagenFondo} 
+      alt="Banner background" 
+      class="absolute inset-0 w-full h-full object-cover object-top rounded-2xl"
+      width={1200}
+      height={600}
+    />
+    <div class="relative z-10 max-w-6xl mx-auto pb-0">
+       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <!-- Contenido izquierda -->
         <div class="text-center lg:text-left">
           <Titulo level={1} alignMobile="left" alignDesktop="left" highlight={highlight} class="mb-6">
@@ -112,7 +120,7 @@ const iconColor = 'text-blue-500';
         
         <!-- Imagen derecha -->
         <div class="w-full lg:flex lg:justify-end">
-          <img src={imagenAcompanante} alt={imagenAlt} class="w-full" />
+          <OptimizedImage src={imagenAcompanante} alt={imagenAlt} class="w-full" />
         </div>
       </div>
     </div>

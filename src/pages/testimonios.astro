@@ -10,6 +10,11 @@ import PageBanner from '../components/PageBanner.astro';
 import BannerCTA from '../components/BannerCTA.astro';
 import '../styles/testimonials-general.css';
 import FAQ from '../components/FAQ.astro';
+import { Image } from 'astro:assets';
+import { getOptimizedImage } from '../utils/imageMap';
+import ctaBannerBg from '../../public/img/bg/cta-banner.png';
+import testimonialWeb from '../../public/img/stock/testimonial-web.png';
+import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 
 // Datos de testimonios
 const testimonios = [
@@ -88,7 +93,7 @@ const testimonios = [
 		parrafo="La **satisfacción de nuestros clientes** es nuestra mayor recompensa. Descubre sus experiencias trabajando con nosotros."
 		badge="Testimonios"
 		highlight="clientes"
-		imagenFondo="/img/bg/page-top-banner.png"
+		imagenFondo={pageTopBanner}
 	/>
 
 	<!-- Testimonios con Bento Grid -->
@@ -110,7 +115,7 @@ const testimonios = [
 										<div class="testimonial-footer-wide">
 											<div class="testimonial-author-section">
 												<div class="testimonial-avatar">
-															<img src={testimonio.avatar} alt={testimonio.nombre} class="testimonial-avatar-circle" />
+															<Image src={testimonio.avatar} alt={testimonio.nombre} class="testimonial-avatar-circle" width={80} height={80} loading="lazy" />
 														</div>
 												<div class="testimonial-info">
 													<h5 class="testimonial-name">{testimonio.nombre}</h5>
@@ -126,7 +131,7 @@ const testimonios = [
 										</div>
 									</div>
 									<div class="testimonial-image">
-										<img src="/img/stock/testimonio-web.png" alt="Testimonio" />
+										<Image src={getOptimizedImage("/img/stock/testimonio-web.png")} alt="Testimonio" loading="lazy" />
 									</div>
 								</div>
 							</div>
@@ -143,7 +148,7 @@ const testimonios = [
 									</div>
 									<div class="testimonial-footer">
 										<div class="testimonial-avatar">
-													<img src={testimonio.avatar} alt={testimonio.nombre} class="testimonial-avatar-circle" />
+													<Image src={testimonio.avatar} alt={testimonio.nombre} class="testimonial-avatar-circle" width={80} height={80} loading="lazy" />
 												</div>
 										<div class="testimonial-info">
 											<h5 class="testimonial-name">{testimonio.nombre}</h5>
@@ -168,7 +173,7 @@ const testimonios = [
 									</div>
 									<div class="testimonial-footer">
 										<div class="testimonial-avatar">
-													<img src={testimonio.avatar} alt={testimonio.nombre} class="testimonial-avatar-circle" />
+													<Image src={testimonio.avatar} alt={testimonio.nombre} class="testimonial-avatar-circle" width={80} height={80} loading="lazy" />
 												</div>
 										<div class="testimonial-info">
 											<h5 class="testimonial-name">{testimonio.nombre}</h5>
@@ -219,8 +224,8 @@ const testimonios = [
 			titulo="¿Listo para ser nuestro próximo testimonio?"
 			highlight="testimonio"
 			parrafo="Únete a nuestros clientes satisfechos y descubre cómo podemos **transformar tu presencia digital** con resultados excepcionales."
-			imagenFondo="/img/bg/cta-banner.png"
-			imagenAcompanante="/img/stock/testimonial-web.png"
+			imagenFondo={ctaBannerBg}
+			imagenAcompanante={testimonialWeb}
 			imagenAlt="Testimonios Banner CTA"
 			metricas={[
 				{

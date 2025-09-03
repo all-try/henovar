@@ -1,6 +1,8 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getBlogPost } from '../../data/blogs.ts';
+import { Image } from 'astro:assets';
+import { getOptimizedImage } from '../../utils/imageMap.ts';
 
 const post = getBlogPost('7-errores-mortales-web-negocios-ahuyentan-ventas');
 
@@ -28,7 +30,7 @@ if (!post) {
   <h2 data-toc-text="1. Tiempo de carga lento">1. Tiempo de carga lento: El asesino silencioso de conversiones</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/velocidad-web-conversiones.png" alt="Gráfico mostrando la relación entre velocidad de carga y conversiones" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/velocidad-web-conversiones.png")} alt="Gráfico mostrando la relación entre velocidad de carga y conversiones" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Un sitio web que tarda más de 3 segundos en cargar pierde el 40% de sus visitantes antes de que siquiera vean tu contenido. Esto no es solo una estadística, es dinero que se va por el desagüe.</p>
@@ -49,7 +51,14 @@ if (!post) {
   <h2 data-toc-text="2. Diseño no responsive">2. Diseño no responsive: Perdiendo el 60% del tráfico móvil</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/diseno-responsive-movil.png" alt="Comparación de sitio web responsive vs no responsive en dispositivos móviles" class="blog-image" />
+    <Image 
+      src={getOptimizedImage("/img/blog/stock/diseno-responsive-movil.png")} 
+      alt="Comparación de sitio web responsive vs no responsive en dispositivos móviles" 
+      class="blog-image" 
+      loading="lazy"
+      width={800}
+      height={500}
+    />
   </div>
   
   <p>Más del 60% de las búsquedas se realizan desde dispositivos móviles. Si tu sitio no se ve bien en smartphones y tablets, estás literalmente rechazando a la mayoría de tus potenciales clientes.</p>
@@ -74,7 +83,7 @@ if (!post) {
   <h2 data-toc-text="4. Falta de CTAs claras">4. Falta de llamadas a la acción claras</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/cta-botones-efectivos.png" alt="Ejemplos de botones CTA efectivos vs inefectivos" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/cta-botones-efectivos.png")} alt="Ejemplos de botones CTA efectivos vs inefectivos" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Muchos sitios web son como vendedores tímidos: muestran sus productos pero nunca piden la venta. Sin CTAs (Call-to-Action) claros y estratégicamente ubicados, los visitantes no sabrán qué hacer a continuación.</p>
@@ -104,7 +113,7 @@ if (!post) {
   <h2 data-toc-text="6. Falta de confianza">6. Ausencia de elementos de confianza</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/elementos-confianza-web.png" alt="Elementos que generan confianza en un sitio web: testimonios, certificados, contacto" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/elementos-confianza-web.png")} alt="Elementos que generan confianza en un sitio web: testimonios, certificados, contacto" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>En el mundo digital, la confianza se construye con elementos visibles. Sin testimonios, certificaciones, garantías o información de contacto clara, los visitantes dudarán de tu legitimidad.</p>

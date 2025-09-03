@@ -7,7 +7,9 @@ import BlogBadge from '../components/BlogBadge.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
 import BotonSecundario from '../components/BotonSecundario.astro';
 import PageBanner from '../components/PageBanner.astro';
+import { Image } from 'astro:assets';
 import { blogPosts, getFeaturedPosts, getRecentPosts } from '../data/blogs';
+import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 
 const featuredPosts = getFeaturedPosts();
 const salientPosts = blogPosts.filter(post => post.salient); // Posts destacados
@@ -26,7 +28,7 @@ const totalPosts = blogPosts.length; // Total de blogs disponibles
 			parrafo="Descubre las **últimas tendencias**, tutoriales y consejos de expertos en desarrollo web y tecnología."
 			badge="Blog"
 			highlight="conocimiento"
-			imagenFondo="/img/bg/page-top-banner.png"
+			imagenFondo={pageTopBanner}
 		/>
 
 		<!-- Artículo Destacado -->
@@ -43,7 +45,7 @@ const totalPosts = blogPosts.length; // Total de blogs disponibles
 					<div class="border-radius-large overflow-hidden mb-16">
 						<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 							<div class="h-64 lg:h-auto">
-								<img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
+								<Image src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" loading="eager" width={600} height={400} />
 							</div>
 							<div>
 								<div class="flex flex-col space-y-4">
@@ -82,8 +84,8 @@ const totalPosts = blogPosts.length; // Total de blogs disponibles
 							{regularPosts.map(post => (
 								<article class="overflow-hidden">
 									<div class="h-48 mb-4">
-										<img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
-									</div>
+								<Image src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" loading="lazy" width={400} height={300} />
+							</div>
 									<div>
 										<div class="flex flex-col space-y-3">
 											<div class="flex items-center space-x-2">

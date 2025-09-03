@@ -1,6 +1,8 @@
 ---
 import BotonPrimario from './BotonPrimario.astro';
 import BotonTercio from './BotonTercio.astro';
+import OptimizedImage from './OptimizedImage.astro';
+import { getOptimizedImage } from '../utils/imageMap';
 
 const currentPath = Astro.url.pathname;
 
@@ -24,7 +26,14 @@ const navItems = [
       <!-- Logo -->
       <div class="flex items-center space-x-2">
         <a href="/" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <img src="/img/brand/color-logo.webp" alt="Henovar Logo" width="32" height="32" class="lg:w-7 mr-3">
+          <OptimizedImage 
+            src={getOptimizedImage("/img/brand/color-logo.webp")} 
+            alt="Henovar Logo" 
+            width={32} 
+            height={32} 
+            class="lg:w-7 mr-3"
+            loading="eager"
+          />
           <span class="text-2xl font-normal text-gray-100">
             henovar
           </span>

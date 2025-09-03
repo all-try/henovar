@@ -1,6 +1,8 @@
 ---
 import BotonPrimario from './BotonPrimario.astro';
 import BotonSecundario from './BotonSecundario.astro';
+import OptimizedImage from './OptimizedImage.astro';
+import { getOptimizedImage } from '../utils/imageMap';
 
 export interface Props {
   class?: string;
@@ -34,7 +36,7 @@ const { class: className = '' } = Astro.props;
     <div class="flex-grow overflow-y-auto modal-scroll">
       <!-- Imagen del proyecto -->
       <div class="w-full max-h-[1500px] md:max-h-[1800px] overflow-hidden">
-        <img id="modal-image" src="" alt="" class="w-full h-full object-cover bg-gray-600" />
+        <img id="modal-image" src="" alt="" class="w-full h-full object-cover object-top bg-gray-600" loading="lazy" />
       </div>
 
       <!-- Información del proyecto -->
@@ -102,13 +104,12 @@ const { class: className = '' } = Astro.props;
         </div>
 
         <!-- Botones de acción -->
-        <div class="flex gap-4 mt-8 flex-col md:flex-row">
-          <BotonPrimario mensaje="Hola! Me interesa este proyecto. ¿Podríamos hablar sobre cómo pueden ayudarme con algo similar?" class="flex-1">
-            Empezar mi Proyecto
-          </BotonPrimario>
-          <BotonSecundario href="#" class="flex-1 hidden">
-            Ver Proyecto
-          </BotonSecundario>
+        <div id="modal-buttons-container" class="mt-8">
+          <div id="modal-buttons" class="flex gap-4 flex-col md:flex-row">
+            <BotonPrimario mensaje="Hola! Me interesa este proyecto. ¿Podríamos hablar sobre cómo pueden ayudarme con algo similar?" class="flex-1">
+              Empezar mi Proyecto
+            </BotonPrimario>
+          </div>
         </div>
       </div>
     </div>

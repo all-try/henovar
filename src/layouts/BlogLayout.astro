@@ -5,6 +5,7 @@ import Parrafo from '../components/Parrafo.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
 import BotonSecundario from '../components/BotonSecundario.astro';
 import BotonTercio from '../components/BotonTercio.astro';
+import { Image } from 'astro:assets';
 import '../styles/blog-general.css';
 import { blogPosts } from '../data/blogs';
 
@@ -44,10 +45,13 @@ const relatedPosts = currentBlog?.relatedPosts ?
       <!-- Background Image or Gradient -->
       {image ? (
         <div class="absolute inset-0">
-          <img 
+          <Image 
             src={image} 
             alt={title}
             class="blog-banner-image"
+            loading="eager"
+            width={1200}
+            height={600}
           />
           <div class="blog-banner-overlay"></div>
         </div>
@@ -255,7 +259,7 @@ const relatedPosts = currentBlog?.relatedPosts ?
               {relatedPosts.map(relatedPost => (
                 <article class="overflow-hidden">
                   <div class="h-48 mb-4">
-                    <img src={relatedPost.image} alt={relatedPost.title} class="w-full h-full object-cover rounded-lg" />
+                    <Image src={relatedPost.image} alt={relatedPost.title} class="w-full h-full object-cover rounded-lg" width={400} height={300} />
                   </div>
                   <div>
                     <div class="flex flex-col space-y-3">

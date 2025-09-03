@@ -1,0 +1,38 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="60" fill="url(#gradient)" />
+  
+  <!-- Face -->
+  <circle cx="60" cy="45" r="18" fill="#F3E8D0" />
+  
+  <!-- Hair -->
+  <path d="M42 35C42 25 50 20 60 20C70 20 78 25 78 35C78 30 75 25 60 25C45 25 42 30 42 35Z" fill="#4A4A4A" />
+  
+  <!-- Eyes -->
+  <circle cx="54" cy="42" r="2" fill="#2D3748" />
+  <circle cx="66" cy="42" r="2" fill="#2D3748" />
+  
+  <!-- Nose -->
+  <ellipse cx="60" cy="47" rx="1" ry="2" fill="#E2D5B7" />
+  
+  <!-- Mouth -->
+  <path d="M57 52C57 52 58.5 54 60 54C61.5 54 63 52 63 52" stroke="#2D3748" stroke-width="1.5" stroke-linecap="round" fill="none" />
+  
+  <!-- Body/Shirt -->
+  <path d="M42 75C42 70 48 65 60 65C72 65 78 70 78 75L78 120L42 120Z" fill="#3B82F6" />
+  
+  <!-- Collar -->
+  <path d="M52 65C52 65 56 68 60 68C64 68 68 65 68 65" stroke="#1D4ED8" stroke-width="2" fill="none" />
+  
+  <!-- Professional Badge -->
+  <circle cx="70" cy="80" r="8" fill="#10B981" />
+  <path d="M67 78L69 80L73 76" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0F9FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F2FE;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

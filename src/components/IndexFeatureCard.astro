@@ -1,16 +1,27 @@
 ---
+import OptimizedImage from './OptimizedImage.astro';
+import type { ImageMetadata } from 'astro';
+
 export interface Props {
   icon: string;
   title: string;
   text: string;
-  bgImage?: string;
+  bgImage?: string | ImageMetadata;
   class?: string;
 }
 
 const { icon, title, text, bgImage, class: className = '' } = Astro.props;
 ---
 
-<div class={`feature-card ${className}`} style={bgImage ? `background-image: url(${bgImage})` : ''}>
+<div class={`feature-card ${className}`}>
+  {bgImage && (
+    <OptimizedImage 
+      src={bgImage} 
+      alt={`Imagen de fondo para ${title}`} 
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+  )}
   <div class="feature-card-content">
     <div class="feature-header">
       <div class="feature-icon" set:html={icon}></div>

@@ -1,6 +1,8 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getBlogPost } from '../../data/blogs.ts';
+import { Image } from 'astro:assets';
+import { getOptimizedImage } from '../../utils/imageMap';
 
 const post = getBlogPost('rol-seo-paginas-pequenas-como-empezar-facil');
 
@@ -28,7 +30,7 @@ if (!post) {
   <h2 data-toc-text="Qué es SEO">¿Qué es SEO? La explicación simple que todo emprendedor necesita</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/seo-explicacion-basica.png" alt="Explicación básica del SEO para pequeñas empresas" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/seo-explicacion-basica.png")} alt="Explicación básica del SEO para pequeñas empresas" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>SEO significa "Search Engine Optimization" o "Optimización para Motores de Búsqueda". En palabras simples: es hacer que tu sitio web aparezca cuando la gente busca lo que tú vendes en Google.</p>
@@ -85,7 +87,7 @@ if (!post) {
   <h3>Paso 1: Optimiza tu Google My Business (30 minutos, impacto inmediato)</h3>
   
   <div class="my-8">
-    <img src="/img/blog/stock/google-my-business-optimizacion.png" alt="Optimización de Google My Business" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/google-my-business-optimizacion.png")} alt="Optimización de Google My Business" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Este es el SEO local más poderoso y fácil de implementar. Google My Business es tu tarjeta de presentación en Google.</p>
@@ -126,7 +128,7 @@ if (!post) {
   <h3>Paso 3: Optimiza lo básico de tu sitio web (2 horas, una sola vez)</h3>
   
   <div class="my-8">
-    <img src="/img/blog/stock/optimizacion-basica-seo.png" alt="Elementos básicos de optimización SEO" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/optimizacion-basica-seo.png")} alt="Elementos básicos de optimización SEO" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Hay elementos técnicos básicos que Google necesita para entender tu sitio. Son fáciles de implementar y tienen un impacto enorme.</p>
@@ -148,7 +150,7 @@ if (!post) {
   <h2 data-toc-text="Herramientas gratuitas">Herramientas gratuitas para monitorear tu progreso</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/herramientas-seo-gratuitas.png" alt="Herramientas SEO gratuitas para pequeñas empresas" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/herramientas-seo-gratuitas.png")} alt="Herramientas SEO gratuitas para pequeñas empresas" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>No necesitas pagar por herramientas caras para empezar. Estas herramientas gratuitas te darán toda la información que necesitas:</p>

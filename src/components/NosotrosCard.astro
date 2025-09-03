@@ -1,7 +1,4 @@
 ---
-import Titulo from './Titulo.astro';
-import Parrafo from './Parrafo.astro';
-
 export interface Props {
   titulo: string;
   contenido: string;
@@ -20,15 +17,15 @@ const { titulo, contenido, contenido2, icono } = Astro.props;
   </div>
   
   <div class="relative z-10">
-    <Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-4">{titulo}</Titulo>
+    <h2 class="text-2xl lg:text-3xl font-bold text-white text-left mb-4">{titulo}</h2>
     
-    <Parrafo alignMobile="left" alignDesktop="left" class="mb-4">
+    <p class="text-lg lg:text-xl text-gray-300 text-left mb-4 leading-relaxed">
       {contenido}
-    </Parrafo>
+    </p>
     {contenido2 && (
-      <Parrafo alignMobile="left" alignDesktop="left" color="muted">
+      <p class="text-base lg:text-lg text-gray-400 text-left leading-relaxed">
         {contenido2}
-      </Parrafo>
+      </p>
     )}
   </div>
 </div>

@@ -1,5 +1,7 @@
 ---
-import { generateWhatsAppURL } from '../data/whatsapp.ts';
+import { generateWhatsAppURL } from '../data/whatsapp';
+import OptimizedImage from './OptimizedImage.astro';
+import { getOptimizedImage } from '../utils/imageMap';
 
 const currentYear = new Date().getFullYear();
 
@@ -118,7 +120,12 @@ const socialLinks = [
       
       <!-- Henovar Brand Text -->
       <div class="max-6xl">
-        <img src="/img/brand/text-footer.png" alt="">
+        <OptimizedImage 
+                src={getOptimizedImage("/img/brand/text-footer.png")} 
+                alt="Henovar Logo Footer" 
+                loading="lazy"
+                class:list={["w-full", "h-auto"]}
+              />
         </div>
       </div>
     </div>

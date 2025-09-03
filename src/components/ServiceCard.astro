@@ -36,7 +36,7 @@ const {
 import BotonTercio from './BotonTercio.astro';
 ---
 
-<div class={`flex-1 relative bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group ${border ? 'ring-2 ring-blue-300' : 'ring-1 ring-white/15'}`} data-service={dataService}>
+<div class={`flex-1 relative bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group ${border ? 'ring-1 ring-blue-400' : 'ring-1 ring-white/15'}`} data-service={dataService}>
 	{tag && (
 		<div class="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
 			<div class={tagStyle}>
@@ -69,7 +69,7 @@ import BotonTercio from './BotonTercio.astro';
 			<p class="text-slate-300 text-base leading-relaxed mb-6">
 				{description}
 			</p>
-			<BotonTercio mensaje="Hola! Me interesa el servicio de {title}. ¿Podríamos hablar sobre mi proyecto?" class="w-full">
+			<BotonTercio mensaje={`Hola! Me interesa el servicio de ${title}. ¿Podríamos hablar sobre mi proyecto?`} class="w-full">
 				Comenzar Proyecto
 			</BotonTercio>
 			{showPriceNote && (

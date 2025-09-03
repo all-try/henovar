@@ -11,6 +11,11 @@ import PageBanner from '../components/PageBanner.astro';
 import BannerCTA from '../components/BannerCTA.astro';
 import FAQ from '../components/FAQ.astro';
 import { projects } from '../data/projects.ts';
+import { getOptimizedImage } from '../utils/imageMap';
+import ModalScript from '../components/ModalScript.astro';
+import ctaBannerBg from '../../public/img/bg/cta-banner.png';
+import bannerWebs from '../../public/img/stock/banner-webs.png';
+import pageTopBanner from '../assets/images/bg/page-top-banner.png';
 
 const preguntasProyectos = [
 	{
@@ -47,7 +52,7 @@ const preguntasProyectos = [
 			parrafo="Descubre algunos de los **proyectos más destacados** que hemos desarrollado para nuestros clientes."
 			badge="Proyectos"
 			highlight="proyectos"
-			imagenFondo="/img/bg/page-top-banner.png"
+			imagenFondo={pageTopBanner}
 		/>
 
 		<!-- Proyectos Grid -->
@@ -81,8 +86,8 @@ const preguntasProyectos = [
 		titulo="¿Tienes un proyecto en mente?"
 		highlight="proyecto"
 		parrafo="Contáctanos y descubre cómo podemos **hacer realidad tu visión** con soluciones digitales innovadoras."
-		imagenFondo="/img/bg/cta-banner.png"
-		imagenAcompanante="/img/stock/banner-webs.png"
+		imagenFondo={ctaBannerBg}
+		imagenAcompanante={bannerWebs}
 		imagenAlt="Proyectos Banner CTA"
 		metricas={[
 			{
@@ -111,148 +116,4 @@ const preguntasProyectos = [
 	</div>
 </Layout>
 
-<script define:vars={{ projects }}>
-	// Variables globales para el modal
-	let currentProjectIndex = 0;
-	let projectsData = projects || [];
-
-	// Función para abrir el modal
-	function openProjectModal(projectId) {
-		console.log('openProjectModal called with ID:', projectId, 'type:', typeof projectId);
-		console.log('projectsData:', projectsData);
-		
-		// Convertir projectId a número si es string
-		const numericId = typeof projectId === 'string' ? parseInt(projectId) : projectId;
-		console.log('Converted ID:', numericId);
-		
-		currentProjectIndex = projectsData.findIndex(p => p.id === numericId);
-		console.log('currentProjectIndex:', currentProjectIndex);
-		
-		if (currentProjectIndex === -1) {
-			console.log('Project not found!');
-			return;
-		}
-		
-		const project = projectsData[currentProjectIndex];
-		console.log('Found project:', project);
-		updateModalContent(project);
-		
-		const modal = document.getElementById('project-modal');
-		console.log('Modal element:', modal);
-		if (modal) {
-			modal.style.display = 'flex';
-			document.body.style.overflow = 'hidden';
-			// Añadir clase show después de un pequeño delay para la transición
-			setTimeout(() => {
-				modal.classList.add('show');
-			}, 10);
-			console.log('Modal should be visible now');
-		} else {
-			console.log('Modal element not found!');
-		}
-	}
-
-	// Función para cerrar el modal
-	function closeProjectModal() {
-		const modal = document.getElementById('project-modal');
-		if (modal) {
-			modal.classList.remove('show');
-			// Esperar a que termine la transición antes de ocultar
-			setTimeout(() => {
-				modal.style.display = 'none';
-				document.body.style.overflow = 'auto';
-			}, 300);
-		}
-	}
-
-	// Función para actualizar el contenido del modal
-	function updateModalContent(project) {
-		// Título y meta información
-		const titleElement = document.getElementById('modal-title');
-		const yearElement = document.getElementById('modal-year');
-		const statusElement = document.getElementById('modal-status');
-		
-		if (titleElement) titleElement.textContent = project.title || '';
-		if (yearElement) yearElement.textContent = (project.year && project.year.toString()) || '';
-		if (statusElement) statusElement.textContent = project.status || '';
-		
-		// Configurar color del estado
-		if (statusElement) {
-			const statusColors = {
-				'Completado': 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%)',
-				'En Desarrollo': '#3b82f6',
-				'Mantenimiento': '#f59e0b'
-			};
-			if (project.status === 'Completado') {
-				statusElement.style.background = statusColors[project.status];
-			} else {
-				statusElement.style.backgroundColor = statusColors[project.status] || '#6b7280';
-			}
-		}
-		
-		// Imagen
-		const imageElement = document.getElementById('modal-image');
-		if (imageElement) {
-			imageElement.src = project.image || '';
-			imageElement.alt = project.title || '';
-		}
-		
-		// Información básica
-		const clientElement = document.getElementById('modal-client');
-		const durationElement = document.getElementById('modal-duration');
-		const developersElement = document.getElementById('modal-developers');
-		const categoryElement = document.getElementById('modal-category');
-		
-		if (clientElement) clientElement.textContent = project.client || '';
-		if (durationElement) durationElement.textContent = project.duration || '';
-		if (developersElement) developersElement.textContent = `${project.developers || 0} desarrolladores`;
-		if (categoryElement) categoryElement.textContent = project.category || '';
-		
-		// Descripción
-		const descriptionElement = document.getElementById('modal-description');
-		if (descriptionElement) descriptionElement.textContent = project.longDescription || '';
-		
-		// Tecnologías
-		const techContainer = document.getElementById('modal-technologies');
-		if (techContainer && project.technologies) {
-			techContainer.innerHTML = project.technologies.map(tech => 
-				`<span class="tech-badge">${tech}</span>`
-			).join('');
-		}
-		
-		// Características
-		const featuresContainer = document.getElementById('modal-features');
-		if (featuresContainer && project.features) {
-			featuresContainer.innerHTML = project.features.map(feature => 
-				`<li class="flex items-center gap-3 text-white text-sm">
-					<svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-						<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-					</svg>
-					<span>${feature}</span>
-				</li>`
-			).join('');
-		}
-		
-		// Botón de URL del proyecto
-		const urlButton = document.getElementById('modal-project-url');
-		if (urlButton) {
-			if (project.url) {
-				urlButton.href = project.url;
-				urlButton.style.display = 'inline-flex';
-			} else {
-				urlButton.style.display = 'none';
-			}
-		}
-	}
-
-	// Cerrar modal con Escape
-	document.addEventListener('keydown', function(e) {
-		if (e.key === 'Escape') {
-			closeProjectModal();
-		}
-	});
-
-	// Hacer funciones disponibles globalmente
-	window.openProjectModal = openProjectModal;
-	window.closeProjectModal = closeProjectModal;
-</script>
+<ModalScript projects={projects} mode="projects" />

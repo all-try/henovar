@@ -62,33 +62,11 @@ const Element = finalHref ? 'a' : 'button';
     border: 0;
     border-radius: 9999px; /* Full border-radius para efecto cápsula */
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.233);
-    background: radial-gradient(
-      ellipse at bottom,
-      rgb(184, 184, 184) 0%, /* Azul claro */
-      rgb(255, 255, 255) 45%  /* Azul oscuro */
-    );
+    background-color: white;
     color: black;
     text-decoration: none;
     font-weight: 400;
     transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
-  }
-
-  .btn-tercio::before {
-    content: "";
-    width: 70%;
-    height: 1px;
-    position: absolute;
-    bottom: 0;
-    left: 15%;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    opacity: 0.2;
-    transition: all .3s cubic-bezier(0.15, 0.83, 0.66, 1);
   }
 
   .btn-tercio:hover::before {

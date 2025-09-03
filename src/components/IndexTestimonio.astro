@@ -1,5 +1,6 @@
 ---
 import FiveStars from './icons/FiveStars.astro';
+import OptimizedImage from './OptimizedImage.astro';
 
 export interface Props {
 	nombre: string;
@@ -22,7 +23,7 @@ const { nombre, foto, cargo, testimonio, fecha } = Astro.props;
 	<div class="pr-8">
 		<!-- Autor -->
 		<div class="flex items-center mb-4">
-			<img src={foto} alt={nombre} class="w-12 h-12 rounded-full mr-4 object-cover" />
+			<OptimizedImage src={foto} alt={nombre} class="w-12 h-12 rounded-full mr-4 object-cover" width={48} height={48} />
 			<div>
 				<p class="text-base font-semibold text-white mb-1">{nombre}</p>
 				<p class="text-sm text-gray-400 mb-0">{cargo}</p>

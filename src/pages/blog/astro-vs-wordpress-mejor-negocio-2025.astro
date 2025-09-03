@@ -1,6 +1,8 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getBlogPost } from '../../data/blogs.ts';
+import { Image } from 'astro:assets';
+import { getOptimizedImage } from '../../utils/imageMap.ts';
 
 const post = getBlogPost('astro-vs-wordpress-mejor-negocio-2025');
 
@@ -37,7 +39,7 @@ if (!post) {
   <h2 data-toc-text="Velocidad de carga">Velocidad de carga: La diferencia que impacta tus ventas</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/astro-nueva-generacion.png" alt="Astro como nueva generación de desarrollo web" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/astro-nueva-generacion.png")} alt="Astro como nueva generación de desarrollo web" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>La velocidad no es solo una métrica técnica, es dinero. Cada segundo de demora puede costarte hasta 27% de conversiones.</p>
@@ -69,7 +71,7 @@ if (!post) {
   <h2 data-toc-text="Seguridad">Seguridad: Protege tu negocio de ataques y hackeos</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/wordpress-veterano-confiable.png" alt="WordPress como plataforma veterana y confiable" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/wordpress-veterano-confiable.png")} alt="WordPress como plataforma veterana y confiable" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Un sitio web hackeado puede destruir la reputación de tu negocio en horas. La seguridad no es opcional, es supervivencia empresarial.</p>
@@ -132,7 +134,7 @@ if (!post) {
   <h2 data-toc-text="Costos reales">Costos reales: La inversión total que debes considerar</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/comparacion-costos-astro-wordpress.png" alt="Comparación de costos entre Astro y WordPress" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/comparacion-costos-astro-wordpress.png")} alt="Comparación de costos entre Astro y WordPress" class="blog-image" loading="lazy" />
   </div>
   
   <p>El precio inicial es solo la punta del iceberg. Te muestro los costos reales de cada opción durante 3 años.</p>
@@ -169,7 +171,7 @@ if (!post) {
   <h2 data-toc-text="Facilidad de uso">Facilidad de uso: ¿Qué tan fácil es actualizar contenido?</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/facilidad-uso-astro-wordpress.png" alt="Comparación de facilidad de uso entre Astro y WordPress" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/facilidad-uso-astro-wordpress.png")} alt="Comparación de facilidad de uso entre Astro y WordPress" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Esta es la pregunta del millón: "¿Podré actualizar mi sitio yo mismo?" La respuesta depende de qué tipo de actualizaciones necesites.</p>

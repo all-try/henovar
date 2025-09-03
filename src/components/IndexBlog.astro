@@ -1,4 +1,7 @@
 ---
+import { getOptimizedImage } from '../utils/imageMap';
+import OptimizedImage from './OptimizedImage.astro';
+
 export interface Props {
 	title: string;
 	description: string;
@@ -22,7 +25,7 @@ const { title, description, date, tags, image, author, href, gradient = "from-bl
 	<!-- Imagen -->
 	<div class={`h-48 bg-gradient-to-br ${gradient} relative`}>
 		{image ? (
-			<img src={image} alt={title} class="w-full h-full object-cover" />
+			<OptimizedImage src={image} alt={title} class="w-full h-full object-cover" />
 		) : (
 			<div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
 				{icon ? (
@@ -63,7 +66,7 @@ const { title, description, date, tags, image, author, href, gradient = "from-bl
 		<div class="flex items-center justify-between mt-auto">
 			<div class="flex items-center">
 				{author.avatar ? (
-					<img src={author.avatar} alt={author.name} class="w-8 h-8 rounded-full mr-3" />
+					<OptimizedImage src={author.avatar} alt={author.name} class="w-8 h-8 rounded-full mr-3" width={32} height={32} />
 				) : (
 					<div class="w-8 h-8 bg-gray-600 rounded-full mr-3"></div>
 				)}

@@ -1,6 +1,8 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getBlogPost } from '../../data/blogs.ts';
+import { Image } from 'astro:assets';
+import { getOptimizedImage } from '../../utils/imageMap.ts';
 
 const post = getBlogPost('que-es-astro-por-que-usamos-henovar-webs-rapidas');
 
@@ -28,7 +30,7 @@ if (!post) {
   <h2 data-toc-text="Qué es Astro">¿Qué es Astro? La tecnología que está cambiando el desarrollo web</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/astro-framework.png" alt="Diagrama explicativo del framework Astro" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/astro-framework.png")} alt="Diagrama explicativo del framework Astro" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Astro es un framework de desarrollo web moderno que se enfoca en crear sitios web extremadamente rápidos. A diferencia de otras tecnologías, Astro genera sitios estáticos por defecto, lo que significa que tu web carga instantáneamente.</p>
@@ -49,7 +51,12 @@ if (!post) {
   <h2 data-toc-text="Beneficios velocidad">Los beneficios reales de velocidad que impactan tu negocio</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/astro-vs-wordpress-velocidad.png" alt="Comparación de velocidad entre Astro y WordPress" class="blog-image" />
+    <Image 
+      src={getOptimizedImage("/img/blog/stock/astro-vs-wordpress-velocidad.png")} 
+      alt="Comparación de velocidad entre Astro y WordPress" 
+      class="blog-image" 
+      loading="lazy"
+    />
   </div>
   
   <p>La velocidad no es solo una métrica técnica, es dinero. Cada segundo de demora en la carga de tu sitio web tiene un impacto directo en tus ventas y conversiones.</p>
@@ -102,7 +109,7 @@ if (!post) {
   <h2 data-toc-text="Por qué elegimos Astro">Por qué en Henovar elegimos Astro para nuestros clientes</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/henovar-desarrollo-astro.png" alt="Equipo de Henovar desarrollando con Astro" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/henovar-desarrollo-astro.png")} alt="Equipo de Henovar desarrollando con Astro" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Después de años desarrollando sitios web con diferentes tecnologías, Astro se ha convertido en nuestra herramienta principal por razones muy específicas que benefician directamente a nuestros clientes.</p>
@@ -123,7 +130,7 @@ if (!post) {
   <h2 data-toc-text="Ideal para qué negocios">¿Para qué tipo de negocios es ideal Astro?</h2>
   
   <div class="my-8">
-    <img src="/img/blog/stock/tipos-negocios-web.png" alt="Tipos de negocios ideales para Astro" class="blog-image" />
+    <Image src={getOptimizedImage("/img/blog/stock/tipos-negocios-web.png")} alt="Tipos de negocios ideales para Astro" class="blog-image" loading="lazy" width={800} height={500} />
   </div>
   
   <p>Astro es especialmente poderoso para ciertos tipos de negocios y proyectos. Te explico cuándo es la mejor opción:</p>

@@ -1,6 +1,8 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getBlogPost } from '../../data/blogs.ts';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+import { getOptimizedImage } from '../../utils/imageMap';
 
 const post = getBlogPost('tienda-online-conectada-whatsapp-vender-carrito-un-clic');
 
@@ -25,7 +27,12 @@ if (!post) {
   
   <p>¿Tus clientes te escriben por WhatsApp pero se pierden en el proceso de compra? Si tu respuesta es sí, estás perdiendo ventas todos los días. En este artículo descubrirás cómo crear una tienda online que se conecta directamente con WhatsApp para cerrar más ventas de forma automática.</p>
 
-  <img src="/img/blog/stock/tienda-whatsapp-integracion.png" alt="Integración de tienda online con WhatsApp para ventas automáticas" class="blog-image" />
+  <OptimizedImage 
+    src={getOptimizedImage("/img/blog/stock/tienda-whatsapp-integracion.png")} 
+    alt="Integración de tienda online con WhatsApp para ventas automáticas" 
+    class="blog-image" 
+    loading="lazy"
+  />
 
   <div class="warning-box">
     <h4><svg class="inline w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>Problema real</h4>
@@ -53,7 +60,12 @@ if (!post) {
   
   <p>La respuesta no es elegir entre tienda online tradicional o WhatsApp. La clave está en combinar lo mejor de ambos mundos: una <strong>tienda web ligera con carrito que envía pedidos directamente a WhatsApp</strong>.</p>
 
-  <img src="/img/blog/stock/carrito-whatsapp-proceso.png" alt="Proceso de carrito de compras conectado a WhatsApp" class="blog-image" />
+  <OptimizedImage 
+    src={getOptimizedImage("/img/blog/stock/carrito-whatsapp-proceso.png")} 
+    alt="Proceso de carrito de compras conectado a WhatsApp" 
+    class="blog-image" 
+    loading="lazy"
+  />
 
   <h3 data-toc-text="Cómo funciona">¿Cómo funciona esta solución?</h3>
   <ol>
@@ -96,7 +108,12 @@ if (!post) {
 
   <h2 data-toc-text="Características clave">Características clave de una tienda conectada a WhatsApp</h2>
   
-  <img src="/img/blog/stock/funcionalidades-tienda-whatsapp.png" alt="Características y funcionalidades de tienda conectada a WhatsApp" class="blog-image" />
+  <OptimizedImage 
+    src={getOptimizedImage("/img/blog/stock/funcionalidades-tienda-whatsapp.png")} 
+    alt="Características y funcionalidades de tienda conectada a WhatsApp" 
+    class="blog-image" 
+    loading="lazy"
+  />
 
   <h3 data-toc-text="Funcionalidades esenciales">Funcionalidades esenciales:</h3>
   <ul>
