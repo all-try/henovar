@@ -12,9 +12,17 @@ import IndexBlog from '../components/IndexBlog.astro';
 import FiveStars from '../components/icons/FiveStars.astro';
 import IndexTestimonio from '../components/IndexTestimonio.astro';
 import FAQ from '../components/FAQ.astro';
-import { blogPosts } from '../data/blogs';
+import ProjectModal from '../components/ProjectModal.astro';
+import { blogPosts, getFeaturedPosts } from '../data/blogs';
+import { projects } from '../data/projects';
 
-const firstThreeBlogs = blogPosts.slice(0, 3);
+// Obtener blogs destacados primero, luego completar con regulares hasta máximo 3
+const featuredPosts = getFeaturedPosts();
+const regularPosts = blogPosts.filter(post => !post.featured);
+const selectedBlogs = [...featuredPosts, ...regularPosts].slice(0, 3);
+
+// Obtener los primeros 3 proyectos del array
+const selectedProjects = projects.slice(0, 3);
 ---
 
 <Layout 
@@ -30,15 +38,15 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 			<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<!-- Contenido izquierda -->
 				<div>
-					<Badge class="mb-6">Hecho para tu Marca</Badge>
-					<Titulo level={1} highlight="digitales" alignMobile="left" alignDesktop="left" class="mb-6">
-						El poder Digital detrás de tu Marca
+					<Badge class="mb-4">Hecho para tu Marca</Badge>
+					<Titulo level={1} highlight="venden" alignMobile="left" alignDesktop="left" class="mb-6">
+						Webs rápidas, modernas y que venden.
 					</Titulo>
 					<Parrafo alignMobile="left" alignDesktop="left" class="mb-8">
 						Especialistas en **desarrollo web** y **consultoría tecnológica**. Creamos experiencias digitales que impulsan el crecimiento de tu negocio.
 					</Parrafo>
 					<div class="flex flex-col sm:flex-row gap-4">
-						<BotonPrimario href="/servicios">Ver Servicios</BotonPrimario>
+						<BotonPrimario href="/precios-y-servicios">Ver Promoción</BotonPrimario>
 						<BotonSecundario href="/proyectos">Ver Proyectos</BotonSecundario>
 					</div>
 				</div>
@@ -58,7 +66,7 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 		<section class="section section-padding">
 			<div class="max-w-6xl mx-auto">
 				<div class="text-center mb-12">
-					<Badge class="mb-4">Nuestros Servicios</Badge>
+					<Badge class="mb-4" variant='secondary'>Nuestros Servicios</Badge>
 					<Titulo level={1} alignMobile="center" alignDesktop="center" highlight="ofrecemos" class="mb-4">Lo que te ofrecemos</Titulo>
 					<Parrafo alignMobile="center" alignDesktop="center" class="mb-6 max-w-4xl mx-auto">
 						Así te yudartemos a impulsar tu negocio digital.
@@ -70,7 +78,7 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 					<!-- Servicio 1: Texto izquierda, imagen derecha -->
 					<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 						<div>
-							<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-4">Tu Página Web</Titulo>
+							<Titulo level={2} alignMobile="left" alignDesktop="left" highlight="Página" class="mb-4">Tu Página Web</Titulo>
 							<Parrafo alignMobile="left" alignDesktop="left" class="mb-8">
 								En Henovar combinamos creatividad y tecnología para crear soluciones web que no solo se ven increíbles, sino que también generan resultados reales para tu negocio.
 							</Parrafo>
@@ -124,7 +132,7 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 							/>
 						</div>
 						<div>
-							<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-4">Tu tienda Online</Titulo>
+							<Titulo level={2} alignMobile="left" alignDesktop="left" highlight="tienda" class="mb-4">Tu tienda Online</Titulo>
 							<Parrafo alignMobile="left" alignDesktop="left" class="mb-8">
 								Creamos tu ecommerce online para que diversifiques tu negocio y aumentes tus ventas. Tenemos integraciones para que vendas con Shopify y WhatsApp.
 							</Parrafo>
@@ -143,19 +151,18 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 									text="Tu tienda online con mensajes directos a tu WhastApp."
 									bgImage="/img/gradients/abstract-3.webp"
 								/>
-								<!-- 
 								<IndexFeatureCard 
 									icon='<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>'
 									title="Pagos Seguros"
-									text="Múltiples métodos de pago seguros con procesamiento encriptado y altos estándares de seguridad."
+									text="Múltiples métodos de pago seguros con procesamiento encriptado."
 									bgImage="/img/gradients/top-light.webp"
 								/>
 								<IndexFeatureCard 
 									icon='<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>'
 									title="Analytics"
-									text="Reportes detallados de ventas y métricas en tiempo real para optimizar tu negocio online."
+									text="Reportes detallados de ventas y métricas en tiempo real."
 									bgImage="/img/gradients/top-light.webp"
-								/>-->
+								/>
 							</div>
 						</div>
 				</div>
@@ -164,7 +171,7 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 			<!-- Servicio 3: Texto izquierda, imagen derecha -->
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 				<div>
-					<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-4">Remodelación Web</Titulo>
+					<Titulo level={2} alignMobile="left" alignDesktop="left" highlight="Remodelación" class="mb-4">Remodelación Web</Titulo>
 					<Parrafo alignMobile="left" alignDesktop="left" class="mb-8">
 						¿Tu página web actual no refleja la calidad de tu negocio? Renovamos tu sitio web con diseño moderno, mejor rendimiento y funcionalidades actualizadas.
 					</Parrafo>
@@ -182,6 +189,18 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 							title="Mejor Rendimiento"
 							text="Optimización de velocidad y experiencia de usuario."
 							bgImage="/img/gradients/abstract-2.webp"
+						/>
+						<IndexFeatureCard 
+							icon='<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path></svg>'
+							title="SEO Optimizado"
+							text="Mejoramos tu posicionamiento en buscadores con técnicas avanzadas."
+							bgImage="/img/gradients/abstract-3.webp"
+						/>
+						<IndexFeatureCard 
+							icon='<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>'
+							title="Seguridad Avanzada"
+							text="Implementamos protocolos de seguridad y certificados SSL."
+							bgImage="/img/gradients/top-light.webp"
 						/>
 					</div>
 				</div>
@@ -207,8 +226,8 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 			<div class="max-w-6xl mx-auto">
 				<div class="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-12">
 					<div class="text-left">
-						<Badge class="mb-4">Proyectos</Badge>
-						<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-6">Nuestros Proyectos</Titulo>
+						<Badge class="mb-4" variant='secondary' variant='secondary'>Proyectos</Badge>
+						<Titulo level={2} alignMobile="left" alignDesktop="left" highlight="Proyectos" class="mb-6">Nuestros Proyectos</Titulo>
 						<Parrafo alignMobile="left" alignDesktop="left" class="max-w-2xl">
 							Descubre algunos de los **proyectos exitosos** que hemos desarrollado para nuestros clientes.
 						</Parrafo>
@@ -218,27 +237,15 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 					</div>
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<IndexProyectos 
-						title="E-commerce Moderno"
-						description="Plataforma de comercio electrónico con diseño responsive y funcionalidades avanzadas."
-						year="2024"
-						image="/img/projects/Onsite.png"
-						link="/proyectos#ecommerce"
-					/>
-					<IndexProyectos 
-						title="App Corporativa"
-						description="Aplicación web para gestión empresarial con dashboard interactivo y reportes."
-						year="2023"
-						image="/img/projects/Paylytix.png"
-						link="/proyectos#corporativa"
-					/>
-					<IndexProyectos 
-						title="Portal Educativo"
-						description="Plataforma de aprendizaje online interactiva con sistema de evaluaciones."
-						year="2024"
-						image="/img/projects/Pulsara.png"
-						link="/proyectos#educativo"
-					/>
+					{selectedProjects.map((project) => (
+						<IndexProyectos 
+							title={project.title}
+							description={project.shortDescription}
+							year={project.year}
+							image={project.image}
+							link={project.url}
+						/>
+					))}
 				</div>
 			</div>
 		</section>
@@ -248,8 +255,8 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 			<div class="max-w-6xl mx-auto">
 				<div class="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-12">
 					<div class="text-left">
-						<Badge class="mb-4">Testimonios</Badge>
-						<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-6">Lo que dicen nuestros clientes</Titulo>
+						<Badge class="mb-4" variant='secondary'>Testimonios</Badge>
+						<Titulo level={2} alignMobile="left" alignDesktop="left" highlight="clientes" class="mb-6">Lo que dicen nuestros clientes</Titulo>
 						<Parrafo alignMobile="left" alignDesktop="left" class="max-w-2xl">
 							La **satisfacción de nuestros clientes** es nuestra mayor recompensa.
 						</Parrafo>
@@ -263,73 +270,73 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 				<!-- Fila superior - movimiento hacia la izquierda -->
 				<div class="flex gap-6 mb-6 animate-slide-left" style="width: 200%;">
 					<IndexTestimonio 
-						nombre="Laura González"
-						foto="/img/stock/avatar-1.svg"
-						cargo="CEO, TechStart"
-						testimonio="Me encantó el resultado final. La página quedó muy profesional y con los botones de WhatsApp integrados ahora mis clientes me contactan directamente. Solo mejoraría un poco los tiempos de respuesta en soporte."
+						nombre="María González"
+						foto="/img/persons/maria-gonzales.webp"
+						cargo="CEO, Veo Solutions"
+						testimonio="El equipo de Henovar transformó completamente nuestra presencia digital. Su enfoque profesional y atención al detalle superaron nuestras expectativas."
 						fecha="10 de enero de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Carlos Méndez"
-						foto="/img/stock/avatar-2.svg"
-						cargo="Director, InnovaWeb"
-						testimonio="Henovar transformó por completo la presencia digital de mi empresa. Pasamos de no tener nada a tener una página web profesional que genera confianza y nuevos clientes todos los días."
+						nombre="Carlos Rodríguez"
+						foto="/img/persons/carlos-rodriguez.webp"
+						cargo="Dropshipper"
+						testimonio="Increíble trabajo en nuestra plataforma e-commerce. Las ventas aumentaron un 300% después del lanzamiento."
 						fecha="12 de junio de 2025"
 					/>
 					<IndexTestimonio 
 						nombre="Ana Martínez"
-						foto="/img/stock/avatar-3.svg"
+						foto="/img/persons/ana-martinez.webp"
 						cargo="Fundadora, DigitalPlus"
 						testimonio="Increíble trabajo de Henovar. Mi página web se ve súper profesional y moderna. Los clientes ahora me encuentran fácilmente y las ventas han aumentado considerablemente."
 						fecha="15 de abril de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Miguel Ramírez"
-						foto="/img/stock/avatar-4.svg"
-						cargo="Gerente, SolutionsPro"
-						testimonio="El sitio web que Henovar diseñó para mi empresa superó todas mis expectativas. Es rápido, moderno y totalmente personalizado. Mis clientes directamente desde la web me contactan por las aplicaciones."
+						nombre="Roberto Silva"
+						foto="/img/persons/roberto-silva.webp"
+						cargo="Diseñador UX"
+						testimonio="Los contraté porque no tenía tiempo para renovar la web de un cliente fijo. Excelente arquitectura técnica y código limpio."
 						fecha="8 de marzo de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Diego Fernández"
-						foto="/img/stock/avatar-5.svg"
-						cargo="CTO, DevSolutions"
-						testimonio="Gracias a Henovar, logramos tener nuestra página lista en pocos días. El diseño refleja perfectamente la identidad de nuestra marca y los precios fueron mucho más accesibles que en otras agencias."
+						nombre="Laura Fernández"
+						foto="/img/persons/laura-fernandez.webp"
+						cargo="Abogada"
+						testimonio="Su experiencia en desarrollo de portafolios web es excepcional. Cumplieron todos los estándares de información y venta para mis servicios."
 						fecha="10 de mayo de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Laura González"
-						foto="/img/stock/avatar-1.svg"
+						nombre="Adolfo Parra"
+						foto="/img/persons/adolfo-parra.webp"
 						cargo="CEO, TechStart"
-						testimonio="Me encantó el resultado final. La página quedó muy profesional y con los botones de WhatsApp integrados ahora mis clientes me contactan directamente. Solo mejoraría un poco los tiempos de respuesta en soporte."
+						testimonio="Me encantó el resultado final. La página quedó muy profesional y con los botones de WhatsApp integrados ahora mis clientes me contactan directamente."
 						fecha="10 de enero de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Carlos Méndez"
-						foto="/img/stock/avatar-2.svg"
+						nombre="Matías Puerta"
+						foto="/img/persons/matias-puerta.webp"
 						cargo="Director, InnovaWeb"
-						testimonio="Henovar transformó por completo la presencia digital de mi empresa. Pasamos de no tener nada a tener una página web profesional que genera confianza y nuevos clientes todos los días."
+						testimonio="Henovar transformó por completo la presencia digital de mi empresa. Pasamos de no tener nada a tener una página web profesional que genera confianza."
 						fecha="12 de junio de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Ana Martínez"
-						foto="/img/stock/avatar-3.svg"
+						nombre="Clara Murillo"
+						foto="/img/persons/clara-murillo.webp"
 						cargo="Fundadora, DigitalPlus"
-						testimonio="Increíble trabajo de Henovar. Mi página web se ve súper profesional y moderna. Los clientes ahora me encuentran fácilmente y las ventas han aumentado considerablemente."
+						testimonio="Increíble trabajo de Henovar. Mi página web se ve súper profesional y moderna. Los clientes ahora me encuentran fácilmente."
 						fecha="15 de abril de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Miguel Ramírez"
-						foto="/img/stock/avatar-4.svg"
+						nombre="Elizabeth Jaramillo"
+						foto="/img/persons/elizabeth-jaramillo.webp"
 						cargo="Gerente, SolutionsPro"
-						testimonio="El sitio web que Henovar diseñó para mi empresa superó todas mis expectativas. Es rápido, moderno y totalmente personalizado. Mis clientes directamente desde la web me contactan por las aplicaciones."
+						testimonio="El sitio web que Henovar diseñó para mi empresa superó todas mis expectativas. Es rápido, moderno y totalmente personalizado."
 						fecha="8 de marzo de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Diego Fernández"
-						foto="/img/stock/avatar-5.svg"
+						nombre="Kely Martínez"
+						foto="/img/persons/kely-martinez.webp"
 						cargo="CTO, DevSolutions"
-						testimonio="Gracias a Henovar, logramos tener nuestra página lista en pocos días. El diseño refleja perfectamente la identidad de nuestra marca y los precios fueron mucho más accesibles que en otras agencias."
+						testimonio="Gracias a Henovar, logramos tener nuestra página lista en pocos días. El diseño refleja perfectamente la identidad de nuestra marca."
 						fecha="10 de mayo de 2025"
 					/>
 				</div>
@@ -337,71 +344,71 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 				<!-- Fila inferior - movimiento hacia la derecha -->
 				<div class="flex gap-6 animate-slide-right" style="width: 200%;">
 					<IndexTestimonio 
-						nombre="Sofía Herrera"
-						foto="/img/stock/avatar-6.svg"
+						nombre="Saray Fuentes"
+						foto="/img/persons/saray-fuentes.webp"
 						cargo="Directora, CreativeStudio"
-						testimonio="La atención al cliente de Henovar es excepcional. Siempre estuvieron disponibles para resolver mis dudas y hacer ajustes. El resultado final superó mis expectativas completamente."
+						testimonio="La atención al cliente de Henovar es excepcional. Siempre estuvieron disponibles para resolver mis dudas y hacer ajustes."
 						fecha="22 de febrero de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Roberto Silva"
-						foto="/img/stock/avatar-7.svg"
+						nombre="Felipe Córdoba"
+						foto="/img/persons/felipe-cordoba.webp"
 						cargo="Propietario, LocalBusiness"
-						testimonio="Desde que tengo mi página web con Henovar, mi negocio local ha crecido exponencialmente. Los clientes me encuentran en Google y las ventas online han sido increíbles."
+						testimonio="Desde que tengo mi página web con Henovar, mi negocio local ha crecido exponencialmente. Los clientes me encuentran en Google."
 						fecha="5 de enero de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Carmen López"
-						foto="/img/stock/avatar-8.svg"
+						nombre="Fernanda Caro"
+						foto="/img/persons/fernanda-caro.webp"
 						cargo="Consultora, BusinessGrow"
-						testimonio="Henovar no solo me entregó una página web, sino una herramienta de ventas completa. El diseño es elegante y funcional, exactamente lo que necesitaba para mi consultoría."
+						testimonio="Henovar no solo me entregó una página web, sino una herramienta de ventas completa. El diseño es elegante y funcional."
 						fecha="18 de abril de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Andrés Morales"
-						foto="/img/stock/avatar-9.svg"
+						nombre="Miguel Gonzales"
+						foto="/img/persons/miguel-gonzales.webp"
 						cargo="Fundador, StartupTech"
-						testimonio="La velocidad de carga de mi sitio web es impresionante. Henovar optimizó todo perfectamente y ahora tengo una ventaja competitiva real en mi sector."
+						testimonio="La velocidad de carga de mi sitio web es impresionante. Henovar optimizó todo perfectamente y ahora tengo una ventaja competitiva."
 						fecha="30 de marzo de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Patricia Ruiz"
-						foto="/img/stock/avatar-10.svg"
+						nombre="Pedro Marín"
+						foto="/img/persons/pedro-marin.webp"
 						cargo="Gerente, RetailPlus"
 						testimonio="El equipo de Henovar entendió perfectamente mi visión y la plasmó en una página web espectacular. La integración con redes sociales funciona de maravilla."
 						fecha="14 de febrero de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Sofía Herrera"
-						foto="/img/stock/avatar-6.svg"
+						nombre="Clara Murillo"
+						foto="/img/persons/clara-murillo.webp"
 						cargo="Directora, CreativeStudio"
-						testimonio="La atención al cliente de Henovar es excepcional. Siempre estuvieron disponibles para resolver mis dudas y hacer ajustes. El resultado final superó mis expectativas completamente."
+						testimonio="La atención al cliente de Henovar es excepcional. Siempre estuvieron disponibles para resolver mis dudas y hacer ajustes."
 						fecha="22 de febrero de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Roberto Silva"
-						foto="/img/stock/avatar-7.svg"
+						nombre="Adolfo Parra"
+						foto="/img/persons/adolfo-parra.webp"
 						cargo="Propietario, LocalBusiness"
-						testimonio="Desde que tengo mi página web con Henovar, mi negocio local ha crecido exponencialmente. Los clientes me encuentran en Google y las ventas online han sido increíbles."
+						testimonio="Desde que tengo mi página web con Henovar, mi negocio local ha crecido exponencialmente. Los clientes me encuentran en Google."
 						fecha="5 de enero de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Carmen López"
-						foto="/img/stock/avatar-8.svg"
+						nombre="Elizabeth Jaramillo"
+						foto="/img/persons/elizabeth-jaramillo.webp"
 						cargo="Consultora, BusinessGrow"
-						testimonio="Henovar no solo me entregó una página web, sino una herramienta de ventas completa. El diseño es elegante y funcional, exactamente lo que necesitaba para mi consultoría."
+						testimonio="Henovar no solo me entregó una página web, sino una herramienta de ventas completa. El diseño es elegante y funcional."
 						fecha="18 de abril de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Andrés Morales"
-						foto="/img/stock/avatar-9.svg"
+						nombre="Matías Puerta"
+						foto="/img/persons/matias-puerta.webp"
 						cargo="Fundador, StartupTech"
-						testimonio="La velocidad de carga de mi sitio web es impresionante. Henovar optimizó todo perfectamente y ahora tengo una ventaja competitiva real en mi sector."
+						testimonio="La velocidad de carga de mi sitio web es impresionante. Henovar optimizó todo perfectamente y ahora tengo una ventaja competitiva."
 						fecha="30 de marzo de 2025"
 					/>
 					<IndexTestimonio 
-						nombre="Patricia Ruiz"
-						foto="/img/stock/avatar-10.svg"
+						nombre="Kely Martínez"
+						foto="/img/persons/kely-martinez.webp"
 						cargo="Gerente, RetailPlus"
 						testimonio="El equipo de Henovar entendió perfectamente mi visión y la plasmó en una página web espectacular. La integración con redes sociales funciona de maravilla."
 						fecha="14 de febrero de 2025"
@@ -425,8 +432,8 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 							Contáctanos hoy y descubre cómo podemos **transformar tu idea** en una solución digital exitosa.
 						</Parrafo>
 						<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-							<BotonPrimario href="/contacto">Contactar Ahora</BotonPrimario>
-							<BotonSecundario href="/servicios">Ver Servicios</BotonSecundario>
+							<BotonPrimario mensaje="Hola! Me interesa contratar sus servicios de desarrollo web. ¿Podríamos hablar sobre mi proyecto?">Contactar Ahora</BotonPrimario>
+							<BotonSecundario href="/precios-y-servicios">Ver Servicios</BotonSecundario>
 						</div>
 						
 						<!-- Métricas -->
@@ -444,7 +451,7 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 							
 							<!-- Métrica 2 -->
 							<div class="flex flex-col items-center text-center">
-								<svg class="w-8 h-8 text-green-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<svg class="w-8 h-8 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
 								</svg>
 								<span class="text-gray-400 text-lg">+Ganancias</span>
@@ -455,7 +462,7 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 							
 							<!-- Métrica 3 -->
 							<div class="flex flex-col items-center text-center">
-								<svg class="w-8 h-8 text-purple-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<svg class="w-8 h-8 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
 								</svg>
 								<span class="text-gray-400 text-lg">+Clientes</span>
@@ -477,8 +484,8 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 			<div class="max-w-6xl mx-auto">
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 					<div>
-						<Badge class="mb-4">Nosotros</Badge>
-						<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-6">Conoce a Henovar</Titulo>
+						<Badge class="mb-4" variant='secondary'>Nosotros</Badge>
+						<Titulo level={2} alignMobile="left" alignDesktop="left" highlight="Henovar" class="mb-6">Conoce a Henovar</Titulo>
 						<Parrafo alignMobile="left" alignDesktop="left" class="mb-6">
 							Somos un equipo de **desarrolladores apasionados** por la tecnología y la innovación. Nos especializamos en crear soluciones digitales que impulsan el crecimiento de los negocios.
 						</Parrafo>
@@ -497,8 +504,8 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 			<div class="max-w-6xl mx-auto">
 				<div class="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-12">
 					<div class="text-left">
-						<Badge class="mb-4">Blog</Badge>
-						<Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-6">Últimas Publicaciones</Titulo>
+						<Badge class="mb-4" variant='secondary'>Blog</Badge>
+						<Titulo level={2} alignMobile="left" alignDesktop="left" highlight="Publicaciones" class="mb-6">Últimas Publicaciones</Titulo>
 						<Parrafo alignMobile="left" alignDesktop="left" class="max-w-2xl">
 							Mantente al día con las **últimas tendencias** en tecnología y desarrollo web.
 						</Parrafo>
@@ -507,39 +514,39 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 						<BotonPrimario href="/blog">Ver Todas las Publicaciones</BotonPrimario>
 					</div>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{firstThreeBlogs.map(post => (
-					<article class="border-radius-large overflow-hidden">
-						<div class="h-48 mb-4">
-							<img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
-						</div>
-						<div>
-							<div class="flex flex-col space-y-3">
-								<div class="flex items-center space-x-2">
-									<BlogBadge>{post.category}</BlogBadge>
-									<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-xs">
-										{new Date(post.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} • {post.readTime}
-									</Parrafo>
-								</div>
-								<Titulo level={4} alignMobile="left" alignDesktop="left" class="mb-2 line-clamp-2">
-									{post.title}
-								</Titulo>
-								<Parrafo alignMobile="left" alignDesktop="left" class="mb-4 text-sm line-clamp-3">
-									{post.excerpt}
-								</Parrafo>
-								<div class="flex items-center justify-between mt-auto">
-									<div class="flex items-center">
-										<div class="w-8 h-8 bg-gray-600 rounded-full mr-3">
-											<img src={post.author.avatar} alt={post.author.name} class="w-full h-full object-cover rounded-full" />
-										</div>
-										<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-sm">{post.author.name}</Parrafo>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15 lg:gap-y-15 lg:gap-x-8">
+					{selectedBlogs.map(post => (
+						<article class="overflow-hidden">
+							<div class="h-48 mb-4">
+								<img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
+							</div>
+							<div>
+								<div class="flex flex-col space-y-3">
+									<div class="flex items-center space-x-2">
+										<BlogBadge>{post.category}</BlogBadge>
+										<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-xs">
+											{new Date(post.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} • {post.readTime}
+										</Parrafo>
 									</div>
-									<a href={`/blog/${post.slug}`} class="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">Leer →</a>
+									<h4 class="text-white leading-widest tracking-tight text-left text-xl sm:text-lg md:text-lg lg:text-xl font-semibold mb-2">
+										{post.title}
+									</h4>
+									<p class="leading-relaxed text-sm sm:text-sm md:text-sm lg:text-sm text-left text-gray-200 mb-4">
+										{post.excerpt}
+									</p>
+									<div class="flex items-center justify-between mt-auto">
+										<p class="text-left text-sm sm:text-xs leading-relaxed text-gray-400">Por {post.author.name}</p>
+										<a href={`/blog/${post.slug}`} class="inline-flex items-center rounded-md text-gray-200 hover:text-white text-base bg-gray-700 hover:bg-gray-800 px-4 py-2 font-medium transition-colors">
+													Leer Más
+													<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+													</svg>
+												</a>
+									</div>
 								</div>
 							</div>
-						</div>
-					</article>
-				))}
+						</article>
+					))}
 			</div>
 			</div>
 		</section>
@@ -552,23 +559,19 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 			preguntas={[
 				{
 					pregunta: "¿Cuánto tiempo toma desarrollar un sitio web?",
-					respuesta: "El tiempo varía según la complejidad: sitios básicos toman 2-3 semanas, proyectos profesionales 4-6 semanas, y aplicaciones enterprise 8-12 semanas. Te proporcionamos un cronograma detallado al inicio del proyecto."
+					respuesta: "El tiempo varía según la complejidad: landing pages y portafolios toman 5 dias a 1 semana, tiendas online y proyectos profesionales con funcionalidades especificas 1 a 2 semanas. Te proporcionamos un cronograma detallado al inicio del proyecto."
 				},
 				{
 					pregunta: "¿Qué tecnologías utilizan?",
-					respuesta: "Trabajamos con tecnologías modernas como React, Vue.js, Astro, Node.js, y bases de datos como PostgreSQL y MongoDB. Elegimos la tecnología más adecuada según las necesidades específicas de tu proyecto."
+					respuesta: "Trabajamos con tecnologías modernas como Astro, Tailwind, Typescript, Javascript, HTML y CSS, y bases de datos como MYSQL y MongoDB. Elegimos la tecnología más adecuada según las necesidades específicas de tu proyecto."
 				},
 				{
 					pregunta: "¿Incluyen hosting y dominio?",
-					respuesta: "El hosting y dominio se contratan por separado. Te ayudamos a elegir la mejor opción según tu presupuesto y necesidades. Ofrecemos hosting premium optimizado por €15/mes."
+					respuesta: "Sí. Y el hosting y dominio ya viene incluido en el precio final. Tambien nos encargamos de desplegar tu pagina web para esté publica en todo internet."
 				},
 				{
 					pregunta: "¿Ofrecen soporte después del lanzamiento?",
-					respuesta: "Sí, todos nuestros planes incluyen soporte post-lanzamiento: 1 mes en el plan Básico, 3 meses en el Profesional, y soporte prioritario 24/7 en Enterprise. También ofrecemos planes de mantenimiento continuo."
-				},
-				{
-					pregunta: "¿Puedo actualizar mi sitio web yo mismo?",
-					respuesta: "Absolutamente. En los planes Profesional y Enterprise incluimos un CMS intuitivo que te permite actualizar contenido fácilmente. También proporcionamos capacitación para que puedas gestionar tu sitio de forma autónoma."
+					respuesta: "Sí, todos nuestros planes incluyen soporte post-lanzamiento: 1 mes, y es totalmente gratis con cambios basicos ilimitados de forma prioritaria."
 				},
 				{
 					pregunta: "¿Qué pasa si no estoy satisfecho con el resultado?",
@@ -579,6 +582,9 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 			textoBotonContacto="Contáctanos"
 			urlContacto="/contacto"
 		/>
+	
+	<!-- Modal de proyecto -->
+	<ProjectModal />
 	</div>
 	<style is:inline>
 		.hero-container {
@@ -587,4 +593,135 @@ const firstThreeBlogs = blogPosts.slice(0, 3);
 							radial-gradient(at 0% 0%, hsl(235deg 100% 17.09%) 0px, transparent 50%);
 		}
 	</style>
+	
+	<script is:inline>
+		// Función para abrir el modal con datos básicos
+		function openProjectModal(title, description, year, image, url) {
+			console.log('openProjectModal called with:', { title, description, year, image, url });
+			
+			// Crear objeto de proyecto básico
+			const project = {
+				title: title,
+				longDescription: description,
+				year: year,
+				image: image,
+				url: url,
+				status: 'Completado',
+				client: 'Cliente confidencial',
+				duration: 'Consultar',
+				developers: 2,
+				category: 'Desarrollo Web',
+				features: [
+					'Diseño responsive',
+					'Optimización SEO',
+					'Carga rápida',
+					'Interfaz intuitiva'
+				]
+			};
+			
+			updateModalContent(project);
+			
+			const modal = document.getElementById('project-modal');
+			if (modal) {
+				modal.style.display = 'flex';
+				document.body.style.overflow = 'hidden';
+				// Añadir clase show después de un pequeño delay para la transición
+				setTimeout(() => {
+					modal.classList.add('show');
+				}, 10);
+			}
+		}
+		
+		// Función para cerrar el modal
+		function closeProjectModal() {
+			const modal = document.getElementById('project-modal');
+			if (modal) {
+				modal.classList.remove('show');
+				// Esperar a que termine la transición antes de ocultar
+				setTimeout(() => {
+					modal.style.display = 'none';
+					document.body.style.overflow = 'auto';
+				}, 300);
+			}
+		}
+		
+		// Función para actualizar el contenido del modal
+		function updateModalContent(project) {
+			// Título y meta información
+			const titleElement = document.getElementById('modal-title');
+			const yearElement = document.getElementById('modal-year');
+			const statusElement = document.getElementById('modal-status');
+			
+			if (titleElement) titleElement.textContent = project.title || '';
+			if (yearElement) yearElement.textContent = (project.year && project.year.toString()) || '';
+			if (statusElement) {
+				statusElement.textContent = project.status || '';
+				// Cambiar a azul oscuro gradiente
+				statusElement.className = 'px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-800 to-blue-900';
+			}
+			
+			// Imagen
+			const imageElement = document.getElementById('modal-image');
+			if (imageElement) {
+				imageElement.src = project.image || '';
+				imageElement.alt = project.title || '';
+			}
+			
+			// Información básica
+			const clientElement = document.getElementById('modal-client');
+			const durationElement = document.getElementById('modal-duration');
+			const developersElement = document.getElementById('modal-developers');
+			const categoryElement = document.getElementById('modal-category');
+			
+			if (clientElement) clientElement.textContent = project.client || '';
+			if (durationElement) durationElement.textContent = project.duration || '';
+			if (developersElement) developersElement.textContent = `${project.developers || 0} desarrolladores`;
+			if (categoryElement) categoryElement.textContent = project.category || '';
+			
+			// Descripción
+			const descriptionElement = document.getElementById('modal-description');
+			if (descriptionElement) descriptionElement.textContent = project.longDescription || '';
+			
+			// Características con iconos azules y texto más grande
+			const featuresContainer = document.getElementById('modal-features');
+			if (featuresContainer && project.features) {
+				featuresContainer.innerHTML = project.features.map(feature => 
+					`<li class="flex items-center gap-3 text-white text-base">
+						<svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+						</svg>
+						<span>${feature}</span>
+					</li>`
+				).join('');
+			}
+			
+			// Botones de acción con contenedor centrado
+			const buttonsContainer = document.querySelector('.flex.gap-4.mt-8');
+			if (buttonsContainer) {
+				buttonsContainer.className = 'flex gap-4 mt-8 flex-col md:flex-row max-w-5xl mx-auto';
+			}
+			
+			// Mostrar/ocultar botón de Ver Proyecto
+			const urlButton = document.querySelector('.flex-1.hidden');
+			if (urlButton) {
+				if (project.url && project.url !== '#') {
+					urlButton.href = project.url;
+					urlButton.classList.remove('hidden');
+				} else {
+					urlButton.classList.add('hidden');
+				}
+			}
+		}
+		
+		// Cerrar modal con Escape
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') {
+				closeProjectModal();
+			}
+		});
+		
+		// Hacer funciones disponibles globalmente
+		window.openProjectModal = openProjectModal;
+		window.closeProjectModal = closeProjectModal;
+	</script>
 </Layout>

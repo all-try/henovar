@@ -6,11 +6,12 @@ import Badge from '../components/Badge.astro';
 import BlogBadge from '../components/BlogBadge.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
 import BotonSecundario from '../components/BotonSecundario.astro';
+import PageBanner from '../components/PageBanner.astro';
 import { blogPosts, getFeaturedPosts, getRecentPosts } from '../data/blogs';
 
 const featuredPosts = getFeaturedPosts();
-const mainPost = featuredPosts[0]; // Solo el primer post destacado
-const allPosts = blogPosts; // Todos los posts
+const salientPosts = blogPosts.filter(post => post.salient); // Posts destacados
+const regularPosts = blogPosts.filter(post => !post.salient); // Posts normales
 const totalPosts = blogPosts.length; // Total de blogs disponibles
 ---
 
@@ -19,21 +20,16 @@ const totalPosts = blogPosts.length; // Total de blogs disponibles
 	description="Descubre las últimas tendencias en desarrollo web, tecnología y consejos de expertos en nuestro blog. Mantente actualizado con Henovar."
 	keywords="blog, desarrollo web, tecnología, tutoriales, tendencias, consejos, programación"
 >
-	<!-- Hero Section -->
-	<section class="header-offset section section-padding">
-		<div class="max-w-7xl mx-auto text-center">
-			<Badge class="mb-6">Blog</Badge>
-			<Titulo level={1} alignMobile="left" alignDesktop="center" highlight="conocimiento" class="mb-6">
-				Compartimos nuestro conocimiento
-			</Titulo>
-			<Parrafo alignMobile="left" alignDesktop="center" class="max-w-3xl mx-auto mb-8">
-				Descubre las **últimas tendencias**, tutoriales y consejos de expertos en desarrollo web y tecnología.
-			</Parrafo>
-		</div>
-	</section>
+	<div class="bg-page-dark">
+		<PageBanner 
+			titulo="Compartimos nuestro conocimiento"
+			parrafo="Descubre las **últimas tendencias**, tutoriales y consejos de expertos en desarrollo web y tecnología."
+			badge="Blog"
+			highlight="conocimiento"
+			imagenFondo="/img/bg/page-top-banner.png"
+		/>
 
-	<!-- Artículo Destacado -->
-	<div class="bg-[url('/img/bg/large-bg2.png')] bg-cover bg-top bg-no-repeat">
+		<!-- Artículo Destacado -->
 		<section class="section section-padding">
 			<div class="max-w-6xl mx-auto">
 				<div class="text-left mb-5">
@@ -42,106 +38,95 @@ const totalPosts = blogPosts.length; // Total de blogs disponibles
 					<BlogBadge class="">Artículo Destacado</BlogBadge>
 				</div>
 
-				<!-- Artículo Principal -->
-				{mainPost && (
+				<!-- Artículos Destacados -->
+				{salientPosts.map(post => (
 					<div class="border-radius-large overflow-hidden mb-16">
 						<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 							<div class="h-64 lg:h-auto">
-								<img src={mainPost.image} alt={mainPost.title} class="w-full h-full object-cover rounded-lg" />
+								<img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
 							</div>
 							<div>
 								<div class="flex flex-col space-y-4">
 									<div class="flex items-center space-x-3">
-										<BlogBadge>{mainPost.category}</BlogBadge>
+										<BlogBadge>{post.category}</BlogBadge>
 										<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-sm">
-											{new Date(mainPost.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })} • {mainPost.readTime}
+											{new Date(post.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })} • {post.readTime}
 										</Parrafo>
 									</div>
 									<Titulo level={3} alignMobile="left" alignDesktop="left" class="mb-4">
-										{mainPost.title}
+										{post.title}
 									</Titulo>
 									<Parrafo alignMobile="left" alignDesktop="left" class="mb-6">
-										{mainPost.excerpt}
+										{post.excerpt}
 									</Parrafo>
 									<div class="flex items-center justify-between">
-										<div class="flex items-center">
-											<div class="w-12 h-12 bg-gray-600 rounded-full mr-4">
-												<img src={mainPost.author.avatar} alt={mainPost.author.name} class="w-full h-full object-cover rounded-full" />
-											</div>
-											<div>
-												<Parrafo alignMobile="left" alignDesktop="left" class="font-medium text-white">{mainPost.author.name}</Parrafo>
-												<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-sm">{mainPost.author.role}</Parrafo>
-											</div>
+											<p class="text-left text-sm sm:text-base md:text-lg lg:text-lg leading-relaxed text-gray-400">Por {post.author.name}</p>
+											<a href={`/blog/${post.slug}`} class="inline-flex items-center rounded-md text-gray-200 hover:text-white text-base bg-gray-700 hover:bg-gray-800 px-4 py-2 font-medium transition-colors">
+													Leer Más
+													<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+													</svg>
+												</a>
 										</div>
-										<BotonSecundario href={`/blog/${mainPost.slug}`}>Leer Más</BotonSecundario>
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				))}
+
+			<!-- Grid de Artículos Regulares -->
+				{regularPosts.length > 0 && (
+					<div>
+						<h3 class="text-white leading-widest tracking-tight text-left text-2xl md:text-3xl lg:text-4xl font-semibold mb-8">Más Artículos</h3>
+						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15 lg:gap-y-15 lg:gap-x-8 mb-12">
+							{regularPosts.map(post => (
+								<article class="overflow-hidden">
+									<div class="h-48 mb-4">
+										<img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
+									</div>
+									<div>
+										<div class="flex flex-col space-y-3">
+											<div class="flex items-center space-x-2">
+												<BlogBadge>{post.category}</BlogBadge>
+												<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-xs">
+													{new Date(post.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} • {post.readTime}
+												</Parrafo>
+											</div>
+											<h4 class="text-white leading-widest tracking-tight text-left text-xl sm:text-lg md:text-lg lg:text-xl font-semibold mb-2">
+												{post.title}
+											</h4>
+											<p class="leading-relaxed text-sm sm:text-sm md:text-sm lg:text-sm text-left text-gray-200 mb-4">
+												{post.excerpt}
+											</p>
+											<div class="flex items-center justify-between mt-auto">
+												<p class="text-left text-sm sm:text-xs leading-relaxed text-gray-400">Por {post.author.name}</p>
+												<a href={`/blog/${post.slug}`} class="inline-flex items-center rounded-md text-gray-200 hover:text-white text-base bg-gray-700 hover:bg-gray-800 px-4 py-2 font-medium transition-colors">
+															Leer Más
+															<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+																<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+															</svg>
+														</a>
+											</div>
+										</div>
+									</div>
+								</article>
+							))}
+						</div>
+					</div>
 				)}
 
-				<!-- Grid de Todos los Artículos -->
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15 lg:gap-y-15 lg:gap-x-8 mb-12">
-					{allPosts.map(post => (
-						<article class="overflow-hidden">
-							<div class="h-48 mb-4">
-								<img src={post.image} alt={post.title} class="w-full h-full object-cover rounded-lg" />
-							</div>
-							<div>
-								<div class="flex flex-col space-y-3">
-									<div class="flex items-center space-x-2">
-										<BlogBadge>{post.category}</BlogBadge>
-										<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-xs">
-											{new Date(post.date).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} • {post.readTime}
-										</Parrafo>
-									</div>
-									<Titulo level={4} alignMobile="left" alignDesktop="left" class="mb-2 line-clamp-2">
-										{post.title}
-									</Titulo>
-									<Parrafo alignMobile="left" alignDesktop="left" class="mb-4 text-sm line-clamp-3">
-										{post.excerpt}
-									</Parrafo>
-									<div class="flex items-center justify-between mt-auto">
-										<div class="flex items-center">
-											<div class="w-8 h-8 bg-gray-600 rounded-full mr-3">
-												<img src={post.author.avatar} alt={post.author.name} class="w-full h-full object-cover rounded-full" />
-											</div>
-											<Parrafo alignMobile="left" alignDesktop="left" color="muted" class="text-sm">{post.author.name}</Parrafo>
-										</div>
-										<a href={`/blog/${post.slug}`} class="rounded-md text-gray-200 hover:text-white text-base bg-gray-700 hover:bg-gray-800 px-3 py-1.5 font-medium transition-colors">Leer →</a>
-									</div>
-								</div>
-							</div>
-						</article>
-					))}
-				</div>
 
-
+			</div>
+			
+			<!-- Enlace de regreso -->
+			<div class="max-w-6xl mx-auto text-right mt-8">
+				<a href="/" class="inline-flex items-center text-gray-200 hover:text-white transition-colors text-lg font-medium">
+					<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+					</svg>
+					Volver a Inicio
+				</a>
 			</div>
 		</section>
 	</div>
-
-	<!-- Newsletter Section -->
-	<section class="section section-padding container-bg-darker">
-		<div class="max-w-4xl mx-auto text-center">
-			<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="newsletter" class="mb-6">
-			Suscríbete a nuestro newsletter
-		</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
-			Recibe las **últimas actualizaciones** y artículos directamente en tu bandeja de entrada.
-		</Parrafo>
-			<div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-				<input 
-					type="email" 
-					placeholder="Tu email" 
-					class="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 border-radius-default text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-				>
-				<BotonPrimario type="button">Suscribirse</BotonPrimario>
-			</div>
-			<Parrafo alignMobile="left" alignDesktop="center" color="muted" class="mt-4">
-			No spam. Puedes darte de baja en cualquier momento.
-		</Parrafo>
-		</div>
-	</section>
 </Layout>

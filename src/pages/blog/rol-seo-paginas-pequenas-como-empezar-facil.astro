@@ -1,0 +1,226 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getBlogPost } from '../../data/blogs.ts';
+
+const post = getBlogPost('rol-seo-paginas-pequenas-como-empezar-facil');
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<BlogLayout
+  title={post.title}
+  description={post.excerpt}
+  author={post.author}
+  category={post.category}
+  date={post.date}
+  readTime={post.readTime}
+  image={post.image}
+  tags={post.tags}
+  cta={post.cta}
+  slug={post.slug}
+>
+  <h1 data-toc-text="Introducción">El rol del SEO en páginas pequeñas y cómo empezar fácil</h1>
+  
+  <p>¿Piensas que el SEO es solo para grandes empresas con presupuestos millonarios? Te equivocas. Incluso una página web pequeña puede dominar su mercado local con SEO bien aplicado. Te explico qué es realmente el SEO y cómo empezar hoy mismo.</p>
+
+  <h2 data-toc-text="Qué es SEO">¿Qué es SEO? La explicación simple que todo emprendedor necesita</h2>
+  
+  <div class="my-8">
+    <img src="/img/blog/stock/seo-explicacion-basica.png" alt="Explicación básica del SEO para pequeñas empresas" class="blog-image" />
+  </div>
+  
+  <p>SEO significa "Search Engine Optimization" o "Optimización para Motores de Búsqueda". En palabras simples: es hacer que tu sitio web aparezca cuando la gente busca lo que tú vendes en Google.</p>
+  
+  <div class="info-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>Piénsalo así</h4>
+    <p>El SEO es como tener el mejor local en la calle más transitada de tu ciudad, pero en internet. Cuando alguien busca "dentista en [tu ciudad]" o "reparación de autos cerca de mí", tu negocio aparece primero.</p>
+  </div>
+
+  <h3>Los 3 pilares del SEO explicados fácil:</h3>
+  <ul>
+    <li><strong>SEO Técnico:</strong> Que tu sitio funcione rápido y sin errores</li>
+    <li><strong>Contenido:</strong> Escribir sobre lo que tu cliente busca</li>
+    <li><strong>Autoridad:</strong> Que otros sitios recomienden el tuyo</li>
+  </ul>
+
+  <h2 data-toc-text="Por qué páginas pequeñas necesitan SEO">Por qué incluso una página pequeña necesita SEO (más de lo que crees)</h2>
+  
+  <p>"Mi negocio es pequeño, no necesito SEO". Este es el error más costoso que puede cometer un emprendedor. Te explico por qué el SEO es especialmente importante para negocios pequeños.</p>
+
+  <div class="warning-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>Dato alarmante</h4>
+    <p>El 75% de las personas nunca pasa de la primera página de Google. Si no estás ahí, simplemente no existes para tus clientes potenciales.</p>
+  </div>
+
+  <h3>Razones por las que tu página pequeña NECESITA SEO:</h3>
+  
+  <h4>1. Competencia desigual sin SEO</h4>
+  <p>Tus competidores más grandes tienen presupuestos para publicidad. El SEO es tu oportunidad de competir en igualdad de condiciones, porque Google premia la relevancia, no el tamaño de la empresa.</p>
+
+  <h4>2. Clientes locales te buscan constantemente</h4>
+  <p>Cada día, miles de personas en tu área buscan exactamente lo que tú ofreces. Sin SEO, esos clientes van directo a tu competencia.</p>
+
+  <h4>3. Es la publicidad más rentable que existe</h4>
+  <p>Una vez que tu sitio está bien posicionado, recibes clientes "gratis" las 24 horas del día, los 7 días de la semana, sin pagar por cada clic como en Google Ads.</p>
+
+  <div class="highlight-section">
+    <h3>Beneficios específicos para negocios pequeños:</h3>
+    <ul>
+      <li><strong>Costo-efectivo:</strong> Inversión única vs. publicidad constante</li>
+      <li><strong>Credibilidad:</strong> Aparecer en Google te da autoridad</li>
+      <li><strong>Targeting perfecto:</strong> Solo llegan clientes que buscan lo tuyo</li>
+      <li><strong>Escalable:</strong> Crece con tu negocio sin costos adicionales</li>
+    </ul>
+  </div>
+
+  <h4>4. El efecto "David vs Goliat"</h4>
+  <p>Las páginas pequeñas pueden superar a las grandes en búsquedas específicas. Un plomero local puede aparecer antes que una cadena nacional para "plomero urgente [ciudad]".</p>
+
+  <h2 data-toc-text="3 pasos prácticos">3 pasos prácticos para empezar con SEO hoy mismo (sin ser experto)</h2>
+  
+  <p>No necesitas ser un experto en SEO para empezar a ver resultados. Estos 3 pasos te darán una base sólida y resultados medibles en pocas semanas.</p>
+
+  <h3>Paso 1: Optimiza tu Google My Business (30 minutos, impacto inmediato)</h3>
+  
+  <div class="my-8">
+    <img src="/img/blog/stock/google-my-business-optimizacion.png" alt="Optimización de Google My Business" class="blog-image" />
+  </div>
+  
+  <p>Este es el SEO local más poderoso y fácil de implementar. Google My Business es tu tarjeta de presentación en Google.</p>
+
+  <h4>Qué hacer exactamente:</h4>
+  <ul>
+    <li><strong>Reclama tu perfil:</strong> Ve a google.com/business y busca tu negocio</li>
+    <li><strong>Completa TODO:</strong> Horarios, teléfono, dirección, descripción, fotos</li>
+    <li><strong>Agrega fotos de calidad:</strong> Interior, exterior, productos, equipo</li>
+    <li><strong>Pide reseñas:</strong> A cada cliente satisfecho</li>
+    <li><strong>Responde reseñas:</strong> Todas, buenas y malas</li>
+  </ul>
+
+  <div class="info-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>Resultado esperado</h4>
+    <p>En 2-4 semanas verás tu negocio aparecer en el "Map Pack" de Google cuando la gente busque servicios como el tuyo en tu área.</p>
+  </div>
+
+  <h3>Paso 2: Crea contenido que responda preguntas de tus clientes (1 hora semanal)</h3>
+  
+  <p>Tus clientes hacen las mismas preguntas una y otra vez. Cada pregunta es una oportunidad de aparecer en Google.</p>
+
+  <h4>Cómo hacerlo paso a paso:</h4>
+  <ul>
+    <li><strong>Lista las preguntas frecuentes:</strong> Anota las 10 preguntas que más te hacen</li>
+    <li><strong>Crea una página por pregunta:</strong> "¿Cuánto cuesta [tu servicio]?", "¿Cómo funciona [tu proceso]?"</li>
+    <li><strong>Responde completamente:</strong> 300-500 palabras por respuesta</li>
+    <li><strong>Usa palabras que usan tus clientes:</strong> No jerga técnica</li>
+  </ul>
+
+  <h4>Ejemplos de contenido que funciona:</h4>
+  <ul>
+    <li>"¿Cuánto cuesta reparar un aire acondicionado en [tu ciudad]?"</li>
+    <li>"Cómo elegir el mejor dentista para tu familia"</li>
+    <li>"5 señales de que necesitas un contador urgente"</li>
+  </ul>
+
+  <h3>Paso 3: Optimiza lo básico de tu sitio web (2 horas, una sola vez)</h3>
+  
+  <div class="my-8">
+    <img src="/img/blog/stock/optimizacion-basica-seo.png" alt="Elementos básicos de optimización SEO" class="blog-image" />
+  </div>
+  
+  <p>Hay elementos técnicos básicos que Google necesita para entender tu sitio. Son fáciles de implementar y tienen un impacto enorme.</p>
+
+  <h4>Checklist de optimización básica:</h4>
+  <ul>
+    <li><strong>Títulos descriptivos:</strong> Cada página debe tener un título único que describa qué ofreces</li>
+    <li><strong>Descripciones meta:</strong> Un resumen de 150 caracteres que invite a hacer clic</li>
+    <li><strong>Velocidad de carga:</strong> Tu sitio debe cargar en menos de 3 segundos</li>
+    <li><strong>Móvil-friendly:</strong> Debe verse perfecto en celulares</li>
+    <li><strong>Información de contacto visible:</strong> Teléfono, dirección, horarios</li>
+  </ul>
+
+  <div class="warning-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>Error común</h4>
+    <p>No uses títulos genéricos como "Inicio" o "Servicios". Usa "Reparación de Aires Acondicionados en [Ciudad] - [Tu Empresa]".</p>
+  </div>
+
+  <h2 data-toc-text="Herramientas gratuitas">Herramientas gratuitas para monitorear tu progreso</h2>
+  
+  <div class="my-8">
+    <img src="/img/blog/stock/herramientas-seo-gratuitas.png" alt="Herramientas SEO gratuitas para pequeñas empresas" class="blog-image" />
+  </div>
+  
+  <p>No necesitas pagar por herramientas caras para empezar. Estas herramientas gratuitas te darán toda la información que necesitas:</p>
+
+  <h3>Herramientas esenciales (100% gratuitas):</h3>
+  <ul>
+    <li><strong>Google Search Console:</strong> Ve cómo Google ve tu sitio</li>
+    <li><strong>Google Analytics:</strong> Mide el tráfico y comportamiento</li>
+    <li><strong>Google PageSpeed Insights:</strong> Verifica la velocidad de tu sitio</li>
+    <li><strong>Google My Business Insights:</strong> Estadísticas de búsquedas locales</li>
+  </ul>
+
+  <h3>Qué métricas vigilar cada mes:</h3>
+  <ul>
+    <li>Posición promedio en búsquedas</li>
+    <li>Número de clics desde Google</li>
+    <li>Llamadas telefónicas generadas</li>
+    <li>Solicitudes de cotización</li>
+  </ul>
+
+  <h2 data-toc-text="Errores comunes">Errores comunes que debes evitar (aprende de los errores de otros)</h2>
+  
+  <p>Estos son los errores más comunes que vemos en negocios pequeños. Evítalos y estarás adelante del 80% de tu competencia.</p>
+
+  <h3>Los 5 errores más costosos:</h3>
+  
+  <h4>1. Pensar que el SEO es instantáneo</h4>
+  <p>El SEO es una inversión a mediano plazo. Los primeros resultados se ven en 4-8 semanas, pero los grandes resultados toman 3-6 meses.</p>
+
+  <h4>2. Optimizar para palabras demasiado competitivas</h4>
+  <p>No trates de competir por "abogado" o "dentista". Enfócate en "abogado de divorcios en [tu ciudad]" o "dentista para niños [tu área]".</p>
+
+  <h4>3. Ignorar las reseñas</h4>
+  <p>Las reseñas son factor de ranking. Una mala reseña sin respuesta puede costarte clientes por meses.</p>
+
+  <h4>4. No medir resultados</h4>
+  <p>Si no mides, no puedes mejorar. Instala Google Analytics desde el día uno.</p>
+
+  <h4>5. Abandonar muy pronto</h4>
+  <p>El SEO es como ir al gimnasio: los resultados vienen con constancia, no con intensidad esporádica.</p>
+
+  <div class="highlight-section">
+    <h3>Señales de que tu SEO está funcionando:</h3>
+    <ul>
+      <li>Más llamadas telefónicas "encontré su página en Google"</li>
+      <li>Aumento en solicitudes de cotización</li>
+      <li>Clientes que mencionan haber visto tu contenido</li>
+      <li>Mejor posición en búsquedas de tu nombre + ciudad</li>
+    </ul>
+  </div>
+
+  <h2 data-toc-text="Cuándo buscar ayuda">¿Cuándo buscar ayuda profesional?</h2>
+  
+  <p>Puedes empezar solo, pero hay momentos en que la ayuda profesional se vuelve una inversión inteligente.</p>
+
+  <h3>Busca ayuda profesional cuando:</h3>
+  <ul>
+    <li>Tu negocio genera más de $10,000 mensuales (el ROI justifica la inversión)</li>
+    <li>Tienes más de 5 competidores fuertes en tu área</li>
+    <li>Quieres expandirte a nuevas ciudades o servicios</li>
+    <li>No ves resultados después de 6 meses de trabajo constante</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>¿Listo para dominar tu mercado local?</h3>
+    <p>No dejes que tu competencia se lleve a tus clientes. El SEO no es opcional en 2025, es supervivencia empresarial.</p>
+    <p><strong>Solicita una auditoría SEO gratuita y descubre exactamente qué necesita tu sitio para aparecer primero en Google.</strong></p>
+  </div>
+
+  <h2 data-toc-text="Conclusión">Conclusión: El SEO es tu mejor vendedor trabajando 24/7</h2>
+  
+  <p>El SEO no es magia, es estrategia. No es solo para grandes empresas, es especialmente poderoso para negocios pequeños que quieren competir con los grandes.</p>
+
+  <p>Empieza hoy con estos 3 pasos básicos. En 6 meses, cuando veas a tus competidores preguntándose cómo conseguiste tantos clientes nuevos, recordarás este artículo. El SEO es el mejor vendedor que puedes tener: trabaja 24 horas, 7 días a la semana, y nunca pide aumento.</p>
+</BlogLayout>

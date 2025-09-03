@@ -12,6 +12,8 @@ export interface Props {
 	title: string;
 	description: string;
 	href?: string;
+	dataService?: string;
+	showPriceNote?: boolean;
 }
 
 const {
@@ -26,15 +28,15 @@ const {
 	previousPrice,
 	title,
 	description,
-	href = "/contacto"
+	href = "/contacto",
+	dataService,
+	showPriceNote = false
 } = Astro.props;
 
-import BotonPrimario from './BotonPrimario.astro';
-import BotonSecundario from './BotonSecundario.astro';
 import BotonTercio from './BotonTercio.astro';
 ---
 
-<div class={`flex-1 relative bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group ${border ? 'ring-2 ring-blue-300' : 'ring-1 ring-white/15'}`}>
+<div class={`flex-1 relative bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group ${border ? 'ring-2 ring-blue-300' : 'ring-1 ring-white/15'}`} data-service={dataService}>
 	{tag && (
 		<div class="absolute -top-6 left-1/2 transform -translate-x-1/2 z-20">
 			<div class={tagStyle}>
@@ -52,31 +54,29 @@ import BotonTercio from './BotonTercio.astro';
 				<h3 class="text-2xl font-semibold text-white">{title}</h3>
 			</div>
 			<div class="mb-4">
-				<div class="mb-2">
-					<span class="text-6xl text-white">
-						<span class="font-normal">$</span><span class="font-semibold">{price}</span>
-					</span>
-				</div>
-				<div class="flex items-center gap-3">
+				<div class="mb-2 overflow-hidden">
+					<span class="text-6xl text-white font-semibold break-words" data-price="main" set:html={price}></span>
+			</div>
+				<div class="flex flex-col gap-1">
 					{priceLabel && (
-						<span class="text-slate-500 text-lg">{priceLabel}</span>
+						<span class="text-slate-400 text-sm font-medium mb-2">{priceLabel}</span>
 					)}
 					{previousPrice && (
-						<span class="text-slate-500 text-lg relative">
-							${previousPrice}
-							<div class="absolute inset-0 flex items-center justify-center">
-								<div class="w-full h-0.5 bg-red-500/40 transform rotate-8 origin-center"></div>
-							</div>
-						</span>
+						<span class="text-slate-500 text-sm break-words" set:html={previousPrice}></span>
 					)}
 				</div>
 			</div>
 			<p class="text-slate-300 text-base leading-relaxed mb-6">
 				{description}
 			</p>
-			<BotonTercio href={href} class="w-full">
+			<BotonTercio mensaje="Hola! Me interesa el servicio de {title}. ¿Podríamos hablar sobre mi proyecto?" class="w-full">
 				Comenzar Proyecto
 			</BotonTercio>
+			{showPriceNote && (
+				<p class="text-slate-400 text-xs mt-3 text-center">
+					Precio base, puede variar según la complejidad.
+				</p>
+			)}
 		</div>
 
 		<!-- Características -->

@@ -4,9 +4,36 @@ import Titulo from '../components/Titulo.astro';
 import Parrafo from '../components/Parrafo.astro';
 import Badge from '../components/Badge.astro';
 import BotonPrimario from '../components/BotonPrimario.astro';
+import BotonSecundario from '../components/BotonSecundario.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectModal from '../components/ProjectModal.astro';
+import PageBanner from '../components/PageBanner.astro';
+import BannerCTA from '../components/BannerCTA.astro';
+import FAQ from '../components/FAQ.astro';
 import { projects } from '../data/projects.ts';
+
+const preguntasProyectos = [
+	{
+		pregunta: "¿Cómo eligen los proyectos que muestran en su portafolio?",
+		respuesta: "Seleccionamos proyectos que demuestran nuestra versatilidad y expertise técnico. Incluimos casos de éxito de diferentes industrias, desde e-commerce hasta aplicaciones corporativas, mostrando soluciones innovadoras y resultados medibles para nuestros clientes."
+	},
+	{
+		pregunta: "¿Puedo ver el código fuente de estos proyectos?",
+		respuesta: "Por razones de confidencialidad y propiedad intelectual, no compartimos el código fuente completo de proyectos de clientes. Sin embargo, podemos mostrar demos en vivo, explicar la arquitectura técnica y compartir fragmentos de código durante las consultas."
+	},
+	{
+		pregunta: "¿Cuánto tiempo tomó desarrollar cada proyecto?",
+		respuesta: "Los tiempos varían según el tipo de proyecto: sitios web y portafolios de 5 días a 1 semana, tiendas y e-commerce de 1 semana a 3 semanas, y sitios web con funcionalidades avanzadas desde 2 semanas hasta 3 semanas. Cada proyecto incluye planificación, desarrollo, pruebas y optimización."
+	},
+	{
+		pregunta: "¿Ofrecen mantenimiento para estos proyectos?",
+		respuesta: "Sí, todos nuestros proyectos incluyen soporte post-lanzamiento. Ofrecemos mantenimiento continuo, actualizaciones de seguridad, optimizaciones de rendimiento y nuevas funcionalidades según las necesidades del cliente."
+	},
+	{
+		pregunta: "¿Pueden desarrollar un proyecto similar al mío?",
+		respuesta: "Absolutamente. Nuestro portafolio demuestra nuestra capacidad de adaptación a diferentes industrias y requerimientos. Analizamos tu proyecto específico y creamos una solución personalizada basada en nuestra experiencia y las mejores prácticas del sector."
+	}
+];
 ---
 
 <Layout 
@@ -14,22 +41,16 @@ import { projects } from '../data/projects.ts';
 	description="Descubre nuestros proyectos exitosos de desarrollo web, aplicaciones y soluciones digitales personalizadas."
 	keywords="proyectos desarrollo web, portfolio, casos de éxito, aplicaciones web, e-commerce"
 >
-	<div class="bg-[url('/img/bg/large-bg.png')] bg-cover bg-top bg-no-repeat">
-	<!-- Hero Section -->
-	<section class="header-offset section section-padding">
-		<div class="max-w-7xl mx-auto text-center">
-			<Badge class="mb-6">Proyectos</Badge>
-			<Titulo level={1} alignMobile="left" alignDesktop="center" highlight="proyectos" class="mb-6">
-			Nuestros proyectos exitosos
-		</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" class="max-w-3xl mx-auto mb-8">
-			Descubre algunos de los **proyectos más destacados** que hemos desarrollado para nuestros clientes.
-		</Parrafo>
-		</div>
-	</section>
+	<div class="bg-page-dark">
+		<PageBanner 
+			titulo="Nuestros proyectos exitosos"
+			parrafo="Descubre algunos de los **proyectos más destacados** que hemos desarrollado para nuestros clientes."
+			badge="Proyectos"
+			highlight="proyectos"
+			imagenFondo="/img/bg/page-top-banner.png"
+		/>
 
-	<!-- Proyectos Grid -->
-	<div class="">
+		<!-- Proyectos Grid -->
 		<section class="section section-padding">
 			<div class="max-w-6xl mx-auto">
 				<!-- Grid de 10 proyectos -->
@@ -49,23 +70,44 @@ import { projects } from '../data/projects.ts';
 				</div>
 			</div>
 		</section>
-	</div>
+
+		<FAQ preguntas={preguntasProyectos} />
 
 	<!-- Modal de proyecto -->
 	<ProjectModal />
 
-	<!-- CTA Section -->
-	<section class="section section-padding">
-		<div class="max-w-4xl mx-auto text-center">
-			<Titulo level={2} alignMobile="left" alignDesktop="center" highlight="proyecto" class="mb-6">
-			¿Tienes un proyecto en mente?
-		</Titulo>
-		<Parrafo alignMobile="left" alignDesktop="center" class="mb-8">
-			Contáctanos y descubre cómo podemos **hacer realidad tu visión** con soluciones digitales innovadoras.
-		</Parrafo>
-			<BotonPrimario href="/contacto">Iniciar Proyecto</BotonPrimario>
+	<!-- Banner CTA -->
+	<BannerCTA 
+		titulo="¿Tienes un proyecto en mente?"
+		highlight="proyecto"
+		parrafo="Contáctanos y descubre cómo podemos **hacer realidad tu visión** con soluciones digitales innovadoras."
+		imagenFondo="/img/bg/cta-banner.png"
+		imagenAcompanante="/img/stock/banner-webs.png"
+		imagenAlt="Proyectos Banner CTA"
+		metricas={[
+			{
+				icono: 'proyectos',
+				texto: '+Proyectos'
+			},
+			{
+				icono: 'rapidez',
+				texto: '+Rapidez'
+			},
+			{
+				icono: 'calidad',
+				texto: '+Calidad'
+			}
+		]}
+	>
+		<div slot="botones" class="flex flex-col sm:flex-row gap-4">
+			<BotonPrimario mensaje="Hola, tengo un proyecto en mente y me gustaría saber cómo pueden ayudarme a hacerlo realidad.">
+				Iniciar Proyecto
+			</BotonPrimario>
+			<BotonSecundario href="/precios-y-servicios">
+				Ver Servicios
+			</BotonSecundario>
 		</div>
-	</section>
+	</BannerCTA>
 	</div>
 </Layout>
 
@@ -137,11 +179,15 @@ import { projects } from '../data/projects.ts';
 		// Configurar color del estado
 		if (statusElement) {
 			const statusColors = {
-				'Completado': '#10b981',
+				'Completado': 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%)',
 				'En Desarrollo': '#3b82f6',
 				'Mantenimiento': '#f59e0b'
 			};
-			statusElement.style.backgroundColor = statusColors[project.status] || '#6b7280';
+			if (project.status === 'Completado') {
+				statusElement.style.background = statusColors[project.status];
+			} else {
+				statusElement.style.backgroundColor = statusColors[project.status] || '#6b7280';
+			}
 		}
 		
 		// Imagen

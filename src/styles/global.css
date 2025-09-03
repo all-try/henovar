@@ -8,7 +8,11 @@
   --text-primary: #ffffff;
   --text-secondary: #e5e5e5;
   --text-muted: #a3a3a3;
-  --accent-blue: #3b82f6;
+  --accent-blue: #6ba4ff;
+}
+
+.bg-page-dark {
+  @apply bg-gray-950;
 }
 
 /* Reset y estilos base */
@@ -108,15 +112,6 @@ body {
   border-radius: 10px;
 }
 
-/* Contenedores con fondos */
-.container-bg-dark {
-  background-color: var(--bg-secondary);
-}
-
-.container-bg-darker {
-  background-color: var(--bg-container);
-}
-
 /* Secciones */
 .section {
   padding-top: 4rem;
@@ -178,6 +173,12 @@ body {
 /* Utilidades para texto */
 .text-highlight {
   color: var(--accent-blue);
+  font-family: inherit;
+}
+
+/* Gradiente radial personalizado */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
 /* Smooth scroll */

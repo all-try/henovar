@@ -1,0 +1,38 @@
+---
+import Titulo from './Titulo.astro';
+import Parrafo from './Parrafo.astro';
+import Badge from './Badge.astro';
+
+interface Props {
+	titulo: string;
+	parrafo: string;
+	badge: string;
+	highlight?: string;
+	imagenFondo?: string;
+}
+
+const { titulo, parrafo, badge, highlight, imagenFondo } = Astro.props;
+---
+
+
+	<!-- Hero Section -->
+	<section class="pb-0 px-3 lg:px-7 pt-25 lg:pt-0">
+		<div class="pb-7 lg:pb-20 pt-7 lg:pt-35 px-5 lg:px-5 max-w-7xl rounded-2xl lg:rounded-t-none mx-auto" style={imagenFondo ? `background-image: url('${imagenFondo}'); background-size: cover; background-position: center; background-repeat: no-repeat;` : `background-image: url('/img/bg/banner.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;`}>
+			<div class="w-full">
+				<div class="max-w-6xl mx-auto">
+					<Badge variant="secondary" class="mb-5">{badge}</Badge>
+					<Titulo level={1} highlight={highlight} alignMobile="left" alignDesktop="left" class="mb-6 max-w-4xl">
+						{titulo}
+					</Titulo>
+					<Parrafo alignMobile="left" alignDesktop="left" class="max-w-3xl">
+						{parrafo}
+					</Parrafo>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+<style>
+  /* Estilos específicos para el banner si son necesarios */
+</style>

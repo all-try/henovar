@@ -37,22 +37,25 @@ const {
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
       <!-- Columna 1: Título y descripción -->
       <div class="text-center lg:text-left">
-        <Badge class="mb-4">{badge}</Badge>
+        <Badge class="mb-4" variant='secondary'>{badge}</Badge>
         <Titulo level={2} alignMobile="center" alignDesktop="left" class="mb-6">{titulo}</Titulo>
-        <Parrafo alignMobile="center" alignDesktop="left" class="max-w-lg">
+        <Parrafo alignMobile="center" alignDesktop="left" class="max-w-lg mb-6 ">
           {descripcion}
         </Parrafo>
+        {mostrarContacto && (
+				<BotonPrimario mensaje="Hola! Tengo algunas preguntas sobre sus servicios. ¿Podrían ayudarme?">{textoBotonContacto}</BotonPrimario>
+			)}
       </div>
       
       <!-- Columna 2: Preguntas acordeón -->
       <div class="faq-accordion space-y-4">
         {preguntas.map((item, index) => (
           <div class="faq-item bg-gray-600/20 border-radius-large overflow-hidden" data-open={index === 0 ? "true" : "false"}>
-            <button class="faq-question w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
-              <span class="text-white font-semibold text-lg">{item.pregunta}</span>
+            <button class="faq-question w-full py-10 text-left flex justify-between items-center hover:bg-gray-700 transition-colors">
+              <span class="text-white font-normal text-lg">{item.pregunta}</span>
               <div class={`faq-icon text-blue-400 text-2xl font-bold transition-transform duration-300 ${index === 0 ? 'transform rotate-45' : ''}`}>+</div>
             </button>
-            <div class="faq-answer px-6 pb-6">
+            <div class="faq-answer px-6 pb-6 text-gray-300">
               <Parrafo alignMobile="left" alignDesktop="left">{item.respuesta}</Parrafo>
             </div>
           </div>
@@ -60,12 +63,7 @@ const {
       </div>
     </div>
     
-    {mostrarContacto && (
-      <div class="text-center mt-12">
-        <Parrafo alignMobile="left" alignDesktop="center" class="mb-6">{textoContacto}</Parrafo>
-        <BotonPrimario href={urlContacto}>{textoBotonContacto}</BotonPrimario>
-      </div>
-    )}
+
   </div>
 </section>
 
@@ -108,7 +106,7 @@ const {
     transition: background-color 0.2s ease;
     cursor: pointer;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
   }
   
   .faq-question:hover {

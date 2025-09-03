@@ -11,92 +11,55 @@ import Badge from '../components/Badge.astro';
 	keywords="políticas, privacidad, cookies, términos, condiciones, legal"
 >
 	<!-- Hero Section -->
-	<section class="section section-padding">
-		<div class="max-w-7xl mx-auto text-center">
+	<section class="section section-padding bg-gray-950">
+		<div class="max-w-6xl pt-15 mx-auto">
 			<Badge class="mb-6">Políticas</Badge>
-			<Titulo level={1} highlight="transparencia" class="mb-6">
+			<Titulo level={1} highlight="transparencia" alignDesktop='left' alignMobile='left' class="mb-6">
 				Nuestro compromiso con la transparencia
 			</Titulo>
-			<Parrafo class="max-w-3xl mx-auto mb-8">
+			<Parrafo class="max-w-3xl mb-8" alignDesktop='left' alignMobile='left'>
 				Conoce nuestras **políticas y términos** para garantizar una relación transparente y de confianza.
 			</Parrafo>
 		</div>
-	</section>
-
-	<!-- Navegación de Políticas -->
-	<div class="container-bg-dark">
-		<section class="section section-padding">
-			<div class="max-w-7xl mx-auto">
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-					<a href="#privacidad" class="bg-gray-800 border-radius-large p-6 hover:bg-gray-700 transition-colors">
-						<div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
-							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-							</svg>
-						</div>
-						<Titulo level={4} class="mb-2">Política de Privacidad</Titulo>
-						<Parrafo color="muted">Cómo protegemos y utilizamos tus datos personales</Parrafo>
-					</a>
-
-					<a href="#cookies" class="bg-gray-800 border-radius-large p-6 hover:bg-gray-700 transition-colors">
-						<div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mb-4">
-							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-							</svg>
-						</div>
-						<Titulo level={4} class="mb-2">Política de Cookies</Titulo>
-						<Parrafo color="muted">Información sobre el uso de cookies en nuestro sitio</Parrafo>
-					</a>
-
-					<a href="#terminos" class="bg-gray-800 border-radius-large p-6 hover:bg-gray-700 transition-colors">
-						<div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
-							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-							</svg>
-						</div>
-						<Titulo level={4} class="mb-2">Términos de Servicio</Titulo>
-						<Parrafo color="muted">Condiciones de uso de nuestros servicios</Parrafo>
-					</a>
-				</div>
 
 				<!-- Política de Privacidad -->
-				<div id="privacidad" class="mb-16">
-					<div class="bg-gray-800 border-radius-large p-8">
-						<Titulo level={2} class="mb-6">Política de Privacidad</Titulo>
-						<Parrafo class="mb-4">Última actualización: **Enero 2024**</Parrafo>
+				<div id="privacidad" class="mb-10 max-w-6xl mx-auto ">
+					<div class="py-8">
+						<Titulo level={2} class="mb-6" alignMobile="left" alignDesktop="left">Política de Privacidad</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">Última actualización: **Enero 2025**</Parrafo>
 						
-						<Titulo level={3} class="mb-4 mt-8">1. Información que Recopilamos</Titulo>
-						<Parrafo class="mb-4">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">1. Información que Recopilamos</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 							Recopilamos información que nos proporcionas directamente, como cuando te pones en contacto con nosotros, solicitas nuestros servicios o te suscribes a nuestro newsletter.
 						</Parrafo>
-						<ul class="list-disc list-inside text-gray-300 mb-6 space-y-2">
+						<ul class="list-disc list-inside text-gray-300 mb-6 space-y-2 text-left">
 							<li>Información de contacto (nombre, email, teléfono)</li>
 							<li>Información de la empresa</li>
 							<li>Detalles del proyecto</li>
 							<li>Comunicaciones contigo</li>
 						</ul>
 
-						<Titulo level={3} class="mb-4 mt-8">2. Cómo Utilizamos tu Información</Titulo>
-						<Parrafo class="mb-4">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">2. Cómo Utilizamos tu Información</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 							Utilizamos la información recopilada para:
 						</Parrafo>
-						<ul class="list-disc list-inside text-gray-300 mb-6 space-y-2">
+						<ul class="list-disc list-inside text-gray-300 mb-6 space-y-2 text-left">
 							<li>Proporcionar y mejorar nuestros servicios</li>
 							<li>Comunicarnos contigo sobre proyectos</li>
 							<li>Enviar actualizaciones y newsletters (con tu consentimiento)</li>
 							<li>Cumplir con obligaciones legales</li>
 						</ul>
 
-						<Titulo level={3} class="mb-4 mt-8">3. Protección de Datos</Titulo>
-						<Parrafo class="mb-4">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">3. Protección de Datos</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 							Implementamos medidas de **seguridad técnicas y organizativas** apropiadas para proteger tu información personal contra acceso no autorizado, alteración, divulgación o destrucción.
 						</Parrafo>
 
-						<Titulo level={3} class="mb-4 mt-8">4. Tus Derechos</Titulo>
-						<Parrafo class="mb-4">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">4. Tus Derechos</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 							Tienes derecho a:
 						</Parrafo>
-						<ul class="list-disc list-inside text-gray-300 mb-6 space-y-2">
+						<ul class="list-disc list-inside text-gray-300 mb-6 space-y-2 text-left">
 							<li>Acceder a tu información personal</li>
 							<li>Rectificar datos inexactos</li>
 							<li>Solicitar la eliminación de tus datos</li>
@@ -107,93 +70,86 @@ import Badge from '../components/Badge.astro';
 				</div>
 
 				<!-- Política de Cookies -->
-				<div id="cookies" class="mb-16">
-					<div class="bg-gray-800 border-radius-large p-8">
-						<Titulo level={2} class="mb-6">Política de Cookies</Titulo>
-						<Parrafo class="mb-4">Última actualización: **Enero 2024**</Parrafo>
+				<div id="cookies" class="mb-10 max-w-6xl mx-auto">
+					<div class="py-8">
+						<Titulo level={2} class="mb-6" alignMobile="left" alignDesktop="left">Política de Cookies</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">Última actualización: **Enero 2025**</Parrafo>
 						
-						<Titulo level={3} class="mb-4 mt-8">¿Qué son las Cookies?</Titulo>
-						<Parrafo class="mb-6">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">¿Qué son las Cookies?</Titulo>
+						<Parrafo class="mb-6" alignMobile="left" alignDesktop="left">
 							Las cookies son **pequeños archivos de texto** que se almacenan en tu dispositivo cuando visitas nuestro sitio web. Nos ayudan a mejorar tu experiencia de navegación.
 						</Parrafo>
 
-						<Titulo level={3} class="mb-4 mt-8">Tipos de Cookies que Utilizamos</Titulo>
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">Tipos de Cookies que Utilizamos</Titulo>
 						
 						<div class="mb-6">
-							<Titulo level={4} class="mb-2">Cookies Esenciales</Titulo>
-							<Parrafo class="mb-4">
+							<Titulo level={4} class="mb-2" alignMobile="left" alignDesktop="left">Cookies Esenciales</Titulo>
+							<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 								Necesarias para el funcionamiento básico del sitio web.
 							</Parrafo>
 						</div>
 
 						<div class="mb-6">
-							<Titulo level={4} class="mb-2">Cookies de Rendimiento</Titulo>
-							<Parrafo class="mb-4">
+							<Titulo level={4} class="mb-2" alignMobile="left" alignDesktop="left">Cookies de Rendimiento</Titulo>
+							<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 								Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web.
 							</Parrafo>
 						</div>
 
 						<div class="mb-6">
-							<Titulo level={4} class="mb-2">Cookies de Funcionalidad</Titulo>
-							<Parrafo class="mb-4">
+							<Titulo level={4} class="mb-2" alignMobile="left" alignDesktop="left">Cookies de Funcionalidad</Titulo>
+							<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 								Permiten recordar tus preferencias y personalizar tu experiencia.
 							</Parrafo>
 						</div>
 
-						<Titulo level={3} class="mb-4 mt-8">Control de Cookies</Titulo>
-						<Parrafo class="mb-4">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">Control de Cookies</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 							Puedes **controlar y eliminar cookies** a través de la configuración de tu navegador. Ten en cuenta que deshabilitar ciertas cookies puede afectar la funcionalidad del sitio.
 						</Parrafo>
 					</div>
 				</div>
 
 				<!-- Términos de Servicio -->
-				<div id="terminos">
-					<div class="bg-gray-800 border-radius-large p-8">
-						<Titulo level={2} class="mb-6">Términos de Servicio</Titulo>
-						<Parrafo class="mb-4">Última actualización: **Enero 2024**</Parrafo>
+				<div id="terminos" class="mb-10 max-w-6xl mx-auto">
+					<div class="py-8">
+						<Titulo level={2} class="mb-6" alignMobile="left" alignDesktop="left">Términos de Servicio</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">Última actualización: **Enero 2025**</Parrafo>
 						
-						<Titulo level={3} class="mb-4 mt-8">1. Aceptación de Términos</Titulo>
-						<Parrafo class="mb-6">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">1. Aceptación de Términos</Titulo>
+						<Parrafo class="mb-6" alignMobile="left" alignDesktop="left">
 							Al acceder y utilizar nuestros servicios, aceptas estar sujeto a estos términos y condiciones.
 						</Parrafo>
 
-						<Titulo level={3} class="mb-4 mt-8">2. Servicios</Titulo>
-						<Parrafo class="mb-4">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">2. Servicios</Titulo>
+						<Parrafo class="mb-4" alignMobile="left" alignDesktop="left">
 							Ofrecemos servicios de **desarrollo web, consultoría tecnológica y soluciones digitales**. Los detalles específicos se acordarán en contratos individuales.
 						</Parrafo>
 
-						<Titulo level={3} class="mb-4 mt-8">3. Responsabilidades del Cliente</Titulo>
-						<ul class="list-disc list-inside text-gray-300 mb-6 space-y-2">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">3. Responsabilidades del Cliente</Titulo>
+						<ul class="list-disc list-inside text-gray-300 mb-6 space-y-2 text-left">
 							<li>Proporcionar información precisa y completa</li>
 							<li>Cumplir con los plazos de pago acordados</li>
 							<li>Colaborar en el proceso de desarrollo</li>
 							<li>Respetar los derechos de propiedad intelectual</li>
 						</ul>
 
-						<Titulo level={3} class="mb-4 mt-8">4. Propiedad Intelectual</Titulo>
-						<Parrafo class="mb-6">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">4. Propiedad Intelectual</Titulo>
+						<Parrafo class="mb-6" alignMobile="left" alignDesktop="left">
 							Los derechos de propiedad intelectual del trabajo desarrollado se transferirán al cliente una vez completado el pago, salvo que se acuerde lo contrario.
 						</Parrafo>
 
-						<Titulo level={3} class="mb-4 mt-8">5. Limitación de Responsabilidad</Titulo>
-						<Parrafo class="mb-6">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">5. Limitación de Responsabilidad</Titulo>
+						<Parrafo class="mb-6" alignMobile="left" alignDesktop="left">
 							Nuestra responsabilidad se limita al valor del contrato. No seremos responsables de **daños indirectos, incidentales o consecuentes**.
 						</Parrafo>
 
-						<Titulo level={3} class="mb-4 mt-8">6. Modificaciones</Titulo>
-						<Parrafo class="mb-6">
+						<Titulo level={3} class="mb-4 mt-8" alignMobile="left" alignDesktop="left">6. Modificaciones</Titulo>
+						<Parrafo class="mb-6" alignMobile="left" alignDesktop="left">
 							Nos reservamos el derecho de **modificar estos términos** en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación.
 						</Parrafo>
 
-						<Titulo level={3} class="mb-4 mt-8">7. Contacto</Titulo>
-						<Parrafo class="mb-4">
-							Si tienes preguntas sobre estos términos, puedes contactarnos en:
-						</Parrafo>
-						<Parrafo color="muted">
-							**Email:** legal@henovar.com<br>
-							**Teléfono:** +34 123 456 789
-						</Parrafo>
+
 					</div>
 				</div>
 			</div>

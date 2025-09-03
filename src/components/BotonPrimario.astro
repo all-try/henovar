@@ -1,52 +1,127 @@
 ---
+import { generateWhatsAppURL } from '../data/whatsapp.ts';
+import WhatsApp from './icons/WhatsApp.astro';
+import Arrow from './icons/Arrow.astro';
+
 export interface Props {
   href?: string;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   class?: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
+  mensaje?: string; // Mensaje personalizado para WhatsApp (si se usa, será botón WhatsApp)
 }
 
-const { href, type = 'button', disabled = false, class: className = '', target = '_self' } = Astro.props;
-const Element = href ? 'a' : 'button';
+const { 
+  href, 
+  type = 'button', 
+  disabled = false, 
+  class: className = '', 
+  target = '_self',
+  mensaje
+} = Astro.props;
+
+// Determinar la URL y configuración
+let finalHref = href;
+let finalTarget = target;
+let isWhatsApp = false;
+
+if (mensaje && !href) {
+  // Si tiene mensaje, es botón WhatsApp
+  finalHref = generateWhatsAppURL(mensaje);
+  finalTarget = '_blank';
+  isWhatsApp = true;
+}
+
+const Element = finalHref ? 'a' : 'button';
 ---
 
 <Element
-  href={href}
-  type={!href ? type : undefined}
-  disabled={!href ? disabled : undefined}
-  target={href ? target : undefined}
+  href={finalHref}
+  type={!finalHref ? type : undefined}
+  disabled={!finalHref ? disabled : undefined}
+  target={finalHref ? finalTarget : undefined}
   class={`btn-primary ${className}`}
 >
+  {isWhatsApp && (
+    <WhatsApp class="btn-icon" size="20" />
+  )}
   <slot />
 </Element>
 
 <style>
   .btn-primary {
+    min-width: 120px;
+    position: relative;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    background-color: #2563eb;
+    gap: 0.5rem;
+    padding: 13px 28px;
+    border: 0;
+    border-radius: 9999px; /* Full border-radius para efecto cápsula */
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.233);
+    background: radial-gradient(
+      ellipse at bottom,
+      rgb(34, 119, 255) 0%, /* Azul claro */
+      rgb(0, 53, 197) 45%  /* Azul oscuro */
+    );
     color: white;
-    border: none;
-    border-radius: 0.375rem;
-    cursor: pointer;
     text-decoration: none;
+    font-weight: 400;
+    transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+
+  .btn-primary::before {
+    content: "";
+    width: 70%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0.2;
+    transition: all .3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+
+  .btn-primary:hover::before {
+    opacity: 1;
   }
 
   .btn-primary:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-primary:disabled:hover {
+    transform: none;
+  }
+
+  .btn-primary :global(.btn-icon) {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
   }
 
   /* Responsive PC styles */
   @media (min-width: 768px) {
     .btn-primary {
-      padding: 1rem 2rem;
+      padding: .7rem 2rem;
       font-size: 1.125rem;
+      min-width: 150px;
+    }
+    
+    .btn-primary :global(.btn-icon) {
+      width: 1.25rem;
+      height: 1.25rem;
     }
   }
 </style>

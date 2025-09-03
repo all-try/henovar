@@ -1,0 +1,121 @@
+@import "tailwindcss";
+/* Estilos generales para las tarjetas de testimonios */
+
+.testimonial-card {
+  @apply bg-white/5 backdrop-blur-md rounded-2xl p-8 relative overflow-hidden;
+}
+
+.testimonial-content {
+  @apply relative z-10 h-full flex flex-col justify-between;
+}
+
+.testimonial-text {
+  @apply flex-1;
+}
+
+.testimonial-text p {
+  @apply text-gray-200 leading-relaxed text-left italic mb-6;
+}
+
+/* Estilos para el testimonio largo con imagen */
+.testimonial-wide .testimonial-text p {
+  @apply text-lg lg:text-xl;
+}
+
+/* Estilos para testimonios pequeños (3 columnas) */
+.testimonial-small .testimonial-text p {
+  @apply text-sm lg:text-sm;
+}
+
+.testimonial-footer {
+  @apply flex items-center gap-4 mt-6;
+}
+
+.testimonial-footer-wide {
+  @apply flex items-center justify-between mt-6;
+}
+
+.testimonial-avatar {
+  @apply flex-shrink-0;
+}
+
+.testimonial-avatar-circle {
+  @apply w-16 h-16 rounded-full object-cover;
+}
+
+.testimonial-info {
+  @apply flex-1 min-w-0;
+}
+
+.testimonial-name {
+  @apply text-white font-semibold mb-1 text-left;
+}
+
+/* Tamaños de nombre según el tipo de testimonio */
+.testimonial-wide .testimonial-name {
+  @apply text-xl;
+}
+
+.testimonial-normal .testimonial-name {
+  @apply text-lg;
+}
+
+.testimonial-small .testimonial-name {
+  @apply text-base lg:text-base;
+}
+
+.testimonial-role {
+  @apply text-gray-400 mb-2 text-left leading-snug;
+}
+
+/* Tamaños de rol según el tipo de testimonio */
+.testimonial-wide .testimonial-role {
+  @apply text-base;
+}
+
+.testimonial-normal .testimonial-role {
+  @apply text-sm;
+}
+
+.testimonial-small .testimonial-role {
+  @apply text-xs lg:text-xs;
+}
+
+.testimonial-rating {
+  @apply flex items-center justify-start;
+}
+
+/* Responsive para el rating en testimonios anchos */
+.testimonial-rating-mobile {
+  @apply flex items-center justify-start lg:hidden;
+}
+
+.testimonial-rating-desktop {
+  @apply hidden lg:block;
+}
+
+/* Estilos para la imagen del testimonio */
+.testimonial-image {
+  @apply flex items-center justify-center;
+}
+
+.testimonial-image img {
+  @apply w-full h-auto max-h-80 lg:max-h-96 rounded-lg object-cover;
+}
+
+/* Layout específico para testimonio ancho */
+.testimonial-wide-layout {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-8 h-full items-center;
+}
+
+.testimonial-wide-content {
+  @apply flex flex-col justify-between h-full;
+}
+
+.testimonial-wide-text {
+  @apply flex-1;
+}
+
+.testimonial-author-section {
+  @apply flex items-center gap-4;
+}

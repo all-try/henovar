@@ -1,0 +1,40 @@
+---
+import Titulo from './Titulo.astro';
+import Parrafo from './Parrafo.astro';
+
+export interface Props {
+  titulo: string;
+  contenido: string;
+  contenido2?: string;
+  icono: string;
+}
+
+const { titulo, contenido, contenido2, icono } = Astro.props;
+---
+
+<div class="nosotros-card border-radius-large p-8 relative overflow-hidden" style="background-color: rgba(255, 255, 255, 0.05); background-image: radial-gradient(circle at top right, rgba(30, 58, 138, 0.4) 0%, rgba(30, 64, 175, 0.25) 30%, transparent 70%);">
+  <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6 relative z-10">
+    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icono}></path>
+    </svg>
+  </div>
+  
+  <div class="relative z-10">
+    <Titulo level={2} alignMobile="left" alignDesktop="left" class="mb-4">{titulo}</Titulo>
+    
+    <Parrafo alignMobile="left" alignDesktop="left" class="mb-4">
+      {contenido}
+    </Parrafo>
+    {contenido2 && (
+      <Parrafo alignMobile="left" alignDesktop="left" color="muted">
+        {contenido2}
+      </Parrafo>
+    )}
+  </div>
+</div>
+
+<style>
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+</style>

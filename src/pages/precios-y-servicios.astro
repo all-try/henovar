@@ -9,11 +9,43 @@ import FAQ from '../components/FAQ.astro';
 import ServiceFeature from '../components/ServiceFeature.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ServiceInclude from '../components/ServiceInclude.astro';
+import PageBanner from '../components/PageBanner.astro';
+import BannerCTA from '../components/BannerCTA.astro';
+
+// Variables de precios en diferentes divisas
+const precios = {
+	// Precios base en COP
+	desarrolloWeb: {
+		cop: { actual: 299000, anterior: 969000 },
+		mxn: { actual: 1450, anterior: 4700 },
+		eur: { actual: 65, anterior: 210 },
+		usd: { actual: 70, anterior: 230 }
+	},
+	tiendaOnline: {
+		cop: { actual: 659000, anterior: 1340000 },
+		mxn: { actual: 3200, anterior: 6500 },
+		eur: { actual: 145, anterior: 295 },
+		usd: { actual: 155, anterior: 315 }
+	},
+	remodelacion: {
+		cop: { actual: 399000, anterior: 1200000 },
+		mxn: { actual: 2000, anterior: 6000 },
+		eur: { actual: 100, anterior: 300 },
+		usd: { actual: 105, anterior: 320 }
+	}
+};
+
+const divisas = [
+	{ codigo: 'COP', nombre: 'Colombia', simbolo: '' },
+	{ codigo: 'MXN', nombre: 'México', simbolo: '$' },
+	{ codigo: 'EUR', nombre: 'Europa', simbolo: '€' },
+	{ codigo: 'USD', nombre: 'USA / Universal', simbolo: '$' }
+];
 
 const preguntasServicios = [
 	{
 		pregunta: "¿Cuánto tiempo toma desarrollar un sitio web?",
-		respuesta: "El tiempo de desarrollo varía según la complejidad del proyecto. Un sitio web básico puede tomar entre 2-4 semanas, mientras que una tienda online completa puede requerir 4-8 semanas. Te proporcionaremos un cronograma detallado después de evaluar tus necesidades específicas."
+		respuesta: "El tiempo de desarrollo varía según la complejidad del proyecto. Un sitio web básico puede tomar entre 5 dias a 1 semana, mientras que una tienda online completa puede requerir 1 a 2 semanas. Te proporcionaremos un cronograma detallado después de evaluar tus necesidades específicas."
 	},
 	{
 		pregunta: "¿Incluyen el hosting y dominio?",
@@ -35,37 +67,72 @@ const preguntasServicios = [
 ---
 
 <Layout title="Servicios - Henovar">
-	<div class="bg-[url('/img/bg/large-bg.png')] bg-cover bg-top bg-no-repeat">
-	<!-- Hero Section -->
-	<section class="header-offset section section-padding">
-		<div class="max-w-4xl mx-auto text-center">
-			<Titulo level={1} alignMobile="center" alignDesktop="center" highlight="servicios" class="mb-6">
-				Nuestros servicios
-			</Titulo>
-			<Parrafo alignMobile="center" alignDesktop="center" class="text-xl max-w-2xl mx-auto">
-				Transformamos ideas en **experiencias digitales exitosas**. Desde sitios web profesionales hasta tiendas online completas.
-			</Parrafo>
-		</div>
-	</section>
+	<div class="bg-page-dark">
+	<PageBanner
+		titulo="Servicios y precios Diseñados para ti"
+		parrafo="Transformamos ideas en **experiencias digitales exitosas**. Desde sitios web profesionales hasta tiendas online completas."
+		badge="Servicios"
+		highlight="Diseñados"
+		imagenFondo="/img/bg/page-top-banner.png"
+	/>
+
+		<!-- Toggle de Divisas -->
+		<section class="no-y-section no-y-section-padding">
+			<div class="max-w-6xl mx-auto pt-20">
+				<div class="text-center mb-8">
+					<h3 class="text-white text-lg font-semibold mb-4">Elige tu moneda</h3>
+					<div class="flex flex-wrap justify-center gap-3">
+						{divisas.map((divisa, index) => (
+							<button 
+								class={`currency-btn px-4 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer ${
+									index === 0 ? 'bg-blue-900 text-white' : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700'
+								}`}
+								data-currency={divisa.codigo.toLowerCase()}
+								data-symbol={divisa.simbolo}
+							>
+								{divisa.codigo} ({divisa.nombre})
+							</button>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- Servicios Grid -->
-		<section class="no-p-section section-padding">
-			<div class="max-w-7xl mx-auto">
-				<div class="flex flex-col lg:flex-row gap-17">
+		<section class="no-y-section no-y-section-padding">
+			<div class="max-w-6xl mx-auto pt-10">
+				<div class="services-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-5 xl:gap-8 justify-items-center">
+
+<style>
+	@media (min-width: 1120px) {
+		.services-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	@media (min-width: 768px) and (max-width: 1119px) {
+		.services-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		.services-grid > :nth-child(3) {
+			grid-column: 1 / 2;
+			justify-self: center;
+		}
+	}
+</style>
 				<!-- Desarrollo Web & Portafolio -->
 				<ServiceCard
-						tag="68% DESCUENTO"
-						tagStyle="bg-gradient-to-r ring-2 ring-blue-300 from-blue-900 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
-						headerBackground="/img/gradients/header-service-bg.png"
-						cardBackground="/img/gradients/service-bg.png"
-						icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-						border={true}
-						priceLabel="PRECIO ANTES"
-						price="299,000"
-						previousPrice="969000"
-						title="Desarrollo Web & Portafolio"
-						description="Crea tu presencia digital profesional con un sitio web moderno que destaque tu trabajo y atraiga más clientes."
-					>
+					tag="68% DESCUENTO"
+					tagStyle="bg-gradient-to-r ring-2 ring-blue-300 from-blue-900 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+					headerBackground="/img/gradients/header-service-bg.png"
+					cardBackground="/img/gradients/service-bg.png"
+					icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+					border={true}
+					price={`${precios.desarrolloWeb.cop.actual.toLocaleString()}`}
+					previousPrice={`ANTES COP${precios.desarrolloWeb.cop.anterior.toLocaleString()}`}
+					title="Desarrollo Web & Portafolio"
+					description="Crea tu presencia digital profesional con un sitio web moderno que destaque tu trabajo y atraiga más clientes."
+					dataService="desarrollo"
+				>
 						<div slot="features">
 							<!-- Características tipo card -->
 							<ServiceFeature 
@@ -127,16 +194,16 @@ const preguntasServicios = [
 				<!-- Tienda Online -->
 				<ServiceCard
 					tag="EL MÁS POPULAR"
-					tagStyle="bg-gradient-to-r from-blue-500 to-blue-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+					tagStyle="bg-gradient-to-r from-teal-700 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
 					headerBackground="/img/gradients/header-service-bg2.png"
 					cardBackground="/img/gradients/service-bg2.png"
 					icon="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-					border={false}
-					price="659,000"
-					priceLabel="PRECIO ANTES"
-					previousPrice="1,340,000"
+					price={`${precios.tiendaOnline.cop.actual.toLocaleString()}`}
+			previousPrice={`ANTES COP${precios.tiendaOnline.cop.anterior.toLocaleString()}`}
 					title="Tienda Online Completa"
 					description="Vende 24/7 con tu tienda online con Shopify o mensajes de pedidos a WhatsApp para maximizar tus ventas."
+					dataService="tienda"
+					showPriceNote={true}
 				>
 					<div slot="features">
 						<!-- Características tipo card -->
@@ -200,14 +267,16 @@ const preguntasServicios = [
 				<!-- Remodelación Web -->
 				<ServiceCard
 					tag="RENOVACIÓN"
-					tagStyle="bg-gradient-to-r from-gray-800 to-gray-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+					tagStyle="bg-gradient-to-r from-purple-600 to-blue-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
 					headerBackground="/img/gradients/header-service-bg3.png"
 					cardBackground="/img/gradients/service-bg3.png"
-					icon="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
-					price="269,000"
-					priceLabel="Puede aumentar según proyecto"
+					icon="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+					price={`${precios.remodelacion.cop.actual.toLocaleString()}`}
+			previousPrice={`ANTES COP${precios.remodelacion.cop.anterior.toLocaleString()}`}
 					title="Remodelación Web"
-					description="Transforma tu sitio web obsoleto en una herramienta moderna que genere más leads y ventas para tu negocio."
+					description="Transforma tu sitio web existente en una experiencia moderna, rápida y optimizada que convierta visitantes en clientes."
+					dataService="remodelacion"
+					showPriceNote={true}
 				>
 					<div slot="features">
 						<!-- Características tipo card -->
@@ -273,65 +342,37 @@ const preguntasServicios = [
 		<FAQ preguntas={preguntasServicios} />
 
 		<!-- Banner CTA -->
-		<section class="px-3">
-		<div class="pt-10 lg:pt-18 px-5 lg:px-5 max-w-7xl rounded-4xl mx-auto bg-[url('/img/bg/cta-banner.png')] bg-cover bg-top bg-no-repeat overflow-hidden">
-			<div class="max-w-6xl mx-auto pb-0">
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-					<!-- Contenido izquierda -->
-					<div class="text-center lg:text-left">
-						<Titulo level={1} alignMobile="left" alignDesktop="left" highlight="proyecto" class="mb-6">
-							¿Necesitas ayuda con tu proyecto?
-						</Titulo>
-						<Parrafo alignMobile="left" alignDesktop="left" class="mb-8 max-w-[450px]">
-							Contáctanos para una **consulta gratuita** y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
-						</Parrafo>
-						<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-							<BotonPrimario href="/contacto">Contactar Ahora</BotonPrimario>
-							<BotonSecundario href="/servicios">Ver Servicios</BotonSecundario>
-						</div>
-						
-						<!-- Métricas -->
-						<div class="flex flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8">
-							<!-- Métrica 1 -->
-							<div class="flex flex-col items-center text-center">
-								<svg class="w-8 h-8 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-								</svg>
-								<span class="text-gray-400 text-lg">+Ventas</span>
-							</div>
-							
-							<!-- Separador -->
-							<div class="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-white to-transparent opacity-30"></div>
-							
-							<!-- Métrica 2 -->
-							<div class="flex flex-col items-center text-center">
-								<svg class="w-8 h-8 text-green-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-								</svg>
-								<span class="text-gray-400 text-lg">+Ganancias</span>
-							</div>
-							
-							<!-- Separador -->
-							<div class="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-white to-transparent opacity-30"></div>
-							
-							<!-- Métrica 3 -->
-							<div class="flex flex-col items-center text-center">
-								<svg class="w-8 h-8 text-purple-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-								</svg>
-								<span class="text-gray-400 text-lg">+Clientes</span>
-							</div>
-						</div>
-					</div>
-					
-					<!-- Imagen derecha -->
-					<div class="w-full lg:flex lg:justify-end ">
-						<img src="/img/stock/banner.webp" alt="Banner CTA" class="w-full" />
-					</div>
-				</div>
-			</div>
+		<BannerCTA 
+			titulo="¿Necesitas ayuda con tu proyecto?"
+			highlight="proyecto"
+			parrafo="Contáctanos para una **consulta gratuita** y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales."
+			imagenFondo="/img/bg/cta-banner-precios-y-servicios.png"
+			imagenAcompanante="/img/stock/banner-laptop-web.png"
+			imagenAlt="Banner CTA"
+		metricas={[
+			{
+				icono: 'soporte',
+				texto: '+Soporte'
+			},
+			{
+				icono: 'ganancias',
+				texto: '+Ganancias'
+			},
+			{
+				icono: 'calidad',
+				texto: '+Calidad'
+			}
+		]}
+	>
+		<div slot="botones" class="flex flex-col sm:flex-row gap-4">
+			<BotonPrimario mensaje="Hola, necesito ayuda con mi proyecto digital. ¿Podrían darme más información sobre sus servicios?">
+				Contactar por WhatsApp
+			</BotonPrimario>
+			<BotonSecundario href="/proyectos">
+				Ver Proyectos
+			</BotonSecundario>
 		</div>
-		</section>
+		</BannerCTA>
 	</div>
 </Layout>
 
@@ -345,16 +386,112 @@ const preguntasServicios = [
 			if (content) {
 				details.addEventListener('toggle', function() {
 					if (details.open) {
-						// Al abrir
 						content.classList.remove('animate-slideUp');
 						content.classList.add('animate-slideDown');
 					} else {
-						// Al cerrar
 						content.classList.remove('animate-slideDown');
 						content.classList.add('animate-slideUp');
 					}
 				});
 			}
 		});
+		
+		// Currency switcher functionality
+		const currencyButtons = document.querySelectorAll('.currency-btn');
+		
+		const precios = {
+			desarrolloWeb: {
+				cop: { actual: 299000, anterior: 969000 },
+				mxn: { actual: 1450, anterior: 4700 },
+				eur: { actual: 65, anterior: 210 },
+				usd: { actual: 70, anterior: 230 }
+			},
+			tiendaOnline: {
+				cop: { actual: 659000, anterior: 1340000 },
+				mxn: { actual: 3200, anterior: 6500 },
+				eur: { actual: 145, anterior: 295 },
+				usd: { actual: 155, anterior: 315 }
+			},
+			remodelacion: {
+				cop: { actual: 399000, anterior: 1200000 },
+				mxn: { actual: 2000, anterior: 6000 },
+				eur: { actual: 100, anterior: 300 },
+				usd: { actual: 105, anterior: 320 }
+			}
+		};
+		
+		const divisas = {
+			cop: { simbolo: 'COP' },
+			mxn: { simbolo: '$' },
+			eur: { simbolo: '€' },
+			usd: { simbolo: '$' }
+		};
+		
+		currencyButtons.forEach((button: Element) => {
+			button.addEventListener('click', function(this: HTMLButtonElement) {
+				const currency = this.dataset.currency;
+				if (!currency) return;
+				const currencyKey = currency as keyof typeof divisas;
+				const symbol = divisas[currencyKey].simbolo;
+				
+				// Actualizar estilos de botones
+				currencyButtons.forEach(btn => {
+					btn.className = 'currency-btn px-4 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer bg-gray-800/50 text-gray-300 hover:bg-gray-700';
+				});
+				this.className = 'currency-btn px-4 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer bg-blue-900 text-white';
+				
+				// Actualizar precios
+				updatePrice('desarrollo', currencyKey, symbol);
+				updatePrice('tienda', currencyKey, symbol);
+				updatePrice('remodelacion', currencyKey, symbol);
+			});
+		});
+		
+		function updatePrice(service: string, currency: keyof typeof precios.desarrolloWeb, symbol: string) {
+			let serviceKey: keyof typeof precios;
+			switch(service) {
+				case 'desarrollo':
+					serviceKey = 'desarrolloWeb';
+					break;
+				case 'tienda':
+					serviceKey = 'tiendaOnline';
+					break;
+				case 'remodelacion':
+					serviceKey = 'remodelacion';
+					break;
+				default:
+					return;
+			}
+			
+			const priceElement = document.querySelector(`[data-service="${service}"] [data-price="main"]`);
+			const previousPriceElement = document.querySelector(`[data-service="${service}"] .text-slate-500`);
+			const priceLabelElement = document.querySelector(`[data-service="${service}"] .text-slate-400.text-sm.font-medium.mb-2`);
+			
+			if (priceElement && serviceKey) {
+				const actualPrice = precios[serviceKey][currency].actual.toLocaleString();
+				if (symbol === 'COP') {
+					priceElement.innerHTML = `${actualPrice}`;
+				} else if (symbol === '€') {
+					priceElement.innerHTML = `${actualPrice} <span class="text-5xl font-normal">${symbol}</span>`;
+				} else {
+					priceElement.innerHTML = `<span class="text-5xl font-normal">${symbol}</span>${actualPrice}`;
+				}
+			}
+			
+			if (previousPriceElement && serviceKey) {
+				const anteriorPrice = precios[serviceKey][currency].anterior;
+				if (anteriorPrice) {
+					if (symbol === '€') {
+						previousPriceElement.innerHTML = `ANTES ${anteriorPrice.toLocaleString()}${symbol}`;
+					} else {
+						previousPriceElement.innerHTML = `ANTES ${symbol}${anteriorPrice.toLocaleString()}`;
+					}
+				}
+			}
+			
+			if (priceLabelElement) {
+				(priceLabelElement as HTMLElement).style.display = 'none';
+			}
+		}
 	});
 </script>

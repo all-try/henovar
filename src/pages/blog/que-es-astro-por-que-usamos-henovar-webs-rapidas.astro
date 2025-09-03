@@ -1,0 +1,172 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getBlogPost } from '../../data/blogs.ts';
+
+const post = getBlogPost('que-es-astro-por-que-usamos-henovar-webs-rapidas');
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<BlogLayout
+  title={post.title}
+  description={post.excerpt}
+  author={post.author}
+  category={post.category}
+  date={post.date}
+  readTime={post.readTime}
+  image={post.image}
+  tags={post.tags}
+  cta={post.cta}
+  slug={post.slug}
+>
+  <h1 data-toc-text="Introducción">Qué es Astro y por qué lo usamos en Henovar para webs rápidas</h1>
+  
+  <p>Si tu sitio web tarda más de 3 segundos en cargar, estás perdiendo clientes y dinero cada día. En Henovar hemos encontrado la solución perfecta: Astro. Te explico qué es, por qué es revolucionario y cómo puede transformar tu negocio online.</p>
+
+  <h2 data-toc-text="Qué es Astro">¿Qué es Astro? La tecnología que está cambiando el desarrollo web</h2>
+  
+  <div class="my-8">
+    <img src="/img/blog/stock/astro-framework.png" alt="Diagrama explicativo del framework Astro" class="blog-image" />
+  </div>
+  
+  <p>Astro es un framework de desarrollo web moderno que se enfoca en crear sitios web extremadamente rápidos. A diferencia de otras tecnologías, Astro genera sitios estáticos por defecto, lo que significa que tu web carga instantáneamente.</p>
+  
+  <div class="info-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>Dato clave</h4>
+    <p>Los sitios web construidos con Astro cargan hasta 90% más rápido que los sitios tradicionales de WordPress, lo que se traduce directamente en más conversiones y mejores rankings en Google.</p>
+  </div>
+
+  <h3>Características principales de Astro:</h3>
+  <ul>
+    <li><strong>Cero JavaScript por defecto:</strong> Solo carga el JavaScript necesario</li>
+    <li><strong>Hidratación parcial:</strong> Solo los componentes interactivos usan JavaScript</li>
+    <li><strong>Compatibilidad total:</strong> Funciona con React, Vue, Svelte y más</li>
+    <li><strong>SEO optimizado:</strong> Genera HTML estático perfecto para buscadores</li>
+  </ul>
+
+  <h2 data-toc-text="Beneficios velocidad">Los beneficios reales de velocidad que impactan tu negocio</h2>
+  
+  <div class="my-8">
+    <img src="/img/blog/stock/astro-vs-wordpress-velocidad.png" alt="Comparación de velocidad entre Astro y WordPress" class="blog-image" />
+  </div>
+  
+  <p>La velocidad no es solo una métrica técnica, es dinero. Cada segundo de demora en la carga de tu sitio web tiene un impacto directo en tus ventas y conversiones.</p>
+
+  <div class="highlight-section">
+    <h3>Impacto de la velocidad en tu negocio:</h3>
+    <ul>
+      <li><strong>Conversiones:</strong> Un sitio 1 segundo más rápido puede aumentar conversiones hasta 27%</li>
+      <li><strong>SEO:</strong> Google prioriza sitios rápidos en sus resultados de búsqueda</li>
+      <li><strong>Experiencia de usuario:</strong> Usuarios satisfechos regresan y recomiendan</li>
+      <li><strong>Costos de hosting:</strong> Sitios más eficientes requieren menos recursos</li>
+    </ul>
+  </div>
+
+  <h3>¿Cómo logra Astro estas velocidades?</h3>
+  <p>Astro utiliza una arquitectura única llamada "Islands Architecture" que permite que solo las partes interactivas de tu sitio usen JavaScript, mientras que el resto se sirve como HTML estático súper rápido.</p>
+
+  <h2 data-toc-text="Astro vs tradicionales">Astro vs WordPress y otros constructores: La comparación que necesitas ver</h2>
+  
+  <p>Comparemos Astro con las opciones más populares del mercado para que entiendas por qué es la mejor elección para negocios que buscan resultados.</p>
+
+  <div class="warning-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>Realidad del mercado</h4>
+    <p>El 43% de los sitios web de WordPress cargan en más de 3 segundos, perdiendo automáticamente el 40% de sus visitantes antes de que vean el contenido.</p>
+  </div>
+
+  <h3>Comparación detallada:</h3>
+  
+  <h4>🚀 Velocidad de carga:</h4>
+  <ul>
+    <li><strong>Astro:</strong> 0.5-1.5 segundos promedio</li>
+    <li><strong>WordPress:</strong> 3-8 segundos promedio</li>
+    <li><strong>Wix/Squarespace:</strong> 4-10 segundos promedio</li>
+  </ul>
+
+  <h4>🔒 Seguridad:</h4>
+  <ul>
+    <li><strong>Astro:</strong> Extremadamente seguro (sitios estáticos)</li>
+    <li><strong>WordPress:</strong> Requiere mantenimiento constante de seguridad</li>
+    <li><strong>Constructores:</strong> Dependes de la seguridad del proveedor</li>
+  </ul>
+
+  <h4>💰 Costos de mantenimiento:</h4>
+  <ul>
+    <li><strong>Astro:</strong> Mínimos (no requiere actualizaciones constantes)</li>
+    <li><strong>WordPress:</strong> Altos (plugins, temas, seguridad, hosting potente)</li>
+    <li><strong>Constructores:</strong> Suscripciones mensuales crecientes</li>
+  </ul>
+
+  <h2 data-toc-text="Por qué elegimos Astro">Por qué en Henovar elegimos Astro para nuestros clientes</h2>
+  
+  <div class="my-8">
+    <img src="/img/blog/stock/henovar-desarrollo-astro.png" alt="Equipo de Henovar desarrollando con Astro" class="blog-image" />
+  </div>
+  
+  <p>Después de años desarrollando sitios web con diferentes tecnologías, Astro se ha convertido en nuestra herramienta principal por razones muy específicas que benefician directamente a nuestros clientes.</p>
+
+  <h3>Nuestros criterios de selección:</h3>
+  <ul>
+    <li><strong>Resultados medibles:</strong> Velocidades de carga comprobables</li>
+    <li><strong>SEO superior:</strong> Rankings más altos en Google</li>
+    <li><strong>Escalabilidad:</strong> Crece con tu negocio sin problemas</li>
+    <li><strong>Mantenimiento mínimo:</strong> Más tiempo para tu negocio, menos para problemas técnicos</li>
+  </ul>
+
+  <div class="info-box">
+    <h4><svg class="inline w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>Caso de éxito real</h4>
+    <p>Uno de nuestros clientes vio un aumento del 156% en conversiones después de migrar de WordPress a Astro. Su sitio pasó de cargar en 6.2 segundos a solo 1.1 segundos.</p>
+  </div>
+
+  <h2 data-toc-text="Ideal para qué negocios">¿Para qué tipo de negocios es ideal Astro?</h2>
+  
+  <div class="my-8">
+    <img src="/img/blog/stock/tipos-negocios-web.png" alt="Tipos de negocios ideales para Astro" class="blog-image" />
+  </div>
+  
+  <p>Astro es especialmente poderoso para ciertos tipos de negocios y proyectos. Te explico cuándo es la mejor opción:</p>
+
+  <h3>Perfecto para:</h3>
+  <ul>
+    <li><strong>Sitios corporativos:</strong> Empresas que necesitan presencia profesional y rápida</li>
+    <li><strong>E-commerce pequeño a mediano:</strong> Tiendas que priorizan velocidad y conversiones</li>
+    <li><strong>Blogs y contenido:</strong> Sitios que dependen del SEO y la velocidad</li>
+    <li><strong>Landing pages:</strong> Páginas de conversión que necesitan cargar instantáneamente</li>
+    <li><strong>Portafolios:</strong> Profesionales que quieren impresionar con velocidad</li>
+  </ul>
+
+  <h3>Menos recomendado para:</h3>
+  <ul>
+    <li>Aplicaciones web complejas con mucha interactividad</li>
+    <li>Sitios que requieren actualizaciones de contenido muy frecuentes por usuarios no técnicos</li>
+    <li>Plataformas con funcionalidades muy específicas ya desarrolladas en WordPress</li>
+  </ul>
+
+  <h2 data-toc-text="Futuro web">El futuro del desarrollo web está aquí</h2>
+  
+  <p>Astro representa la evolución natural del desarrollo web. Mientras otros siguen cargando sitios lentos y pesados, Astro ofrece la velocidad y eficiencia que los usuarios y Google demandan en 2025.</p>
+
+  <div class="highlight-section">
+    <h3>Tendencias que Astro ya está aprovechando:</h3>
+    <ul>
+      <li><strong>Core Web Vitals:</strong> Google prioriza métricas de rendimiento</li>
+      <li><strong>Mobile-first:</strong> Optimización para dispositivos móviles</li>
+      <li><strong>Sostenibilidad:</strong> Sitios más eficientes consumen menos energía</li>
+      <li><strong>Edge computing:</strong> Distribución global instantánea</li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <h3>¿Listo para una web que realmente venda?</h3>
+    <p>No dejes que tu competencia te supere con sitios más rápidos. En Henovar creamos sitios web con Astro que cargan instantáneamente y convierten más visitantes en clientes.</p>
+    <p><strong>Solicita una consulta gratuita y descubre cómo Astro puede transformar tu presencia online.</strong></p>
+  </div>
+
+  <h2 data-toc-text="Conclusión">Conclusión: Astro es la ventaja competitiva que tu negocio necesita</h2>
+  
+  <p>En un mundo donde cada segundo cuenta, Astro te da la velocidad que necesitas para superar a tu competencia. No es solo una tecnología más moderna, es una ventaja competitiva real que se traduce en más clientes, más ventas y mejor posicionamiento en Google.</p>
+
+  <p>La pregunta no es si deberías considerar Astro, sino si puedes permitirte seguir perdiendo clientes con un sitio web lento. El futuro del web es rápido, y Astro ya está aquí.</p>
+</BlogLayout>
