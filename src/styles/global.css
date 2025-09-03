@@ -18,18 +18,17 @@
 /* Reset y estilos base */
 * {
   box-sizing: border-box;
-  font-family: Inter;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", "Inter", system-ui, sans-serif;
 }
-
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   line-height: 1.6;
 }
 
@@ -91,11 +90,7 @@ body {
   }
 }
 
-/* Pausar animación al hover */
-.testimonios-slider:hover .animate-slide-left,
-.testimonios-slider:hover .animate-slide-right {
-  animation-play-state: paused;
-}
+/* Animación continua sin pausa en hover */
 
 @media (min-width: 1280px) {
   .section-padding {
